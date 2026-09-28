@@ -2,7 +2,7 @@
 
 This repository is the UMN VR club's site, <https://umn-vr.github.io/>, and the University of
 Minnesota's virtual tour built on FOSS Earth. [README.md](README.md) explains the layout and
-commands.
+commands, and [docs/roadmap.md](docs/roadmap.md) what is left to do.
 
 ## Where work belongs
 
