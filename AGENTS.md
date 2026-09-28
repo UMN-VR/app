@@ -28,6 +28,11 @@ Three repositories, three concerns:
 
 - **Scratch goes in the gitignored `.local/`,** never outside the repository.
 - **Never delete from `.local/youvisit-backup/`.** It is the only copy of the YouVisit tour.
+- **The camera has mass and momentum.** Any camera move the tour adds, such as a guided path
+  between stops, follows FOSS Earth's
+  [camera motion rules](../../foss-earth/docs/camera-motion.md): it never jumps, cut short it
+  glides on from where it got to, and the person's input acts at once and keeps acting. Build
+  such moves in FOSS Earth when a globe without the tour would want them.
 - **Don't edit the generated tour files.** `public/tour/twin-cities/` is generated. Edit
   `tools/twin-cities/placements.json` or the build, then run `npm run build:scene`; see
   [tools/twin-cities/README.md](tools/twin-cities/README.md).
