@@ -16,19 +16,17 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
   - 23 stops, plus 4 retired ones;
   - YouVisit's hotspot links, and its start views.
 - **Made this repository an app on FOSS Earth, like 0SFS:** `npm run dev` runs the tour.
+- **Each panorama opens as a tab, at full detail** (2026-09-27). FOSS Earth's part is in its
+  `docs/proposals/panorama-scenes.md`, "After the second user trial". Here, the build publishes
+  YouVisit's full 6144 px width too: 151 MiB more, 266 MiB in all. Not yet tried by hand.
 
 ## Next
 
-1. **Make each panorama a tab, at full detail.** This is FOSS Earth's work, with one change
-   here, and it blocks the rest. Prompt: `../foss-earth/docs/panorama-mode-prompt.md`.
-   - **Why the images look soft:** YouVisit's photographs are 6144 px wide, but the build
-     publishes only 2048 and 4096.
-   - **The change here:** publish the 6144 width too. That adds about 250 MB.
-2. **Deploy.** Switch GitHub Pages to the `gh-pages` branch, then run `npm run deploy`; see the
+1. **Deploy.** Switch GitHub Pages to the `gh-pages` branch, then run `npm run deploy`; see the
    [README](../README.md#deploying).
-3. **Set north and correct the positions of all 60, and place the five that aren't placed.**
+2. **Set north and correct the positions of all 60, and place the five that aren't placed.**
    Prompt: [placements-prompt.md](placements-prompt.md).
-4. **Put the rest of the tour on the map:** photos, videos, narration and hotspot text. Prompt:
+3. **Put the rest of the tour on the map:** photos, videos, narration and hotspot text. Prompt:
    [tour-media-prompt.md](tour-media-prompt.md).
 
 ## Also open
@@ -49,7 +47,7 @@ YouVisit's data is missing.
 
 | In the backup | Count | In the tour |
 | --- | ---: | --- |
-| Panoramas, 6144 × 3072 | 79 ids, 60 distinct photographs | All 60, at 2048 and 4096 wide |
+| Panoramas, 6144 × 3072 | 79 ids, 60 distinct photographs | All 60, at 2048, 4096 and 6144 wide |
 | Stops and their order, hotspots, start views | 23 stops, 4 retired | All |
 | Descriptions | One per panorama | As plain text |
 | Positions | One point per stop | Approximate; see [placements-prompt.md](placements-prompt.md) |

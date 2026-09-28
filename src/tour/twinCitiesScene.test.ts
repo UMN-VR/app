@@ -19,7 +19,8 @@ describe("the Twin Cities tour's scene", () => {
     if (!result.ok) throw new Error("the scene is not valid");
     const report = checkSceneFiles(result.scene, url => (existsSync(fileOf(url)) ? new Uint8Array(readFileSync(fileOf(url))) : null));
     expect(report.problems).toEqual([]);
-    expect(report.files).toBe(result.scene.assets.size * 20);
+    // Six faces for each of three preview cubes, and three whole images.
+    expect(report.files).toBe(result.scene.assets.size * 21);
   });
 
   it("opens on the tour's first stop", () => {

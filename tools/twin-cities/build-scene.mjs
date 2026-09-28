@@ -20,7 +20,7 @@
  *   --backup dir                 the snapshot to read (default: the newest .local/youvisit-backup/snapshot-*)
  *   --foss-earth dir             another FOSS Earth checkout (default: the installed foss-earth package)
  *   --preview-face-sizes 64,128,256   preview cube faces, px
- *   --immersion-widths 2048,4096      whole images for looking around, px (YouVisit's are 6144)
+ *   --immersion-widths 2048,4096,6144 whole images for looking around, px; 6144 is YouVisit's full width
  *   --quality 80                 JPEG quality; YouVisit's own files are 75 to 80
  *   --jobs 3                     images prepared at once; each takes about 1.5 GB of memory
  *
@@ -69,7 +69,7 @@ const installed = path.join(repo, "node_modules", "foss-earth");
 if (!options["foss-earth"] && !existsSync(installed)) throw new Error("foss-earth is not installed; run npm install first");
 const fossEarth = path.resolve(options["foss-earth"] ?? realpathSync(installed));
 const previewSizes = (options["preview-face-sizes"] ?? "64,128,256").split(",").map(Number);
-const immersionWidths = (options["immersion-widths"] ?? "2048,4096").split(",").map(Number);
+const immersionWidths = (options["immersion-widths"] ?? "2048,4096,6144").split(",").map(Number);
 const quality = Number(options.quality ?? 80);
 const jobs = Math.max(1, Number(options.jobs ?? 3));
 const out = path.join(repo, "public", "tour", "twin-cities");
@@ -312,7 +312,7 @@ function buildScene(assets) {
         height: null,
         ...(placement.capture.horizontalAccuracyMeters ? { horizontalAccuracyMeters: placement.capture.horizontalAccuracyMeters } : {}),
       },
-      imagePose: pose,
+      imagePose: { ...pose, aligned: placement.pose.aligned === true },
       marker: markerOf(entityId),
       ...(initialView ? { initialView } : {}),
       ...(links.length ? { links } : {}),
@@ -320,7 +320,7 @@ function buildScene(assets) {
         [EXTENSION]: {
           youvisit: { panoramas: ids.map(Number), stops: stopsOf, ...(retired ? { retiredStop: retired.stop } : {}) },
           capture: placement.capture.source,
-          north: { aligned: placement.pose.aligned === true, provenance: placement.pose.provenance },
+          north: { provenance: placement.pose.provenance },
         },
       },
     };
@@ -358,7 +358,7 @@ function buildScene(assets) {
         build: "tools/twin-cities/build-scene.mjs",
         placements: "tools/twin-cities/placements.json",
         positions: "Capture positions are approximate. They come from YouVisit's one point per stop, or from the centre of the building a panorama shows; each panorama says which. Building centres are from OpenStreetMap, © OpenStreetMap contributors, ODbL 1.0.",
-        north: `${entities.filter(entity => entity.extensions[EXTENSION].north.aligned).length} of ${entities.length} panoramas have north set; the others face an arbitrary direction.`,
+        north: `${entities.filter(entity => entity.imagePose.aligned).length} of ${entities.length} panoramas have north set; the others face an arbitrary direction.`,
       },
     },
     assets: assetList,

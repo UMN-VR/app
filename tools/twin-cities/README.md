@@ -30,9 +30,9 @@ It needs:
 What the build does:
 
 1. **Prepares each photograph** with FOSS Earth's `scripts/prepare-panorama.mjs`. The outputs
-   are preview cubes of 64, 128 and 256 px for the orbs, and whole images 2048 and 4096 px wide
-   for looking around, in JPEG at quality 80.
-   - The first build took 45 s on the laptop that made it, three images at a time.
+   are preview cubes of 64, 128 and 256 px for the orbs, and whole images 2048, 4096 and
+   6144 px wide for looking around, in JPEG at quality 80. 6144 px is YouVisit's full width.
+   - A build of all 60 took 61 s on the laptop that made it, three images at a time.
    - Later builds reuse any image already prepared from the same file with the same options,
      so an edit to `placements.json` rebuilds in seconds.
 2. **Writes `scene.json`.**
@@ -40,10 +40,11 @@ What the build does:
    read it once published: the manifest is valid, and every image file exists with the size
    and byte count it declares. `npm test` repeats this check.
 
-`node tools/twin-cities/build-scene.mjs --help` lists the options. For example, YouVisit's own
-images are 6144 px wide at quality 75–80. `--immersion-widths 2048,4096,6144` adds the full
-width, for viewers who raise FOSS Earth's decoded-image budget above its 64 MiB default. The cost
-is about 250 MB more in this repository.
+`node tools/twin-cities/build-scene.mjs --help` lists the options. YouVisit's own images are
+6144 px wide at quality 75–80, and FOSS Earth shows the largest image a panorama offers unless the
+viewer lowers the image detail in the panorama's tab. The 6144 px images are 151 MiB of the
+scene's 266 MiB, in this repository and in every deploy. `--immersion-widths 2048,4096` leaves
+them out.
 
 ## Where each part comes from
 
@@ -83,7 +84,9 @@ There is one entry per photograph, keyed by its YouVisit panorama id:
 - **`capture`** is where the photograph was taken. `source` says where the position came
   from, and `horizontalAccuracyMeters` how far off it may be.
 - **`pose`** is which way the image faces. `headingDeg` is the compass bearing of the image's
-  centre column. `aligned: false` means nobody has set it yet. `provenance` says how it was set.
+  centre column. `aligned: false` means nobody has set it yet; it goes into the scene's
+  `imagePose`, and the panorama's tab says whether north is set. `provenance` says how it was
+  set.
 - **`marker`** is optional and overrides where the orb floats. It uses the fields of the
   format's marker, such as `offsetM` for the height above the ground.
 
