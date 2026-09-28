@@ -1,0 +1,1078 @@
+{
+  "about": "Where each photograph of the Twin Cities tour was taken and which way it faces: one entry per photograph, keyed by its YouVisit panorama id. sameImage lists the other YouVisit panoramas that are the same photograph, uploaded again. Edited by hand; tools/twin-cities/build-scene.mjs reads it. See tools/twin-cities/README.md.",
+  "panoramas": {
+    "363720": {
+      "id": "hanson-hall-minnesota-carlson",
+      "title": "Hanson Hall, Minnesota Carlson",
+      "capture": {
+        "longitudeDeg": -93.2448184,
+        "latitudeDeg": 44.9703543,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306367, Business at Minnesota Carlson, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363721": {
+      "id": "classroom-studio-spaces",
+      "title": "Classroom Studio Spaces",
+      "capture": {
+        "longitudeDeg": -93.2423186,
+        "latitudeDeg": 44.9704834,
+        "horizontalAccuracyMeters": 150,
+        "source": "Not placed: YouVisit's tour point for stop 306393, Arts on Campus, which this panorama belongs to. It is somewhere in or near that stop."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363722": {
+      "id": "walter-library-lobby",
+      "title": "Walter Library Lobby",
+      "sameImage": [
+        "368155"
+      ],
+      "capture": {
+        "longitudeDeg": -93.2362247,
+        "latitudeDeg": 44.9752803,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306357, Learning at the Libraries, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363723": {
+      "id": "taylor-center",
+      "title": "Taylor Center",
+      "capture": {
+        "longitudeDeg": -93.2333842,
+        "latitudeDeg": 44.974516,
+        "horizontalAccuracyMeters": 50,
+        "source": "Centre of the OpenStreetMap feature Lind Hall (way/39187076): Lind Hall: its description says the Taylor Center is in Lind Hall. Where in it the photograph was taken is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363724": {
+      "id": "mcneal-hall",
+      "title": "McNeal Hall",
+      "capture": {
+        "longitudeDeg": -93.1833975,
+        "latitudeDeg": 44.9853519,
+        "horizontalAccuracyMeters": 50,
+        "source": "Centre of the OpenStreetMap feature McNeal Hall (way/77712291): McNeal Hall, which the title names. YouVisit's map put this retired stop 3.4 km west of McNeal Hall, off the Saint Paul campus. Where in it the photograph was taken is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363726": {
+      "id": "st-paul-mall",
+      "title": "St. Paul Mall",
+      "capture": {
+        "longitudeDeg": -93.1843568,
+        "latitudeDeg": 44.984565,
+        "horizontalAccuracyMeters": 100,
+        "source": "Centre of the OpenStreetMap features Saint Paul Student Center (way/41424555), Coffey Hall (way/41424574), Magrath Library (way/41424572), McNeal Hall (way/77712291): the Saint Paul campus mall, taken as the middle of the Student Center, Coffey Hall, Magrath Library and McNeal Hall around it. YouVisit's map put this retired stop 3.4 km west, off the Saint Paul campus. Where in it the photograph was taken is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363728": {
+      "id": "northrop-auditorium",
+      "title": "Northrop Auditorium",
+      "capture": {
+        "longitudeDeg": -93.2353971,
+        "latitudeDeg": 44.9766819,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 307206, Thank You for Visiting & Learn More, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363729": {
+      "id": "northrop-mall",
+      "title": "Northrop Mall",
+      "capture": {
+        "longitudeDeg": -93.234272,
+        "latitudeDeg": 44.9762821,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306373, Welcome to the UMN Twin Cities (feat. Northrop Mall), whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363731": {
+      "id": "circle-of-indigenous-nations",
+      "title": "Circle of Indigenous Nations",
+      "capture": {
+        "longitudeDeg": -93.2365733,
+        "latitudeDeg": 44.9750564,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306358, Culture & Identity, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363732": {
+      "id": "huntington-bank-stadium",
+      "title": "Huntington Bank Stadium",
+      "sameImage": [
+        "368158"
+      ],
+      "capture": {
+        "longitudeDeg": -93.2245517,
+        "latitudeDeg": 44.976487,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's interactive map position for stop 306364, Huntington Bank Stadium, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363733": {
+      "id": "education-sciences-building",
+      "title": "Education Sciences Building",
+      "capture": {
+        "longitudeDeg": -93.2396381,
+        "latitudeDeg": 44.9785518,
+        "horizontalAccuracyMeters": 50,
+        "source": "Centre of the OpenStreetMap feature Education Sciences Building (way/39186402): the Education Sciences Building, which the title names. Where in it the photograph was taken is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363734": {
+      "id": "recwell-lobby",
+      "title": "RecWell Lobby",
+      "sameImage": [
+        "368166"
+      ],
+      "capture": {
+        "longitudeDeg": -93.2297873,
+        "latitudeDeg": 44.9751588,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306399, Health & Wellness, which is 8 m from the centre of University Recreation & Wellness Center (OpenStreetMap way/153915799), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363736": {
+      "id": "recwell-indoor-track",
+      "title": "RecWell Indoor Track",
+      "sameImage": [
+        "368167"
+      ],
+      "capture": {
+        "longitudeDeg": -93.2297873,
+        "latitudeDeg": 44.9751588,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306399, Health & Wellness, which is 8 m from the centre of University Recreation & Wellness Center (OpenStreetMap way/153915799), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363737": {
+      "id": "17th-ave-residence-hall",
+      "title": "17th Ave Residence Hall",
+      "capture": {
+        "longitudeDeg": -93.2313193,
+        "latitudeDeg": 44.9782663,
+        "horizontalAccuracyMeters": 50,
+        "source": "Centre of the OpenStreetMap feature 17th Avenue Residence Hall (way/235398391): 17th Avenue Residence Hall, which the title names; the stop's point is at Pioneer Hall, 850 m away. Where in it the photograph was taken is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363738": {
+      "id": "immersive-learning-at-the-bentson-center",
+      "title": "Immersive Learning at the Bentson Center",
+      "capture": {
+        "longitudeDeg": -93.2307261,
+        "latitudeDeg": 44.9722861,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306389, Innovative Health Sciences, which is 23 m from the centre of Health Sciences Education Center (OpenStreetMap way/1220638232), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363739": {
+      "id": "coffman-memorial-union-2nd-floor",
+      "title": "Coffman Memorial Union 2nd Floor",
+      "capture": {
+        "longitudeDeg": -93.2354093,
+        "latitudeDeg": 44.9729654,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306390, Coffman Memorial Student Union, which is 16 m from the centre of Coffman Memorial Union (OpenStreetMap way/30056874), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363742": {
+      "id": "folwell-hall",
+      "title": "Folwell Hall",
+      "capture": {
+        "longitudeDeg": -93.2345402,
+        "latitudeDeg": 44.9782705,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's interactive map position for stop 306371, Folwell Hall, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363744": {
+      "id": "nursing-labs-at-the-bentson-center",
+      "title": "Nursing Labs at The Bentson Center",
+      "capture": {
+        "longitudeDeg": -93.2307261,
+        "latitudeDeg": 44.9722861,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306389, Innovative Health Sciences, which is 23 m from the centre of Health Sciences Education Center (OpenStreetMap way/1220638232), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363747": {
+      "id": "atrium-of-tate-hall",
+      "title": "Atrium of Tate Hall",
+      "sameImage": [
+        "368168"
+      ],
+      "capture": {
+        "longitudeDeg": -93.2344866,
+        "latitudeDeg": 44.9751968,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306377, Science & Engineering (feat. Tate Hall), whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363750": {
+      "id": "wall-of-discovery-scholars-walk",
+      "title": "Wall of Discovery, Scholars Walk",
+      "sameImage": [
+        "368162"
+      ],
+      "capture": {
+        "longitudeDeg": -93.2277703,
+        "latitudeDeg": 44.9751361,
+        "horizontalAccuracyMeters": 150,
+        "source": "Not placed: YouVisit's tour point for stop 306401, Impact & Value of a UMN Degree, which this panorama belongs to. It is somewhere in or near that stop."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363756": {
+      "id": "horticulture-display-garden",
+      "title": "Horticulture Display Garden",
+      "sameImage": [
+        "368159",
+        "368164"
+      ],
+      "capture": {
+        "longitudeDeg": -93.1825961,
+        "latitudeDeg": 44.9882468,
+        "horizontalAccuracyMeters": 50,
+        "source": "Centre of the OpenStreetMap feature Department of Horticultural Science Display and Trial Garden (way/158591108): the Horticultural Science Display and Trial Garden, which the title names; the stop's point is at the Student Center, 700 m away. Where in it the photograph was taken is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363757": {
+      "id": "plant-diagnostics-lab",
+      "title": "Plant Diagnostics Lab",
+      "sameImage": [
+        "368160",
+        "369959"
+      ],
+      "capture": {
+        "longitudeDeg": -93.1850964,
+        "latitudeDeg": 44.9838636,
+        "horizontalAccuracyMeters": 150,
+        "source": "Not placed: YouVisit's tour point for stop 306395, College of Food, Agricultural and Natural Resource Sciences (CFANS), which this panorama belongs to. It is somewhere in or near that stop."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "363760": {
+      "id": "superblock",
+      "title": "Superblock",
+      "capture": {
+        "longitudeDeg": -93.2294548,
+        "latitudeDeg": 44.9708325,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306386, Living on Campus, which is 3 m from the centre of Pioneer Hall (OpenStreetMap way/40760464), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365370": {
+      "id": "residence-life-and-dining",
+      "title": "Residence Life & Dining",
+      "capture": {
+        "longitudeDeg": -93.2294548,
+        "latitudeDeg": 44.9708325,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306386, Living on Campus, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365378": {
+      "id": "health-sciences-education-center",
+      "title": "Health Sciences Education Center",
+      "capture": {
+        "longitudeDeg": -93.2307261,
+        "latitudeDeg": 44.9722861,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306389, Innovative Health Sciences, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365381": {
+      "id": "coffman-memorial-union",
+      "title": "Coffman Memorial Union",
+      "capture": {
+        "longitudeDeg": -93.2354093,
+        "latitudeDeg": 44.9729654,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306390, Coffman Memorial Student Union, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365382": {
+      "id": "student-union-bookstore",
+      "title": "Student Union Bookstore",
+      "capture": {
+        "longitudeDeg": -93.2354093,
+        "latitudeDeg": 44.9729654,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306390, Coffman Memorial Student Union, which is 16 m from the centre of Coffman Memorial Union (OpenStreetMap way/30056874), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365383": {
+      "id": "washington-avenue-bridge-and-the-mississippi-river",
+      "title": "Washington Avenue Bridge and the Mississippi River",
+      "capture": {
+        "longitudeDeg": -93.2393038,
+        "latitudeDeg": 44.9731172,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306391, Getting Around Campus, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365384": {
+      "id": "west-bank-heller-hall",
+      "title": "West Bank: Heller Hall",
+      "capture": {
+        "longitudeDeg": -93.2441747,
+        "latitudeDeg": 44.9716143,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306392, A Global University, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365385": {
+      "id": "international-student-and-scholar-services-isss",
+      "title": "International Student and Scholar Services (ISSS)",
+      "capture": {
+        "longitudeDeg": -93.2441747,
+        "latitudeDeg": 44.9716143,
+        "horizontalAccuracyMeters": 150,
+        "source": "Not placed: YouVisit's tour point for stop 306392, A Global University, which this panorama belongs to. It is somewhere in or near that stop."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365386": {
+      "id": "rarig-theater",
+      "title": "Rarig Theater",
+      "sameImage": [
+        "368170"
+      ],
+      "capture": {
+        "longitudeDeg": -93.2424649,
+        "latitudeDeg": 44.9704366,
+        "horizontalAccuracyMeters": 50,
+        "source": "Centre of the OpenStreetMap feature Rarig Center (way/255808942): Rarig Center, which the title names. Where in it the photograph was taken is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365388": {
+      "id": "saint-paul-campus",
+      "title": "Saint Paul Campus",
+      "sameImage": [
+        "368165"
+      ],
+      "capture": {
+        "longitudeDeg": -93.1861961,
+        "latitudeDeg": 44.9828315,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306394, Welcome to the Saint Paul Campus, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365389": {
+      "id": "cfans",
+      "title": "CFANS",
+      "capture": {
+        "longitudeDeg": -93.1814003,
+        "latitudeDeg": 44.9884469,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306397, Biology & The Environment, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365390": {
+      "id": "mcneal-hall-design-studio",
+      "title": "McNeal Hall Design Studio",
+      "capture": {
+        "longitudeDeg": -93.1833959,
+        "latitudeDeg": 44.9850853,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306396, Design and Discovery, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365391": {
+      "id": "letterpress-lab",
+      "title": "Letterpress Lab",
+      "sameImage": [
+        "365421"
+      ],
+      "capture": {
+        "longitudeDeg": -93.1833959,
+        "latitudeDeg": 44.9850853,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306396, Design and Discovery, which is 30 m from the centre of McNeal Hall (OpenStreetMap way/77712291), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365392": {
+      "id": "life-and-environmental-sciences",
+      "title": "Life & Environmental Sciences",
+      "sameImage": [
+        "369958"
+      ],
+      "capture": {
+        "longitudeDeg": -93.1850964,
+        "latitudeDeg": 44.9838636,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306395, College of Food, Agricultural and Natural Resource Sciences (CFANS), whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365393": {
+      "id": "community-connections",
+      "title": "Community Connections",
+      "capture": {
+        "longitudeDeg": -93.18802,
+        "latitudeDeg": 44.9911861,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306398, Community Connections, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365394": {
+      "id": "bell-museum-planetarium",
+      "title": "Bell Museum Planetarium",
+      "sameImage": [
+        "365422"
+      ],
+      "capture": {
+        "longitudeDeg": -93.18802,
+        "latitudeDeg": 44.9911861,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306398, Community Connections, which is 4 m from the centre of Bell Museum (OpenStreetMap way/580258639), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365395": {
+      "id": "recreation-and-wellness-center",
+      "title": "Recreation and Wellness Center",
+      "capture": {
+        "longitudeDeg": -93.2297873,
+        "latitudeDeg": 44.9751588,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306399, Health & Wellness, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365396": {
+      "id": "golden-gopher-spirit-athletics",
+      "title": "Golden Gopher Spirit: Athletics",
+      "capture": {
+        "longitudeDeg": -93.2258391,
+        "latitudeDeg": 44.9764567,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306400, Cheer for the Gophers! (Athletics), whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365397": {
+      "id": "impact-and-value-of-a-umn-degree",
+      "title": "Impact and Value of a UMN Degree",
+      "capture": {
+        "longitudeDeg": -93.2277703,
+        "latitudeDeg": 44.9751361,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306401, Impact & Value of a UMN Degree, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365398": {
+      "id": "bruininks-hall-student-services",
+      "title": "Bruininks Hall: Student Services",
+      "capture": {
+        "longitudeDeg": -93.2373297,
+        "latitudeDeg": 44.9740583,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306387, Student Services and Support, whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365404": {
+      "id": "inside-northrop-auditorium",
+      "title": "Inside Northrop Auditorium",
+      "capture": {
+        "longitudeDeg": -93.2353686,
+        "latitudeDeg": 44.9764784,
+        "horizontalAccuracyMeters": 50,
+        "source": "Centre of the OpenStreetMap feature Northrop Memorial Auditorium (way/255808964): Northrop, which the title names; YouVisit gave it the Northrop Mall stop's point. Where in it the photograph was taken is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365406": {
+      "id": "pioneer-hall-lobby",
+      "title": "Pioneer Hall Lobby",
+      "capture": {
+        "longitudeDeg": -93.2294548,
+        "latitudeDeg": 44.9708325,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306386, Living on Campus, which is 3 m from the centre of Pioneer Hall (OpenStreetMap way/40760464), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365407": {
+      "id": "superblock-outdoor-area",
+      "title": "Superblock Outdoor Area",
+      "capture": {
+        "longitudeDeg": -93.2294548,
+        "latitudeDeg": 44.9708325,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306386, Living on Campus, which is 3 m from the centre of Pioneer Hall (OpenStreetMap way/40760464), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365408": {
+      "id": "the-toaster-innovation-hub",
+      "title": "The Toaster Innovation Hub",
+      "capture": {
+        "longitudeDeg": -93.2362247,
+        "latitudeDeg": 44.9752803,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306357, Learning at the Libraries, which is 5 m from the centre of Walter Library (OpenStreetMap way/23014165), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365409": {
+      "id": "walter-library-study-space",
+      "title": "Walter Library Study Space",
+      "sameImage": [
+        "368157"
+      ],
+      "capture": {
+        "longitudeDeg": -93.2362247,
+        "latitudeDeg": 44.9752803,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306357, Learning at the Libraries, which is 5 m from the centre of Walter Library (OpenStreetMap way/23014165), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365410": {
+      "id": "walter-library-computer-lab",
+      "title": "Walter Library Computer Lab",
+      "capture": {
+        "longitudeDeg": -93.2362247,
+        "latitudeDeg": 44.9752803,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306357, Learning at the Libraries, which is 5 m from the centre of Walter Library (OpenStreetMap way/23014165), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365412": {
+      "id": "center-for-academic-planning-and-exploration",
+      "title": "Center for Academic Planning and Exploration",
+      "capture": {
+        "longitudeDeg": -93.2373297,
+        "latitudeDeg": 44.9740583,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306387, Student Services and Support, which is 5 m from the centre of Robert H. Bruininks Hall (OpenStreetMap way/255808960), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365415": {
+      "id": "one-stop-student-services",
+      "title": "One Stop Student Services",
+      "capture": {
+        "longitudeDeg": -93.2373297,
+        "latitudeDeg": 44.9740583,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306387, Student Services and Support, which is 5 m from the centre of Robert H. Bruininks Hall (OpenStreetMap way/255808960), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365417": {
+      "id": "health-sciences-education-center-7th-floor",
+      "title": "Health Sciences Education Center, 7th Floor",
+      "capture": {
+        "longitudeDeg": -93.2307261,
+        "latitudeDeg": 44.9722861,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306389, Innovative Health Sciences, which is 23 m from the centre of Health Sciences Education Center (OpenStreetMap way/1220638232), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365419": {
+      "id": "m-simulation-lab",
+      "title": "M Simulation Lab",
+      "capture": {
+        "longitudeDeg": -93.2307261,
+        "latitudeDeg": 44.9722861,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306389, Innovative Health Sciences, which is 23 m from the centre of Health Sciences Education Center (OpenStreetMap way/1220638232), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "365420": {
+      "id": "washington-avenue-walking-bridge",
+      "title": "Washington Avenue Walking Bridge",
+      "sameImage": [
+        "368156"
+      ],
+      "capture": {
+        "longitudeDeg": -93.2400345,
+        "latitudeDeg": 44.9731123,
+        "horizontalAccuracyMeters": 50,
+        "source": "Centre of the OpenStreetMap feature Washington Avenue Pedestrian Bridge (way/139902429): the Washington Avenue Bridge's pedestrian deck, which the title names. Where in it the photograph was taken is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "366510": {
+      "id": "fraser-hall-student-lounge",
+      "title": "Fraser Hall Student Lounge",
+      "capture": {
+        "longitudeDeg": -93.2371688,
+        "latitudeDeg": 44.975766,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306388, Research & Innovation (feat. Fraser Hall), whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "366564": {
+      "id": "stone-arch-bridge",
+      "title": "Stone Arch Bridge",
+      "capture": {
+        "longitudeDeg": -93.2536912,
+        "latitudeDeg": 44.9807825,
+        "horizontalAccuracyMeters": 65,
+        "source": "YouVisit's tour point for stop 306402, The Twin Cities (Our Location & Opportunities), whose main panorama this is. YouVisit's two positions for a stop differ by up to 65 m."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "366565": {
+      "id": "undergraduate-teaching-labs",
+      "title": "Undergraduate Teaching Labs",
+      "sameImage": [
+        "366511"
+      ],
+      "capture": {
+        "longitudeDeg": -93.2371688,
+        "latitudeDeg": 44.975766,
+        "horizontalAccuracyMeters": 150,
+        "source": "Not placed: YouVisit's tour point for stop 306388, Research & Innovation (feat. Fraser Hall), which this panorama belongs to. It is somewhere in or near that stop."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "368153": {
+      "id": "carlson-school-of-management",
+      "title": "Carlson School of Management",
+      "capture": {
+        "longitudeDeg": -93.2446121,
+        "latitudeDeg": 44.9704925,
+        "horizontalAccuracyMeters": 50,
+        "source": "Centre of the OpenStreetMap feature Carlson School of Management (way/29124068): the Carlson School of Management building, which the title names. Where in it the photograph was taken is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "368161": {
+      "id": "the-commons-park",
+      "title": "The Commons Park",
+      "capture": {
+        "longitudeDeg": -93.2618838,
+        "latitudeDeg": 44.9757795,
+        "horizontalAccuracyMeters": 50,
+        "source": "Centre of the OpenStreetMap feature The Commons (relation/6563703): The Commons park, which the title names; YouVisit gave it the Stone Arch Bridge stop's point. Where in it the photograph was taken is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "368169": {
+      "id": "apparel-design-classroom",
+      "title": "Apparel Design Classroom",
+      "capture": {
+        "longitudeDeg": -93.1833959,
+        "latitudeDeg": 44.9850853,
+        "horizontalAccuracyMeters": 60,
+        "source": "YouVisit's tour point for stop 306396, Design and Discovery, which is 30 m from the centre of McNeal Hall (OpenStreetMap way/77712291), where this panorama was taken. Where in the building is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    },
+    "370155": {
+      "id": "regis-center-for-art-gallery",
+      "title": "Regis Center for Art: Gallery",
+      "sameImage": [
+        "368154"
+      ],
+      "capture": {
+        "longitudeDeg": -93.2425119,
+        "latitudeDeg": 44.9693051,
+        "horizontalAccuracyMeters": 100,
+        "source": "Centre of the OpenStreetMap features Regis Center For Art (West) (way/255808938), Regis Center For Art (East) (way/255808939): the Regis Center for Art, which the title names; the stop's point is at Rarig Center. Where in it the photograph was taken is not known."
+      },
+      "pose": {
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0,
+        "aligned": false,
+        "provenance": "Not aligned: YouVisit's images carry no orientation, so north is unknown."
+      }
+    }
+  }
+}

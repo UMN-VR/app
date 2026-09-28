@@ -1,0 +1,38 @@
+{
+  "name": "umn-vr-site",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "build:scene": "node tools/twin-cities/build-scene.mjs",
+    "ci": "npm run lint && npm run test && npm run build",
+    "deploy": "npm run build && gh-pages -d dist",
+    "lint": "eslint . --cache --cache-strategy content --cache-location node_modules/.cache/eslint/",
+    "preview": "vite preview",
+    "test": "vitest run --passWithNoTests",
+    "test:changed": "vitest run --passWithNoTests --changed"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^8.56.2",
+    "@babylonjs/loaders": "^8.56.2",
+    "@felipegalind0/gamepad-tools": "file:../../Felipegalind0/gamepad-tools",
+    "3d-tiles-renderer": "^0.4.24",
+    "foss-earth": "file:../../foss-earth",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^24.12.4",
+    "@vitejs/plugin-react": "^6.0.2",
+    "eslint": "^9.39.4",
+    "gh-pages": "^6.3.0",
+    "globals": "^17.6.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.59.3",
+    "vite": "^8.0.13",
+    "vitest": "^4.1.6"
+  }
+}
