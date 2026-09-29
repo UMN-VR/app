@@ -41,10 +41,11 @@ What the build does:
    and byte count it declares. `npm test` repeats this check.
 
 `node tools/twin-cities/build-scene.mjs --help` lists the options. YouVisit's own images are
-6144 px wide at quality 75–80, and FOSS Earth shows the largest image a panorama offers unless the
-viewer lowers the image detail in the panorama's tab. The 6144 px images are 151 MiB of the
-scene's 266 MiB, in this repository and in every deploy. `--immersion-widths 2048,4096` leaves
-them out.
+6144 px wide at quality 75–80. The 6144 px images are 151 MiB of the scene's 263 MiB of file
+bytes (266 MiB allocated on disk). `--immersion-widths 2048,4096` leaves them out. These are
+separate image files referenced by a 301 KiB manifest, not one download. Routine app deploys
+leave this content alone; see [content delivery](../../docs/content-delivery.md) for the folder
+layout, loading sequence and separate app/content release commands.
 
 ## Where each part comes from
 

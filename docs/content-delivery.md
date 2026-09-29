@@ -1,0 +1,161 @@
+# Tour content and releases
+
+The scene already has the folder-and-pointers layout needed for demand loading. The large
+deployment is the sum of separate photographs; it is not a single 263 MiB scene download.
+
+## On disk and over HTTP
+
+```text
+public/tour/twin-cities/
+├── scene.json                         # metadata, positions, links and image URLs
+└── media/
+    ├── northrop-mall/
+    │   ├── preview-64/{px,nx,py,ny,pz,nz}.jpg
+    │   ├── preview-128/{px,nx,py,ny,pz,nz}.jpg
+    │   ├── preview-256/{px,nx,py,ny,pz,nz}.jpg
+    │   ├── immersion-2048.jpg
+    │   ├── immersion-4096.jpg
+    │   ├── immersion-6144.jpg
+    │   ├── asset.fragment.json        # preparation output used by the build
+    │   └── prepared.json              # provenance and build reuse settings
+    └── ...59 more panorama folders
+```
+
+The scene format belongs to FOSS Earth:
+[`docs/scenes/format.md`](https://github.com/foss-earth/foss-earth.github.io/blob/main/docs/scenes/format.md).
+The tour's build and sources are described in [tools/twin-cities/README.md](../tools/twin-cities/README.md).
+
+`scene.json` is ordinary JSON with `format: "foss-earth-scene"` and `version: 1`. Its main parts
+are `assets` (available image representations and their URLs), `entities` (panorama locations,
+poses, titles and links), and `groups` (stops in tour order). `initialPanorama` identifies the
+first stop; the tour's startup view uses `overview` for campus map framing. An entity names its image with `assetId`.
+Each asset lists interchangeable representations, with their projection, dimensions and
+`encodedBytes`. A cube preview points to six separate JPEG faces; an immersion representation
+points to one equirectangular JPEG. Media URLs resolve relative to the manifest URL.
+
+Measured from the current generated scene on 2026-09-28:
+
+| Content | Size | When needed |
+| --- | ---: | --- |
+| Manifest: 60 panoramas, 24 groups, 134 links | 308,480 bytes (301 KiB) | First; enough to know every stop and its position |
+| All 64 px cube previews | 0.64 MiB | Smallest previews for the map or initial entry |
+| All 128 px cube previews | 1.71 MiB | More preview detail when requested |
+| All 256 px cube previews | 5.45 MiB | More preview detail when requested |
+| All 2048 px immersion images | 24.37 MiB | Individual panoramas as they are opened |
+| All 4096 px immersion images | 78.41 MiB | Individual higher detail upgrades |
+| All 6144 px immersion images | 151.42 MiB | Individual full detail upgrades |
+| Whole generated content folder | 262.78 MiB | Publishing content; never a prerequisite for showing the map |
+
+The smallest preview tier for all 60 images is less than 1 MiB. Splitting this manifest into 60
+metadata requests would add overhead without addressing the image loading problem. Keep the
+small index together; fetch image representations independently, with bounded concurrency.
+
+## Runtime delivery
+
+Loading and rendering belong to FOSS Earth. The implemented sequence is:
+
+1. Fetch and validate the manifest, then register all stops immediately. Prepare the campus
+   overview's terrain independently of image downloads; ground-relative markers become
+   positioned as the displayed terrain becomes available at each location.
+2. Fetch each panorama's smallest allowed cube preview first (64 px by default), then sharpen
+   toward the configured preview target behind other first-preview requests. Each ready orb
+   appears independently; one slow panorama does not hold the entire scene back.
+3. On entry, retain the available preview while fetching the selected immersion image, within
+   the user's image-detail settings and memory budgets. No whole immersion image is fetched
+   until its panorama is entered. The loader upgrades directly to the chosen image; it does
+   not require a 2048 px intermediate step before 4096 or 6144 px.
+4. Cancel obsolete requests on scene replacement or leaving a panorama. Report response bytes
+   and failures through the scene's progress events and the app's log.
+
+This is progressive delivery through separate image requests. Whole JPEG representations still
+have to finish before their decoded texture is usable. Tiled high resolution panoramas would
+allow view-dependent refinement at finer granularity, and require a representation and loader
+extension in FOSS Earth; they are not implemented by merely splitting this JSON.
+
+Panoramas render through WebGPU, WebGL 2 or capable WebGL 1 contexts. WebGL 1 requires
+`EXT_frag_depth`, `OES_standard_derivatives` and high-precision fragment shaders for the same
+orb depth and edge behavior. `EXT_shader_texture_lod` is optional; without it, the longitude
+seam may sample a softer mip. A missing required capability produces a specific diagnostic.
+Both WebGL paths submit image row strips within the configured upload allowance. WebGL 2 can
+generate mipmaps for the 6144 × 3072 images and tracks outstanding uploads with GPU fences.
+WebGL 1 uses bilinear filtering without mipmaps for that non-power-of-two size; 2048 and 4096
+images can use mipmaps. It caps per-frame submissions by both upload limits because WebGL 1
+does not expose GPU fences. These are capability and implementation differences, not a claim
+that a particular phone or backend has been performance-qualified.
+
+## Development and current releases
+
+Use `npm run dev` for iteration, or `npm run dev -- --host 0.0.0.0` for a phone on the same
+network. The HTTP network address Vite prints can use WebGL; WebGPU needs a secure context,
+so exercising that backend on a phone requires a trusted HTTPS development proxy or tunnel.
+Vite reads `public/` directly and hot reloads app edits. Neither command deploys or
+re-encodes photographs. Run `npm run build:scene` only when the scene inputs change; unchanged
+prepared images are reused.
+
+The release commands separate the two independently changing inputs:
+
+| Command | Input | Effect on `gh-pages` |
+| --- | --- | --- |
+| `npm run deploy` or `npm run deploy:app` | `dist-app/`, built without copying `public/` | Adds current app and landing-page files; keeps content and older hashed bundles |
+| `npm run deploy:content` | `public/`, checked against its manifest | Adds current scene and media; keeps the app and older content |
+| `npm run deploy:full` | Complete `dist/` | Replaces the branch contents with the complete build |
+
+On 2026-09-28, an app-only build contained 85 files and 7.02 MiB, compared with the content
+folder's 1,381 files and 262.78 MiB. The app's main JavaScript bundle is still substantial
+(about 1.48 MB compressed in that build); separating deployments does not reduce that startup
+download.
+
+The app-only helper rejects output containing scene files or photographs. Both content and
+full releases run FOSS Earth's `check-scene.mjs` before publishing. `--dry-run` prints the file
+count and byte size and performs checks without publishing:
+
+```sh
+npm run build:app
+node tools/deploy.mjs app --dry-run
+node tools/deploy.mjs content --dry-run
+```
+
+Additive releases deliberately retain old bundles and files so cached pages still work. They
+are not a garbage collector: an occasional full refresh removes files absent from the current
+build, and should be planned when old sessions no longer need them. No release rewrites Git
+history. `gh-pages` reuses its local cache under `node_modules/.cache/gh-pages`; a cold cache
+must clone the published branch. Git transfers changed objects on later pushes, so the large
+branch does not prove that unchanged photographs were uploaded on every release.
+
+This split removes repeated local copying of the scene from app releases. It does **not**
+split the final GitHub Pages site artifact: its branch build still sees all the media. The
+server-side part of a long deploy can remain. The observed
+[2026-09-28 Pages run](https://github.com/UMN-VR/UMN-VR.github.io/actions/runs/36381847888)
+took about 67 seconds from creation to completion: its build job took 44 seconds and its
+deployment job 14 seconds. That run does not account for ten minutes by itself. The preceding
+local build, cold clone and initial media push are plausible contributors, but were not timed.
+GitHub currently documents a 1 GB published-site
+limit and a 10 minute deployment timeout; the tour should not grow indefinitely inside that
+artifact. [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits).
+
+## Next delivery boundary
+
+Put the scene and media on a separately published static content origin, with the U or the club
+owning its account and retention policy. The app should publish only HTML, JavaScript, CSS and
+the scene's URL. Choosing and connecting that storage is a separate deployment change; no
+third-party account or media migration is configured here.
+
+Use a versioned scene folder, for example `twin-cities/<revision>/scene.json`, with relative
+media references. Upload and validate images first and the manifest last, then point the app
+at that immutable manifest. Retain older versions while deployed app releases reference them.
+Content hashes in shared image paths can avoid duplicating unchanged photographs across scene
+revisions. Long-lived caching belongs on immutable media URLs; a mutable scene pointer needs
+revalidation. The content service must supply correct image MIME types and CORS for the app's
+origin.
+
+`VITE_TOUR_SCENE_URL` configures the app's manifest URL at build time. Once a content origin has
+been chosen, this lets the existing app release consume it without rewriting the scene format.
+For example, to build an app overlay against a manifest that has already been published:
+
+```sh
+VITE_TOUR_SCENE_URL=https://content.example.edu/twin-cities/revision/scene.json npm run build:app
+```
+
+Its host and manifest must permit the app to fetch all referenced images. Moving the media
+out of the Pages branch is what removes it from Pages' app deployment artifact; the additive
+release commands above are an interim workflow.

@@ -65,7 +65,7 @@ function wholeSite(): Plugin {
 }
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   // The organization site is served from the domain root.
   base: '/',
   server: {
@@ -83,11 +83,13 @@ export default defineConfig({
     __REPOSITORY_SLUG__: JSON.stringify('UMN-VR/UMN-VR.github.io'),
   },
   build: {
+    // Routine app releases reuse the published scene and photographs.
+    copyPublicDir: mode !== 'app',
     rolldownOptions: { input: TOUR_PAGES },
   },
   plugins: [react(), tourHome(), wholeSite()],
   test: {
     // .local/ holds the YouVisit backup and scratch; public/ the generated scene.
-    exclude: [...configDefaults.exclude, '.local/**', 'public/**'],
+    exclude: [...configDefaults.exclude, '.local/**', 'public/**', 'dist-app/**'],
   },
-})
+}))

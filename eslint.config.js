@@ -5,7 +5,7 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
   // .local/ is the YouVisit backup and scratch; public/ is generated.
-  globalIgnores(['dist', '.local', 'public']),
+  globalIgnores(['dist', 'dist-app', '.local', 'public']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [js.configs.recommended, tseslint.configs.recommended],

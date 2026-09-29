@@ -1,17 +1,18 @@
 import { existsSync, readFileSync } from "node:fs";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { checkSceneFiles, validateScene } from "foss-earth/scenes";
 import { TWIN_CITIES } from "./scenes";
 
 const site = new URL("../../public/", import.meta.url);
-const published = new URL(TWIN_CITIES.url, "https://umn-vr.github.io/");
+// Validate local generated content even when a build selects a remote release.
+const published = new URL("tour/twin-cities/scene.json", "https://umn-vr.github.io/");
 /** A published URL's file in public/. */
 const fileOf = (url: string) => new URL(`.${new URL(url).pathname}`, site);
 
 describe("the Twin Cities tour's scene", () => {
   const result = validateScene(readFileSync(fileOf(published.href), "utf8"), { baseUrl: published.href });
 
-  it("is a valid scene where the tour page looks for it", () => {
+  it("is a valid generated scene", () => {
     expect(result.ok ? [] : result.errors).toEqual([]);
   });
 
@@ -27,5 +28,20 @@ describe("the Twin Cities tour's scene", () => {
     if (!result.ok) throw new Error("the scene is not valid");
     expect(result.scene.initialPanorama).toBe("northrop-mall");
     expect(result.scene.groups[0].title).toBe("1. Welcome to the UMN Twin Cities (feat. Northrop Mall)");
+  });
+});
+
+describe("the tour's content location", () => {
+  afterEach(() => { vi.unstubAllEnvs(); vi.resetModules(); });
+
+  it("uses the packaged scene by default and can point at a content release", async () => {
+    vi.stubEnv("VITE_TOUR_SCENE_URL", "");
+    vi.resetModules();
+    expect((await import("./scenes")).TWIN_CITIES.url).toBe(published.pathname.slice(1));
+    vi.stubEnv("VITE_TOUR_SCENE_URL", " https://content.example.org/twin-cities/r2/scene.json ");
+    vi.resetModules();
+    const configured = (await import("./scenes")).TWIN_CITIES;
+    expect(configured.id).toBe(TWIN_CITIES.id);
+    expect(configured.url).toBe("https://content.example.org/twin-cities/r2/scene.json");
   });
 });
