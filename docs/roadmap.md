@@ -22,11 +22,19 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
 
 ## Next
 
-1. **Deploy.** Switch GitHub Pages to the `gh-pages` branch, then run `npm run deploy`; see the
-   [README](../README.md#deploying).
-2. **Set north and correct the positions of all 60, and place the five that aren't placed.**
+1. **Review and prioritize low-end 360° performance before wider release.**
+   The photographs are the reported main bottleneck. The
+   [WebGL performance review](webgl-performance-review.md) records the findings, expected
+   performance and UX tradeoffs, and links the shared FOSS Earth optimization catalogue.
+   Implementation choices and device qualification remain open.
+2. **Verify responsive loading on the deployed phone tour, and separate content hosting.**
+   The first deployment exposed a long deployment and a blank/loading scene on the phone.
+   App-only releases now avoid copying scene media locally; Pages still builds the whole site.
+   See [content-delivery.md](content-delivery.md) for the format, current commands and the
+   remaining independent-content-origin boundary.
+3. **Set north and correct the positions of all 60, and place the five that aren't placed.**
    Prompt: [placements-prompt.md](placements-prompt.md).
-3. **Put the rest of the tour on the map:** photos, videos, narration and hotspot text. Prompt:
+4. **Put the rest of the tour on the map:** photos, videos, narration and hotspot text. Prompt:
    [tour-media-prompt.md](tour-media-prompt.md).
 
 ## Also open
