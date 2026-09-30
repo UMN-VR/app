@@ -96,13 +96,14 @@ wrong one to judge GPU savings. The
 [retained runs](../../../foss-earth/validation/evidence/panorama-experiments/2026-09-29/README.md)
 hold every number. Whether any of this is enough on a phone is what the device trial decides.
 
-To try it on a phone, serve a production build on the local network and open it on the phone
-with and without the switch:
+To try it on a phone, serve a production build on the local network and scan the QR codes for
+the tour with and without the switch. Each code carries this computer's address and the Google
+key:
 
 ```sh
 npm run build && npm run preview -- --host
-# then on the phone: http://<this computer's address>:4173/tour/twin-cities/
-#               and: http://<this computer's address>:4173/tour/twin-cities/?set.renderer.experiments.all=1
+npm run qr                                              # in another terminal: the baseline
+npm run qr -- --query=set.renderer.experiments.all=1    # every experiment on
 ```
 
 ## Tour-owned options to consider

@@ -15,6 +15,7 @@
     "deploy:full": "npm run build && node tools/deploy.mjs full",
     "lint": "eslint . --cache --cache-strategy content --cache-location node_modules/.cache/eslint/",
     "preview": "vite preview",
+    "qr": "foss-earth-qr --path=/tour/twin-cities/",
     "test": "vitest run --passWithNoTests",
     "test:changed": "vitest run --passWithNoTests --changed"
   },

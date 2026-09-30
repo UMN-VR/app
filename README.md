@@ -28,7 +28,8 @@ npm run dev
 
 Open the address Vite prints. It leads to the tour, which opens with the campus scene loaded.
 App edits hot reload; a deploy is not part of this development loop. For a phone on the same
-network, use `npm run dev -- --host 0.0.0.0` and open the network address Vite prints. An HTTP
+network, use `npm run dev -- --host 0.0.0.0` and scan the QR code `npm run qr` prints in another
+terminal; it carries the Google key too ([FOSS Earth: Testing on a phone](../../foss-earth/docs/development.md#testing-on-a-phone)). An HTTP
 LAN URL uses the WebGL fallback; to exercise WebGPU, use a trusted HTTPS development proxy or
 tunnel, since WebGPU requires a secure context. Panorama rendering supports WebGL 2 and
 capable WebGL 1 contexts; [content delivery](docs/content-delivery.md) describes the limits.
@@ -40,6 +41,7 @@ them for each edit.
 | Command | What it does |
 | --- | --- |
 | `npm run dev` | The tour with hot reload, FOSS Earth included |
+| `npm run qr` | Prints a QR code that opens the running dev or preview server's tour on a phone, with the Google key |
 | `npm run build:scene` | Rebuilds the tour's scene from the YouVisit backup; see [tools/twin-cities/README.md](tools/twin-cities/README.md) |
 | `npm run build:app` | Builds `dist-app/`, leaving the scene and photographs out |
 | `npm run build` | Builds the complete site in `dist/`, for `npm run preview` or a full release |
