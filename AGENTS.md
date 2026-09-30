@@ -40,6 +40,10 @@ Three repositories, three concerns:
   `npm run lint`.
 - **For finished work:** run `npm run ci`, once. A change to FOSS Earth also needs FOSS Earth's
   own checks.
+- **Measure the tour headlessly.** FOSS Earth's
+  [scene A/B benchmark](../../foss-earth/benchmarks/scene-ab/README.md) runs this tour's
+  build on the machine's real GPU, WebGL 1 and 2 included, with no server: pixel equivalence
+  and CPU/GPU time per frame, at a phone's viewport. Start there rather than writing another.
 - **Don't start servers or deploy unless asked.** Never start `npm run dev` or `npm run preview`
   unless asked; give the command instead. `npm run deploy` publishes the live site; run it
   only when asked.

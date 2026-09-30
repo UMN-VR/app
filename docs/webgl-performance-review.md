@@ -69,6 +69,42 @@ times. Tiled panoramas and GPU-compressed textures are larger options in the sha
 Lowering framebuffer resolution is a separate, reversible quality control; it should not
 automatically discard a detailed source photograph when memory permits retaining it.
 
+## First pass: work-saving experiments (2026-09-29)
+
+FOSS Earth now has four of the shared review's equivalent-output candidates behind switches,
+all off by default: skipping the hidden globe while a panorama is shown, leaving out the
+panorama renderer's test records, drawing a fully opaque panorama without blending, and
+simpler WebGL panorama shaders. Renderer → Work-saving experiments has a tick box for each and
+one for all; in the address bar, `?set.renderer.experiments.all=1` turns them all on for a
+visit. FOSS Earth's [experiments page](../../../foss-earth/docs/validation/panorama-experiments.md)
+says what each does.
+
+They were measured on this tour's own build and photographs with FOSS Earth's
+[scene A/B benchmark](../../../foss-earth/benchmarks/scene-ab/README.md), headless on an Apple
+M5 at a phone's viewport:
+
+```sh
+npm run build:app
+node ../../foss-earth/benchmarks/scene-ab/run.mjs --dist=dist-app --content=public \
+  --page=/tour/twin-cities/ --rounds=5 --seconds=5          # add --webgl1 for WebGL 1
+```
+
+Every experiment draws the tour as before (the shaders within 1/255). Inside a stop, skipping
+the hidden globe cut Babylon's main-thread render time by a quarter, since it examined 1 mesh a
+frame instead of 289. No GPU change could be told from noise on that machine, which is the
+wrong one to judge GPU savings. The
+[retained runs](../../../foss-earth/validation/evidence/panorama-experiments/2026-09-29/README.md)
+hold every number. Whether any of this is enough on a phone is what the device trial decides.
+
+To try it on a phone, serve a production build on the local network and open it on the phone
+with and without the switch:
+
+```sh
+npm run build && npm run preview -- --host
+# then on the phone: http://<this computer's address>:4173/tour/twin-cities/
+#               and: http://<this computer's address>:4173/tour/twin-cities/?set.renderer.experiments.all=1
+```
+
 ## Tour-owned options to consider
 
 All options below remain pending user selection. Generic representation, renderer, loader,
