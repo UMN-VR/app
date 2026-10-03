@@ -3,6 +3,11 @@
 Review date: **2026-09-28**. Status: **findings and options for user review; no
 optimization has been selected or implemented by this review.**
 
+**Since then (2026-10-03):** photographs load as tiles of an equi-angular cube, only those the
+view needs, instead of a whole image of up to 6144 px: much less to download and to upload to
+the GPU at once, a tile at a time. Drawing a panorama and the globe behind it, which this
+review also covers, is unchanged. See the [roadmap](roadmap.md).
+
 The release goal is a usable tour across inexpensive and older devices, including browsers
 without WebGPU. The user reports that the 360° photographs appear to be the largest slowdown.
 Prioritize that path while retaining improvements elsewhere. A particular phone is one test

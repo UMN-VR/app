@@ -1,7 +1,7 @@
 # Tour content and releases
 
 The scene already has the folder-and-pointers layout needed for demand loading. The large
-deployment is the sum of separate photographs; it is not a single 263 MiB scene download.
+deployment is the sum of separate photographs; it is not a single 661 MiB scene download.
 
 ## On disk and over HTTP
 
@@ -13,6 +13,8 @@ public/tour/twin-cities/
     │   ├── preview-64/{px,nx,py,ny,pz,nz}.jpg
     │   ├── preview-128/{px,nx,py,ny,pz,nz}.jpg
     │   ├── preview-256/{px,nx,py,ny,pz,nz}.jpg
+    │   ├── eac-tiles/<face>/<level>/<x>/<y>.jpg   # equi-angular cube, 510 tiles of 194 px
+    │   ├── cube-tiles/<face>/<level>/<x>/<y>.jpg  # ordinary cube, the same tiles
     │   ├── immersion-2048.jpg
     │   ├── immersion-4096.jpg
     │   ├── immersion-6144.jpg
@@ -30,10 +32,11 @@ are `assets` (available image representations and their URLs), `entities` (panor
 poses, titles and links), and `groups` (stops in tour order). `initialPanorama` identifies the
 first stop; the tour's startup view uses `overview` for campus map framing. An entity names its image with `assetId`.
 Each asset lists interchangeable representations, with their projection, dimensions and
-`encodedBytes`. A cube preview points to six separate JPEG faces; an immersion representation
-points to one equirectangular JPEG. Media URLs resolve relative to the manifest URL.
+`encodedBytes`. A cube preview points to six separate JPEG faces; a tiled cube to its tiles'
+folder, with each level's bytes; a whole immersion image to one equirectangular JPEG. Media URLs
+resolve relative to the manifest URL.
 
-Measured from the current generated scene on 2026-09-28:
+Measured from the generated scene on 2026-09-28, and its tiles on 2026-10-03:
 
 | Content | Size | When needed |
 | --- | ---: | --- |
@@ -44,7 +47,9 @@ Measured from the current generated scene on 2026-09-28:
 | All 2048 px immersion images | 24.37 MiB | Individual panoramas as they are opened |
 | All 4096 px immersion images | 78.41 MiB | Individual higher detail upgrades |
 | All 6144 px immersion images | 151.42 MiB | Individual full detail upgrades |
-| Whole generated content folder | 262.78 MiB | Publishing content; never a prerequisite for showing the map |
+| All equi-angular tiles | 200.62 MiB in 30,600 files | The view's tiles of the panorama entered, at the level it needs: the default |
+| All cube tiles | 197.98 MiB in 30,600 files | The same, when cube tiles are chosen |
+| Whole generated content folder | 660.59 MiB in 62,460 files (263 MiB before the tiles) | Publishing content; never a prerequisite for showing the map |
 
 The smallest preview tier for all 60 images is less than 1 MiB. Splitting this manifest into 60
 metadata requests would add overhead without addressing the image loading problem. Keep the
@@ -60,17 +65,27 @@ Loading and rendering belong to FOSS Earth. The implemented sequence is:
 2. Fetch each panorama's smallest allowed cube preview first (64 px by default), then sharpen
    toward the configured preview target behind other first-preview requests. Each ready orb
    appears independently; one slow panorama does not hold the entire scene back.
-3. On entry, retain the available preview while fetching the selected immersion image, within
-   the user's image-detail settings and memory budgets. No whole immersion image is fetched
-   until its panorama is entered. The loader upgrades directly to the chosen image; it does
-   not require a 2048 px intermediate step before 4096 or 6144 px.
+3. On entry, show the preview and load the representation the person chose in 360 image
+   settings, equi-angular tiles by default. Tiles draw over the preview at once, and the view's
+   tiles arrive at the level its pixels need, the largest share of the view first: on a phone
+   that is the finest level, 1536 px faces, for 30 to 40 tiles. A whole image, when chosen,
+   loads within the image detail and memory budgets and replaces the preview once usable.
+   Nothing is fetched for a panorama until it is entered, and nothing passes through an
+   intermediate size first.
 4. Cancel obsolete requests on scene replacement or leaving a panorama. Report response bytes
    and failures through the scene's progress events and the app's log.
 
-This is progressive delivery through separate image requests. Whole JPEG representations still
-have to finish before their decoded texture is usable. Tiled high resolution panoramas would
-allow view-dependent refinement at finer granularity, and require a representation and loader
-extension in FOSS Earth; they are not implemented by merely splitting this JSON.
+This is progressive delivery through separate image requests. A whole JPEG still has to finish
+before its decoded texture is usable; tiles are each usable as they arrive, so the view
+sharpens a tile at a time. FOSS Earth's
+[progressive 360° prototype](https://github.com/foss-earth/foss-earth.github.io/blob/main/benchmarks/eac-progressive-prototype/REPORT.md)
+measured the difference over throttled HTTP at 2 Mbit/s on three of these panoramas: the view
+was within 1 dB of finished after 1.3 s and 258 KiB with tiles, while two of the three whole
+images were not sharp in 10 s. Here a finest-level equi-angular tile averages 6.5 KB, so a
+phone's view of 35 to 40 tiles is about 250 KB, against 4.7 MiB for the photograph's 6144 px
+image. Each tile is a separate small file, so a content release publishes tens of thousands of
+files, and the content is now about two thirds of GitHub Pages' 1 GB site limit: a cost of the
+Pages branch, not of loading, and a reason for the separate content origin below.
 
 Panoramas render through WebGPU, WebGL 2 or capable WebGL 1 contexts. WebGL 1 requires
 `EXT_frag_depth`, `OES_standard_derivatives` and high-precision fragment shaders for the same

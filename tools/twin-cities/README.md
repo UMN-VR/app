@@ -29,11 +29,20 @@ It needs:
 
 What the build does:
 
-1. **Prepares each photograph** with FOSS Earth's `scripts/prepare-panorama.mjs`. The outputs
-   are preview cubes of 64, 128 and 256 px for the orbs, and whole images 2048, 4096 and
-   6144 px wide for looking around, in JPEG at quality 80. 6144 px is YouVisit's full width.
-   - A build of all 60 took 61 s on the laptop that made it, three images at a time.
-   - Later builds reuse any image already prepared from the same file with the same options,
+1. **Prepares each photograph** with FOSS Earth's `scripts/prepare-panorama.mjs`. The outputs,
+   all JPEG at quality 80:
+   - preview cubes of 64, 128 and 256 px faces, for the orbs;
+   - tiled cubes for looking around, the tour's default: an equi-angular cube (`eac-tiles/`)
+     and an ordinary one (`cube-tiles/`), each with faces of 1536 px, the photograph's own
+     detail at the horizon, in 510 tiles of 192 px over four levels. Inside a panorama the
+     viewer loads only the tiles the view needs. Their format is FOSS Earth's
+     [tiled cube](https://github.com/foss-earth/foss-earth.github.io/blob/main/docs/scenes/format.md#tiled-cubes);
+   - whole images 2048, 4096 and 6144 px wide, for "Whole image" in 360 image settings and for
+     older viewers. 6144 px is YouVisit's full width.
+
+   Times on the laptop that made it, three images at a time:
+   - all 60 with whole images only took 61 s; with both tiled cubes, 7 min 50 s (2026-10-03);
+   - later builds reuse any image already prepared from the same file with the same options,
      so an edit to `placements.json` rebuilds in seconds.
 2. **Writes `scene.json`.**
 3. **Checks the result** with FOSS Earth's `scripts/check-scene.mjs`, the way the viewer will
@@ -41,9 +50,11 @@ What the build does:
    and byte count it declares. `npm test` repeats this check.
 
 `node tools/twin-cities/build-scene.mjs --help` lists the options. YouVisit's own images are
-6144 px wide at quality 75–80. The 6144 px images are 151 MiB of the scene's 263 MiB of file
-bytes (266 MiB allocated on disk). `--immersion-widths 2048,4096` leaves them out. These are
-separate image files referenced by a 301 KiB manifest, not one download. Routine app deploys
+6144 px wide at quality 75–80. Of the scene's 660.6 MiB in 62,460 files (2026-10-03), the
+equi-angular tiles are 200.6 MiB, the cube tiles 198.0 MiB and the 6144 px images 151.4 MiB.
+`--immersion-widths 2048,4096` leaves the
+largest whole images out, and `--tiles ""` the tiles. These are separate image files
+referenced by one manifest, not one download. Routine app deploys
 leave this content alone; see [content delivery](../../docs/content-delivery.md) for the folder
 layout, loading sequence and separate app/content release commands.
 

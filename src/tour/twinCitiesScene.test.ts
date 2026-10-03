@@ -20,8 +20,19 @@ describe("the Twin Cities tour's scene", () => {
     if (!result.ok) throw new Error("the scene is not valid");
     const report = checkSceneFiles(result.scene, url => (existsSync(fileOf(url)) ? new Uint8Array(readFileSync(fileOf(url))) : null));
     expect(report.problems).toEqual([]);
-    // Six faces for each of three preview cubes, and three whole images.
-    expect(report.files).toBe(result.scene.assets.size * 21);
+    // Six faces for each of three preview cubes, three whole images, and two tiled cubes of 6 · (1 + 4 + 16 + 64) tiles.
+    expect(report.files).toBe(result.scene.assets.size * (21 + 2 * 510));
+  });
+
+  it("offers every photograph as equi-angular and ordinary cube tiles at its full detail", () => {
+    if (!result.ok) throw new Error("the scene is not valid");
+    for (const asset of result.scene.assets.values()) {
+      const tiled = asset.representations.filter(entry => entry.projection === "tiled-cube");
+      expect(tiled.map(entry => entry.projection === "tiled-cube" && [entry.id, entry.warp, entry.faceSize, entry.tileSize, entry.levelBytes.length])).toEqual([
+        ["eac-tiles", "equi-angular", 1536, 192, 4],
+        ["cube-tiles", "gnomonic", 1536, 192, 4],
+      ]);
+    }
   });
 
   it("opens on the tour's first stop", () => {

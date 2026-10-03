@@ -13,7 +13,7 @@
  *   - tools/twin-cities/placements.json, edited by hand: which image each
  *     panorama is, its id and title, where it was taken and which way is north;
  *   - FOSS Earth, the package this repository installs: its scripts/prepare-panorama.mjs
- *     turns each image into preview cubes and whole images, and its
+ *     turns each image into preview cubes, whole images and tiled cubes, and its
  *     scripts/check-scene.mjs checks the result the way the viewer will read it.
  *
  * Options:
@@ -21,6 +21,9 @@
  *   --foss-earth dir             another FOSS Earth checkout (default: the installed foss-earth package)
  *   --preview-face-sizes 64,128,256   preview cube faces, px
  *   --immersion-widths 2048,4096,6144 whole images for looking around, px; 6144 is YouVisit's full width
+ *   --tiles eac,cube             tiled cubes for looking around: equi-angular and ordinary, each of
+ *                                1536 px faces (6144 / 4) in tiles of --tile-size; "" for none
+ *   --tile-size 192              a tile's texels a side
  *   --quality 80                 JPEG quality; YouVisit's own files are 75 to 80
  *   --jobs 3                     images prepared at once; each takes about 1.5 GB of memory
  *
@@ -71,6 +74,8 @@ const fossEarth = path.resolve(options["foss-earth"] ?? realpathSync(installed))
 const previewSizes = (options["preview-face-sizes"] ?? "64,128,256").split(",").map(Number);
 const immersionWidths = (options["immersion-widths"] ?? "2048,4096,6144").split(",").map(Number);
 const quality = Number(options.quality ?? 80);
+const tileKinds = (options.tiles ?? "eac,cube").split(",").filter(Boolean);
+const tileSize = Number(options["tile-size"] ?? 192);
 const jobs = Math.max(1, Number(options.jobs ?? 3));
 const out = path.join(repo, "public", "tour", "twin-cities");
 const media = path.join(out, "media");
@@ -156,7 +161,9 @@ function prepared(entityId, hash) {
   const same = provenance.source?.sha256 === hash
     && JSON.stringify(provenance.settings?.previewSizes) === JSON.stringify(previewSizes)
     && JSON.stringify(provenance.settings?.immersionWidths) === JSON.stringify(immersionWidths)
-    && provenance.settings?.encoding === "jpeg" && provenance.settings?.quality === quality;
+    && provenance.settings?.encoding === "jpeg" && provenance.settings?.quality === quality
+    && JSON.stringify(provenance.settings?.tiles?.kinds ?? []) === JSON.stringify(tileKinds)
+    && (tileKinds.length === 0 || provenance.settings?.tiles?.tileSize === tileSize);
   return same ? readJson(path.join(media, entityId, "asset.fragment.json")).asset : null;
 }
 
@@ -194,6 +201,7 @@ async function prepareAll() {
         "--input", imageFile(job.key), "--pose", posePath, "--asset-id", job.entityId,
         "--preview-face-sizes", previewSizes.join(","), "--immersion-widths", immersionWidths.join(","),
         "--encoding", "jpeg", "--quality", String(quality),
+        ...(tileKinds.length ? ["--tiles", tileKinds.join(","), "--tile-size", String(tileSize)] : []),
         "--attribution", ATTRIBUTION, "--url-prefix", `media/${job.entityId}/`, "--out", folder,
       ]);
       assets.set(job.entityId, readJson(path.join(folder, "asset.fragment.json")).asset);

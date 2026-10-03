@@ -36,6 +36,30 @@ capable WebGL 1 contexts; [content delivery](docs/content-delivery.md) describes
 The generated scene and media are served directly from `public/`, without copying or uploading
 them for each edit.
 
+## How the photographs load
+
+Inside a panorama, each photograph arrives as tiles of an equi-angular cube: only the tiles the
+view needs, at the detail its pixels need, drawn over the orb's preview, which is on screen
+already. The view sharpens in a second or two on a slow phone connection, where a 5 MiB whole
+image took 20 seconds or more, and a look back shows tiles already loaded. This is FOSS Earth's
+[tiled cube](https://github.com/foss-earth/foss-earth.github.io/blob/main/docs/scenes/format.md#tiled-cubes),
+measured in its [progressive 360° prototype](https://github.com/foss-earth/foss-earth.github.io/blob/main/benchmarks/eac-progressive-prototype/REPORT.md);
+the build makes both kinds of tiles and the whole images for every photograph.
+
+Two selectors, each a row of buttons:
+
+| What | Where | Choices |
+| --- | --- | --- |
+| **Renderer**, the GPU interface | The renderer button on the bar at the bottom (it reads WebGPU, WebGL2 or WebGL) → Renderer tab | Auto-detect, WebGPU, WebGL2, WebGL. A change reloads the page. |
+| **Representation**, how the photograph arrives | Inside a panorama: 360 image settings → Image | Equi-angular cube tiles (the default), cube tiles, whole image. A change applies at once: the new kind loads behind the one on screen, then crossfades in. |
+
+**Tile outlines**, beside Representation, draws each tile's edges and tints it by its level as
+it loads. The panorama's own tab says how many of the view's tiles are on screen and how much
+has been downloaded; Scenes → Tiled images holds the tiles' memory, requests and uploads per
+frame. Both choices can be put in a link, as any FOSS Earth setting can, for showing the tour
+one way: `?renderer=webgl2`, `?set.scene.panorama.representation=cube-tiles` or `=whole`,
+`?set.scene.panorama.tileOutlines=true`.
+
 ## Commands
 
 | Command | What it does |
@@ -64,13 +88,21 @@ them for each edit.
 ## Deploying
 
 Routine releases use `npm run deploy`, which builds `dist-app/` and adds just those files to
-`gh-pages`. It does not rebuild, copy or replace the 263 MiB of scene content. Existing
+`gh-pages`. It does not rebuild, copy or replace the 661 MiB of scene content. Existing
 photographs and old hashed app bundles remain available for people with a page already open.
 
 After a placement or photograph changes, run `npm run build:scene`, then
 `npm run deploy:content`. Content releases validate the manifest and all referenced image files
-before publishing. If a change needs new app code and new content, publish compatible content
-first, then the app. Preview what would be sent without publishing:
+before publishing. When the app and the content change together, publish first the side the
+other relies on, so the live pair always works:
+
+- New content an old app can read: the content first, then the app.
+- Content the deployed app cannot read: the app first, then, ten minutes later, when GitHub
+  Pages' cached copies of the old page have expired, the content. The tiled cubes of
+  2026-10-03 are such a change: an app from before then refuses a scene that lists them, and a
+  later app skips any kind of image it does not know.
+
+Preview what would be sent without publishing:
 
 ```sh
 npm run build:app

@@ -19,11 +19,21 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
 - **Each panorama opens as a tab, at full detail** (2026-09-27). FOSS Earth's part is in its
   `docs/proposals/panorama-scenes.md`, "After the second user trial". Here, the build publishes
   YouVisit's full 6144 px width too: 151 MiB more, 266 MiB in all. Not yet tried by hand.
+- **Photographs load as tiles** (2026-10-03). Inside a panorama, each photograph arrives as
+  tiles of an equi-angular cube, only those the view needs, over the orb's preview, so it
+  sharpens in a second or two rather than after the whole image. 360 image settings →
+  Representation switches between equi-angular tiles, ordinary cube tiles and the whole image,
+  and the Renderer tab between WebGPU, WebGL2 and WebGL; see the [README](../README.md). FOSS
+  Earth's [progressive 360° prototype](https://github.com/foss-earth/foss-earth.github.io/blob/main/benchmarks/eac-progressive-prototype/REPORT.md)
+  measured the design and was tried by hand on phones; the production version was checked
+  headlessly on all three renderers. Not yet deployed: the app goes first, then the content
+  (README, "Deploying").
 
 ## Next
 
 1. **Review and prioritize low-end 360° performance before wider release.**
-   The photographs are the reported main bottleneck. The
+   The photographs are the reported main bottleneck; their loading now comes in tiles, which
+   leaves drawing and the globe behind them. The
    [WebGL performance review](webgl-performance-review.md) records the findings, expected
    performance and UX tradeoffs, and links the shared FOSS Earth optimization catalogue.
    Implementation choices and device qualification remain open.
