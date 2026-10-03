@@ -26,8 +26,10 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
   and the Renderer tab between WebGPU, WebGL2 and WebGL; see the [README](../README.md). FOSS
   Earth's [progressive 360° prototype](https://github.com/foss-earth/foss-earth.github.io/blob/main/benchmarks/eac-progressive-prototype/REPORT.md)
   measured the design and was tried by hand on phones; the production version was checked
-  headlessly on all three renderers. Not yet deployed: the app goes first, then the content
-  (README, "Deploying").
+  headlessly on all three renderers. Deployed 2026-10-03, the app first and the content ten
+  minutes later; on the live site, at a phone's viewport on a desktop connection, Northrop Mall's
+  view was covered by its tiles in 0.5 to 1.1 s on WebGPU, WebGL2 and WebGL. Not yet tried by
+  hand on a phone in production.
 
 ## Next
 
