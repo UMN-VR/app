@@ -81,7 +81,9 @@ sharpens a tile at a time. FOSS Earth's
 [progressive 360° prototype](https://github.com/foss-earth/foss-earth.github.io/blob/main/benchmarks/eac-progressive-prototype/REPORT.md)
 measured the difference over throttled HTTP at 2 Mbit/s on three of these panoramas: the view
 was within 1 dB of finished after 1.3 s and 258 KiB with tiles, while two of the three whole
-images were not sharp in 10 s. Here a finest-level equi-angular tile averages 6.5 KB, so a
+images were not sharp in 10 s. The tour's tiles come from FOSS Earth's own JPEG encoder and are
+22 to 37% larger than the prototype's for the same photographs, so expect about that much
+longer. Here a finest-level equi-angular tile averages 6.5 KB, so a
 phone's view of 35 to 40 tiles is about 250 KB, against 4.7 MiB for the photograph's 6144 px
 image. Each tile is a separate small file, so a content release publishes tens of thousands of
 files, and the content is now about two thirds of GitHub Pages' 1 GB site limit: a cost of the
@@ -136,6 +138,15 @@ build, and should be planned when old sessions no longer need them. No release r
 history. `gh-pages` reuses its local cache under `node_modules/.cache/gh-pages`; a cold cache
 must clone the published branch. Git transfers changed objects on later pushes, so the large
 branch does not prove that unchanged photographs were uploaded on every release.
+
+**The tiled release, 2026-10-03.** The app went first (85 files, 7 MiB; Pages built it in about
+a minute), and the content ten minutes later, once GitHub Pages' cached copies of the old app
+had expired (`Cache-Control: max-age=600`). The content release took 11 minutes: about 6 to copy
+and commit 62,581 files in the `gh-pages` cache and 4.5 to push them. Pages then built the site
+in 2 min 14 s, well inside its 10-minute limit. The cache under `node_modules/.cache/gh-pages`
+is now 1.6 GB: keep it, or the next release clones the published branch again. Pushing `main`
+with the tiles took 4.5 minutes as well; the `gh-pages` push uploads the same files again,
+since its cache cannot see `main`'s objects.
 
 This split removes repeated local copying of the scene from app releases. It does **not**
 split the final GitHub Pages site artifact: its branch build still sees all the media. The

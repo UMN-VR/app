@@ -40,7 +40,8 @@ them for each edit.
 
 Inside a panorama, each photograph arrives as tiles of an equi-angular cube: only the tiles the
 view needs, at the detail its pixels need, drawn over the orb's preview, which is on screen
-already. The view sharpens in a second or two on a slow phone connection, where a 5 MiB whole
+already. The view sharpens in a second or two on a 2 Mbit/s connection (measured on a desktop
+with Chrome's network emulation; not yet on a phone), where a 5 MiB whole
 image took 20 seconds or more, and a look back shows tiles already loaded. This is FOSS Earth's
 [tiled cube](https://github.com/foss-earth/foss-earth.github.io/blob/main/docs/scenes/format.md#tiled-cubes),
 measured in its [progressive 360° prototype](https://github.com/foss-earth/foss-earth.github.io/blob/main/benchmarks/eac-progressive-prototype/REPORT.md);

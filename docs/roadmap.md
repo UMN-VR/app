@@ -25,7 +25,8 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
   Representation switches between equi-angular tiles, ordinary cube tiles and the whole image,
   and the Renderer tab between WebGPU, WebGL2 and WebGL; see the [README](../README.md). FOSS
   Earth's [progressive 360° prototype](https://github.com/foss-earth/foss-earth.github.io/blob/main/benchmarks/eac-progressive-prototype/REPORT.md)
-  measured the design and was tried by hand on phones; the production version was checked
+  measured the design, and its published package was tried by hand and reported working (the
+  device was not recorded); the production version was checked
   headlessly on all three renderers. Deployed 2026-10-03, the app first and the content ten
   minutes later; on the live site, at a phone's viewport on a desktop connection, Northrop Mall's
   view was covered by its tiles in 0.5 to 1.1 s on WebGPU, WebGL2 and WebGL. Not yet tried by
@@ -41,6 +42,11 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
    Implementation choices and device qualification remain open.
 2. **Verify responsive loading on the deployed phone tour, and separate content hosting.**
    The first deployment exposed a long deployment and a blank/loading scene on the phone.
+   Tiles are deployed but not yet tried on a phone: enter a panorama on the phone's own network
+   and note how long until it looks sharp, as against "Whole image" in 360 image settings. The
+   tiles are 22 to 37% larger than the prototype's, because of FOSS Earth's JPEG encoder (its
+   panorama proposal, "Built"); encoding them as the prototype did would win that back.
+   The content is now 661 MiB of the 1 GB Pages site limit.
    App-only releases now avoid copying scene media locally; Pages still builds the whole site.
    See [content-delivery.md](content-delivery.md) for the format, current commands and the
    remaining independent-content-origin boundary.
