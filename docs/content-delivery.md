@@ -1,7 +1,9 @@
 # Tour content and releases
 
 The scene already has the folder-and-pointers layout needed for demand loading. The large
-deployment is the sum of separate photographs; it is not a single 661 MiB scene download.
+deployment is the sum of separate photographs; it is not a single 661 MiB scene download. A
+first visit to the map downloads the manifest and one 445 KiB image; a later visit, only the
+manifest.
 
 ## On disk and over HTTP
 
@@ -9,6 +11,7 @@ deployment is the sum of separate photographs; it is not a single 661 MiB scene 
 public/tour/twin-cities/
 ├── scene.json                         # metadata, positions, links and image URLs
 └── media/
+    ├── previews-64.jpg                # every photograph's 64 px preview cube in one image
     ├── northrop-mall/
     │   ├── preview-64/{px,nx,py,ny,pz,nz}.jpg
     │   ├── preview-128/{px,nx,py,ny,pz,nz}.jpg
@@ -41,19 +44,21 @@ Measured from the generated scene on 2026-09-28, and its tiles on 2026-10-03:
 | Content | Size | When needed |
 | --- | ---: | --- |
 | Manifest: 60 panoramas, 24 groups, 134 links | 308,480 bytes (301 KiB) | First; enough to know every stop and its position |
-| All 64 px cube previews | 0.64 MiB | Smallest previews for the map or initial entry |
-| All 128 px cube previews | 1.71 MiB | More preview detail when requested |
-| All 256 px cube previews | 5.45 MiB | More preview detail when requested |
+| The preview sheet: all 64 px cube previews in one image | 0.43 MiB | Second, in one request: every orb on the map |
+| All 64 px cube previews, as 360 files | 0.64 MiB | Only by a viewer that reads no sheet, or when the sheet fails |
+| All 128 px cube previews | 1.71 MiB | Each only when its orb is drawn larger than 64 px |
+| All 256 px cube previews | 5.45 MiB | Each only when its orb is drawn larger than 128 px, or its panorama is entered |
 | All 2048 px immersion images | 24.37 MiB | Individual panoramas as they are opened |
 | All 4096 px immersion images | 78.41 MiB | Individual higher detail upgrades |
 | All 6144 px immersion images | 151.42 MiB | Individual full detail upgrades |
 | All equi-angular tiles | 200.62 MiB in 30,600 files | The view's tiles of the panorama entered, at the level it needs: the default |
 | All cube tiles | 197.98 MiB in 30,600 files | The same, when cube tiles are chosen |
-| Whole generated content folder | 660.59 MiB in 62,460 files (263 MiB before the tiles) | Publishing content; never a prerequisite for showing the map |
+| Whole generated content folder | 661.0 MiB in 62,461 files (263 MiB before the tiles) | Publishing content; never a prerequisite for showing the map |
 
-The smallest preview tier for all 60 images is less than 1 MiB. Splitting this manifest into 60
-metadata requests would add overhead without addressing the image loading problem. Keep the
-small index together; fetch image representations independently, with bounded concurrency.
+The smallest preview tier for all 60 images is less than half a MiB in its sheet. Splitting this
+manifest into 60 metadata requests would add overhead without addressing the image loading
+problem. Keep the small index together; fetch image representations independently, with
+bounded concurrency.
 
 ## Runtime delivery
 
@@ -62,18 +67,49 @@ Loading and rendering belong to FOSS Earth. The implemented sequence is:
 1. Fetch and validate the manifest, then register all stops immediately. Prepare the campus
    overview's terrain independently of image downloads; ground-relative markers become
    positioned as the displayed terrain becomes available at each location.
-2. Fetch each panorama's smallest allowed cube preview first (64 px by default), then sharpen
-   toward the configured preview target behind other first-preview requests. Each ready orb
-   appears independently; one slow panorama does not hold the entire scene back.
-3. On entry, show the preview and load the representation the person chose in 360 image
-   settings, equi-angular tiles by default. Tiles draw over the preview at once, and the view's
-   tiles arrive at the level its pixels need, the largest share of the view first: on a phone
-   that is the finest level, 1536 px faces, for 30 to 40 tiles. A whole image, when chosen,
-   loads within the image detail and memory budgets and replaces the preview once usable.
-   Nothing is fetched for a panorama until it is entered, and nothing passes through an
-   intermediate size first.
-4. Cancel obsolete requests on scene replacement or leaving a panorama. Report response bytes
+2. Fetch the preview sheet, one image with every panorama's 64 px cube, and show every orb
+   from it. If it fails, each orb loads its own six files, sixteen requests at a time, and one
+   slow panorama does not hold the scene back.
+3. Sharpen only what is drawn larger than it is sharp: an orb on screen with more pixels across
+   it than its preview has texels loads the 128 or 256 px preview its size asks for, the
+   largest orb first. At the overview no orb is, so nothing more is fetched.
+4. On entry, ask for the panorama's 256 px preview and, while the camera flies in, for the
+   tiles of the view it opens on, so the view is sharp as the flight ends. Tiles draw over the
+   preview, at the level the view's pixels need, the largest share of the view first: on a
+   phone that is the finest level, 1536 px faces, for 30 to 40 tiles. A whole image, when
+   chosen in 360 image settings, loads within the image detail and memory budgets and replaces
+   the preview once usable. Nothing passes through an intermediate size first.
+5. Keep every file downloaded, in the browser's IndexedDB under its photograph's revision in
+   the scene, and read it from there before the network is asked: on a reload, a later visit,
+   and a look back. The atlas on the GPU has a slot for all 510 tiles of a panorama, so inside
+   one nothing is dropped and loaded again. Scenes → Saved images holds the limit (256 MiB) and
+   clears it.
+6. Cancel obsolete requests on scene replacement or leaving a panorama. Report response bytes
    and failures through the scene's progress events and the app's log.
+
+**What a visit downloads.** FOSS Earth's `scripts/validation/scene-revisit.mjs` counted the
+image requests of this tour's build in headless Chrome, a laptop's window, with every response
+held 100 ms and no HTTP cache (2026-10-03):
+
+| Visit | Image requests | Bytes | Every orb shown after |
+| --- | ---: | ---: | ---: |
+| First, as deployed earlier on 2026-10-03 | 720 | 6.2 MiB | 10.5 to 10.8 s; the last image after 20 s |
+| First, now | 1 | 0.43 MiB | 1.5 s |
+| Reload, or a later visit | 0 | 0 | 1.2 to 1.3 s |
+
+About 1.2 s of each is the app starting. Inside Northrop Mall, four views a quarter turn
+apart asked for 98, 64, 64 and 36 files; looking at the first again asked for none and loaded
+none; and on the later visit all five asked the network for nothing and were complete in 0.5 to
+0.75 s. The fly-in could not be timed here, since the check serves no map and the tour's orbs
+stand on its ground; on FOSS Earth's own example a view was complete 1.3 s after the click, as
+the flight ends, where it had taken 1.6 s. None of this has run on a phone.
+
+**Why the viewer keeps files itself.** GitHub Pages lets every file go stale after ten minutes
+(`Cache-Control: max-age=600`). Measured on the live tour the same day, a visit 11 minutes
+after the first asked for all 720 preview files again, and Pages sent 306 of them whole, 2.8 MiB,
+instead of answering "unchanged". It did the same for the app's own files: 1.55 of 1.72 MiB
+came again, and still do, since the viewer keeps only the scene's images. A service worker or
+the separate content origin below would stop that.
 
 This is progressive delivery through separate image requests. A whole JPEG still has to finish
 before its decoded texture is usable; tiles are each usable as they arrive, so the view

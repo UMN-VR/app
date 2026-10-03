@@ -44,8 +44,14 @@ What the build does:
    - all 60 with whole images only took 61 s; with both tiled cubes, 7 min 50 s (2026-10-03);
    - later builds reuse any image already prepared from the same file with the same options,
      so an edit to `placements.json` rebuilds in seconds.
-2. **Writes `scene.json`.**
-3. **Checks the result** with FOSS Earth's `scripts/check-scene.mjs`, the way the viewer will
+2. **Puts every photograph's 64 px preview cube into one image,** `media/previews-64.jpg`
+   (445 KiB for all 60), with FOSS Earth's `scripts/lib/previewSheet.mjs`, and names each
+   cube's place in it in the scene. The map shows all its orbs after that one request; the 360
+   face files stay for a viewer that reads no
+   [sheets](https://github.com/foss-earth/foss-earth.github.io/blob/main/docs/scenes/format.md#preview-sheets).
+   `--preview-sheet ""` leaves it out.
+3. **Writes `scene.json`.**
+4. **Checks the result** with FOSS Earth's `scripts/check-scene.mjs`, the way the viewer will
    read it once published: the manifest is valid, and every image file exists with the size
    and byte count it declares. `npm test` repeats this check.
 

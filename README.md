@@ -47,6 +47,15 @@ image took 20 seconds or more, and a look back shows tiles already loaded. This 
 measured in its [progressive 360° prototype](https://github.com/foss-earth/foss-earth.github.io/blob/main/benchmarks/eac-progressive-prototype/REPORT.md);
 the build makes both kinds of tiles and the whole images for every photograph.
 
+Each file is downloaded once. The viewer keeps what it downloads in the browser, under the
+photograph's revision in the scene, and reads it from there on a reload, on a later visit and
+when you look back at a part of a panorama: Scenes → Saved images shows what is kept (256 MB at
+most), what the visit took from it, and clears it. The map shows all 60 orbs after one request,
+from one image that holds every photograph's small preview, and loads a sharper preview only
+for an orb drawn large enough to show it. FOSS Earth's
+[scene format](https://github.com/foss-earth/foss-earth.github.io/blob/main/docs/scenes/format.md#saved-images)
+describes both.
+
 Two selectors, each a row of buttons:
 
 | What | Where | Choices |

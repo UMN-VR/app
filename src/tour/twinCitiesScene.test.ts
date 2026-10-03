@@ -20,8 +20,24 @@ describe("the Twin Cities tour's scene", () => {
     if (!result.ok) throw new Error("the scene is not valid");
     const report = checkSceneFiles(result.scene, url => (existsSync(fileOf(url)) ? new Uint8Array(readFileSync(fileOf(url))) : null));
     expect(report.problems).toEqual([]);
-    // Six faces for each of three preview cubes, three whole images, and two tiled cubes of 6 · (1 + 4 + 16 + 64) tiles.
-    expect(report.files).toBe(result.scene.assets.size * (21 + 2 * 510));
+    // Six faces for each of three preview cubes, three whole images, and two tiled cubes of 6 · (1 + 4 + 16 + 64) tiles; and the one preview sheet.
+    expect(report.files).toBe(result.scene.assets.size * (21 + 2 * 510) + 1);
+    // 62,461 files read from disk: about five seconds, more when the disk is busy.
+  }, 60_000);
+
+  it("holds every photograph's 64 px preview in one sheet, so the map shows all its orbs after one request", () => {
+    if (!result.ok) throw new Error("the scene is not valid");
+    const sheets = [...result.scene.sheets.values()];
+    expect(sheets.map(sheet => [sheet.id, sheet.width, sheet.height])).toEqual([["previews-64", 4 * 6 * 64, 15 * 64]]);
+    const places = new Set<string>();
+    for (const asset of result.scene.assets.values()) {
+      const first = asset.representations.find(entry => entry.projection === "cube" && entry.faceSize === 64);
+      const place = first?.projection === "cube" ? first.sheet : undefined;
+      expect(place?.id).toBe("previews-64");
+      places.add(`${place!.x},${place!.y}`);
+    }
+    // Each in a cell of its own.
+    expect(places.size).toBe(result.scene.assets.size);
   });
 
   it("offers every photograph as equi-angular and ordinary cube tiles at its full detail", () => {

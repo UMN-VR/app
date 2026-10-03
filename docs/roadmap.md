@@ -32,7 +32,22 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
   view was covered by its tiles in 0.5 to 1.1 s on WebGPU, WebGL2 and WebGL. Not yet tried by
   hand on a phone in production.
 
+- **Each image is downloaded once, and the map loads what it shows** (2026-10-03; built and
+  checked, not yet deployed). Use of the deployed tour showed tiles loading again on a look
+  back, every orb's previews downloading again on each visit, and the map asking for 720 files.
+  FOSS Earth now keeps every image in the browser under its revision, holds all of a panorama's
+  tiles on the GPU, loads an orb's sharper preview only when the orb is drawn that large, loads
+  a panorama's tiles while the camera flies in, and shows every orb from one 445 KiB image,
+  which this build now makes. A first visit to the map asks for one image where it asked for
+  720, and a reload for none; [content-delivery.md](content-delivery.md) has the measurements.
+  The north button not following the view inside a 360 image is reported in FOSS Earth's
+  `bugs/north-button-in-panorama.md`.
+
 ## Next
+
+0. **Deploy it:** the app first (`npm run deploy`), then the content (`npm run deploy:content`:
+   the sheet and the manifest are all that changed). An app from before this refuses a scene
+   with a sheet, so the order matters, as it did for the tiles. Then try it on a phone.
 
 1. **Review and prioritize low-end 360° performance before wider release.**
    The photographs are the reported main bottleneck; their loading now comes in tiles, which
@@ -46,7 +61,9 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
    and note how long until it looks sharp, as against "Whole image" in 360 image settings. The
    tiles are 22 to 37% larger than the prototype's, because of FOSS Earth's JPEG encoder (its
    panorama proposal, "Built"); encoding them as the prototype did would win that back.
-   The content is now 661 MiB of the 1 GB Pages site limit.
+   The content is now 661 MiB of the 1 GB Pages site limit. The app's own files still download
+   again after ten minutes on Pages, 1.5 MiB a visit; a service worker for the build's hashed
+   files, or the content origin, would stop it (FOSS Earth's TODO).
    App-only releases now avoid copying scene media locally; Pages still builds the whole site.
    See [content-delivery.md](content-delivery.md) for the format, current commands and the
    remaining independent-content-origin boundary.

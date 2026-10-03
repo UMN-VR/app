@@ -13,13 +13,17 @@
  *   - tools/twin-cities/placements.json, edited by hand: which image each
  *     panorama is, its id and title, where it was taken and which way is north;
  *   - FOSS Earth, the package this repository installs: its scripts/prepare-panorama.mjs
- *     turns each image into preview cubes, whole images and tiled cubes, and its
- *     scripts/check-scene.mjs checks the result the way the viewer will read it.
+ *     turns each image into preview cubes, whole images and tiled cubes, its
+ *     scripts/lib/previewSheet.mjs puts every panorama's smallest preview cube into one
+ *     image, and its scripts/check-scene.mjs checks the result the way the viewer will read it.
  *
  * Options:
  *   --backup dir                 the snapshot to read (default: the newest .local/youvisit-backup/snapshot-*)
  *   --foss-earth dir             another FOSS Earth checkout (default: the installed foss-earth package)
  *   --preview-face-sizes 64,128,256   preview cube faces, px
+ *   --preview-sheet 64           the preview cubes put together in one image, media/previews-<size>.jpg,
+ *                                which shows every orb after one request: the size orbs load first
+ *                                (default: the smallest preview face size); "" for none
  *   --immersion-widths 2048,4096,6144 whole images for looking around, px; 6144 is YouVisit's full width
  *   --tiles eac,cube             tiled cubes for looking around: equi-angular and ordinary, each of
  *                                1536 px faces (6144 / 4) in tiles of --tile-size; "" for none
@@ -34,7 +38,7 @@ import { spawn } from "node:child_process";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { hotspotDirection, plain, startDirection, toWorld } from "./youvisit.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -72,6 +76,7 @@ const installed = path.join(repo, "node_modules", "foss-earth");
 if (!options["foss-earth"] && !existsSync(installed)) throw new Error("foss-earth is not installed; run npm install first");
 const fossEarth = path.resolve(options["foss-earth"] ?? realpathSync(installed));
 const previewSizes = (options["preview-face-sizes"] ?? "64,128,256").split(",").map(Number);
+const sheetSize = options["preview-sheet"] === "" ? null : Number(options["preview-sheet"] ?? Math.min(...previewSizes));
 const immersionWidths = (options["immersion-widths"] ?? "2048,4096,6144").split(",").map(Number);
 const quality = Number(options.quality ?? 80);
 const tileKinds = (options.tiles ?? "eac,cube").split(",").filter(Boolean);
@@ -79,7 +84,7 @@ const tileSize = Number(options["tile-size"] ?? 192);
 const jobs = Math.max(1, Number(options.jobs ?? 3));
 const out = path.join(repo, "public", "tour", "twin-cities");
 const media = path.join(out, "media");
-for (const file of ["scripts/prepare-panorama.mjs", "scripts/check-scene.mjs"]) {
+for (const file of ["scripts/prepare-panorama.mjs", "scripts/check-scene.mjs", "scripts/lib/previewSheet.mjs"]) {
   if (!existsSync(path.join(fossEarth, file))) throw new Error(`${fossEarth} has no ${file}; update FOSS Earth, or pass --foss-earth <checkout>`);
 }
 
@@ -377,14 +382,27 @@ function buildScene(assets) {
     overview: { target: { longitudeDeg: -93.2215, latitudeDeg: 44.98, height: null }, distanceMeters: 5000, headingDeg: 0, pitchDeg: -50, verticalFovDeg: 60 },
     markerStyle: { outline: { color: "#ffcc33", widthPx: 2 }, hover: { scale: 1.3 } },
   };
-  scene.revision = sha256(Buffer.from(JSON.stringify({ ...scene, revision: "" }))).slice(0, 12);
   return scene;
+}
+
+/** The scene with every panorama's `sheetSize` preview cube in one image, written beside the others; the sheet's file is part of what the revision covers. */
+async function withPreviewSheet(scene) {
+  for (const name of readdirSync(media)) if (/^previews-\d+(-\d+)?\.jpg$/.test(name)) rmSync(path.join(media, name));
+  if (sheetSize === null) return scene;
+  const { addPreviewSheets } = await import(pathToFileURL(path.join(fossEarth, "scripts", "lib", "previewSheet.mjs")).href);
+  const added = addPreviewSheets(scene, { faceSize: sheetSize, quality, read: url => (existsSync(path.join(out, url)) ? readFileSync(path.join(out, url)) : null) });
+  for (const { url, bytes } of added.files) writeFileSync(path.join(out, url), bytes);
+  console.log(added.files.length
+    ? `Put ${added.cubes} ${sheetSize} px preview cubes in ${added.files.map(file => `${file.url} (${(file.bytes.length / 1024).toFixed(0)} KiB)`).join(", ")}.`
+    : `No ${sheetSize} px preview cubes to put in a sheet.`);
+  return added.document;
 }
 
 // ─── main ────────────────────────────────────────────────────────────────
 
 const assets = await prepareAll();
-const scene = buildScene(assets);
+const scene = await withPreviewSheet(buildScene(assets));
+scene.revision = sha256(Buffer.from(JSON.stringify({ ...scene, revision: "" }))).slice(0, 12);
 writeFileSync(path.join(out, "scene.json"), `${JSON.stringify(scene, null, 2)}\n`);
 console.log(`Wrote ${path.relative(repo, path.join(out, "scene.json"))}: ${scene.entities.length} panoramas in ${scene.groups.length} groups, revision ${scene.revision}.`);
 const check = await run(process.execPath, [path.join(fossEarth, "scripts", "check-scene.mjs"), path.join(out, "scene.json"), "--base-url", PUBLISHED]).catch(error => { console.error(error.message); process.exit(1); });
