@@ -227,10 +227,28 @@ With each published bundle in headless Chrome, served this build's images:
 | The evening's (`twinCities-C9TYTT-e.js`) | 60 orbs after one request; black in Firefox | 60 orbs, from their 360 face files |
 | This build | refused: `$.sheets` and 60 more | 60 orbs after one request |
 
-So the content goes out first, which puts right both phones' faults for every app already
-published, and this build's app ten minutes or more after it, since it refuses the scene as
-published before. An app from before the tiled release of 2026-10-03 still refuses the scene,
-for its tiled cubes.
+So the content went out first, which put right both phones' faults for every app already
+published, and the app after it, since the new app refuses the scene as published before. An
+app from before the tiled release of 2026-10-03 still refuses the scene, for its tiled cubes.
+
+- **The content, 2026-10-03, 22:34 to 22:37** (2 min 29 s; Pages built it by 22:39). With the
+  evening's app still live, Firefox drew the orbs' photographs, from their face files.
+- **The app, 2026-10-04, 12:33** (15 s to publish 86 files; live at 12:36), with FOSS Earth's
+  fix for Firefox, the sheet read as an extension, and its diagnostics. On the live site,
+  headlessly at a phone's viewport: Firefox 157 and WebKit 26, Safari's engine, each showed
+  all 60 orbs with their photographs after the one request for the sheet, and a reload asked
+  for no image and none of the app's files; WebKit inside Northrop Mall showed all 28 tiles in
+  view. A visitor holding the evening's service worker took the 6 files the deploy changed,
+  1.50 MiB, once.
+
+**What the tour can now say of a fault.** Neither phone could say which version ran or what
+the page was doing. The app now keeps a trail of each visit and gives a report to copy, in
+Settings → Diagnostics or with `?report` in the address; the [README](../README.md) says how.
+FOSS Earth's check kills the page as a phone's browser does: on the live tour, the visit after
+it said "The last visit stopped without being closed, 11 s after it opened or later; it was
+at: scene umn-twin-cities, revision 4b89d4e2af09, inside the 360 image northrop-mall". The
+iPhone's crashes are still not reproduced: the WebKit these checks run has no WebGPU and a
+Mac's memory. The next report from that phone is what will say.
 
 This split removes repeated local copying of the scene from app releases. It does **not**
 split the final GitHub Pages site artifact: its branch build still sees all the media. The

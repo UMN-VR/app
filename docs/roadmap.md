@@ -48,11 +48,17 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
   The north button not following the view inside a 360 image is reported in FOSS Earth's
   `bugs/north-button-in-panorama.md`.
 
-- **Tried on two phones the same evening, which found two faults** (fixed in FOSS Earth and in
-  this build; not yet deployed). Firefox on Android drew every orb black, and an iPhone still
-  showing the day before's page refused the scene for its preview sheet.
-  [content-delivery.md](content-delivery.md) has both, and what each published app does with
-  the rebuilt scene.
+- **Tried on two phones the same evening, which found two faults** (fixed in FOSS Earth; the
+  content deployed that night, the app on 2026-10-04). Firefox on Android drew every orb
+  black, and an iPhone still showing the day before's page refused the scene for its preview
+  sheet. [content-delivery.md](content-delivery.md) has both, what each published app does
+  with the rebuilt scene, and the live site in Firefox and in Safari's engine after the fix.
+  Not yet tried again on either phone.
+
+- **The tour says what went wrong** (deployed 2026-10-04). Settings → Diagnostics → Copy
+  report, or `?report` in the address, gives the version, the renderer, the settings changed
+  and what the visit did; a visit that stopped without being closed is reported by the next
+  one. See the [README](../README.md#when-something-goes-wrong).
 
 ## Next
 
@@ -66,7 +72,12 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
    The first deployment exposed a long deployment and a blank/loading scene on the phone.
    On 2026-10-03 the page kept crashing on an iPhone XS Max (iOS 18.2.1, WebGPU turned on in
    Safari's feature flags): find out whether the current app still does, and whether
-   `?renderer=webgl2` does. No check runs in Safari.
+   `?renderer=webgl2` does; either way, the report from Settings → Diagnostics, or from
+   `?report` after a crash, says which renderer ran and where the page was. Safari's engine
+   runs the tour in a check on a Mac, with WebGL 2 only; nothing checks WebGPU in Safari or a
+   phone's memory.
+   On a phone as narrow as that one the log and the tab window do not both fit; FOSS Earth's
+   TODO has the log becoming a tab there.
    Tiles are deployed but not yet tried on a phone: enter a panorama on the phone's own network
    and note how long until it looks sharp, as against "Whole image" in 360 image settings. The
    tiles are 22 to 37% larger than the prototype's, because of FOSS Earth's JPEG encoder (its

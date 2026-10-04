@@ -74,6 +74,20 @@ frame. Both choices can be put in a link, as any FOSS Earth setting can, for sho
 one way: `?renderer=webgl2`, `?set.scene.panorama.representation=cube-tiles` or `=whole`,
 `?set.scene.panorama.tileOutlines=true`.
 
+## When something goes wrong
+
+The tour says what it knows. Settings (the gear on the bar) → Diagnostics → **Copy report**
+gives, as text, the version that ran, the browser, the renderer and its GPU, the settings that
+were changed, and what the visit did: each photograph entered, each warning and error. If the
+page stopped without being closed, as a phone's browser stops one that takes too much memory,
+the next visit says so in its log, with the photograph it was in. If the tour does not stay
+open long enough to reach Settings, add `?report` to its address
+(<https://umn-vr.github.io/tour/twin-cities/?report>): the page shows the report and does not
+start the map. Nothing is sent anywhere; the report is yours to paste where you report the
+fault. FOSS Earth's
+[diagnostics page](https://github.com/foss-earth/foss-earth.github.io/blob/main/docs/diagnostics.md)
+has the details, and how to attach a browser's inspector to a phone.
+
 ## Commands
 
 | Command | What it does |
