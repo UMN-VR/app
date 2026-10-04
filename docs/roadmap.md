@@ -71,9 +71,15 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
 2. **Verify responsive loading on the deployed phone tour, and separate content hosting.**
    The first deployment exposed a long deployment and a blank/loading scene on the phone.
    On 2026-10-03 the page kept crashing on an iPhone XS Max (iOS 18.2.1, WebGPU turned on in
-   Safari's feature flags): find out whether the current app still does, and whether
-   `?renderer=webgl2` does; either way, the report from Settings → Diagnostics, or from
-   `?report` after a crash, says which renderer ran and where the page was. Safari's engine
+   Safari's feature flags), and on 2026-10-04 it stopped after five minutes: both times the
+   phone was running the app of 2026-10-03 00:33 from Safari's copy of the page, so no app
+   since has been tried there ([content-delivery.md](content-delivery.md), "The phones the
+   day after"). Reload the tab on the phone, read the log's first line or count the Settings
+   tab's sections to be sure which app it is, and then find out whether the current app still
+   crashes, and whether `?renderer=webgl2` does; either way, the report from Settings →
+   Diagnostics, or from `?report` after a crash, says which renderer ran and where the page
+   was. After the release that follows the one with FOSS Earth's version check, come back to
+   the tab and see whether the page reloaded itself. Safari's engine
    runs the tour in a check on a Mac, with WebGL 2 only; nothing checks WebGPU in Safari or a
    phone's memory.
    On a phone as narrow as that one the log and the tab window do not both fit; FOSS Earth's

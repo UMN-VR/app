@@ -76,6 +76,27 @@ one way: `?renderer=webgl2`, `?set.scene.panorama.representation=cube-tiles` or 
 
 ## When something goes wrong
 
+**First, which version is it?** A phone that comes back to a tab may show its own copy of the
+page from days before, with the app of that day: on 2026-10-04 an iPhone was still running the
+tour of two days and four releases earlier, and it took the sections missing from its Settings
+tab to tell.
+
+- The log's first line, as the tour opens, says which version runs: "App built 2026-10-04
+  19:54 UTC from a2c6c28 with FOSS Earth 35ad0e3." The first commit is this repository's and
+  the second FOSS Earth's. Settings → About has them in full.
+- An app from before that line has none. Its Settings tab tells its age: three sections
+  (Presets, Saved settings, About) is an app from before the evening of 2026-10-03; four, with
+  App files, from that evening; five, with Diagnostics, from 2026-10-04. Reload the tab, or
+  close it and open the address in a new one, to get the published app.
+- From the app with that line on, a page that is older than the published one reloads itself
+  when it opens, and says so; once it has been touched it says a newer version is published,
+  with a Reload button. Settings → App files has the same, and Ask now.
+- What the site publishes is in its page's source:
+
+  ```sh
+  curl -s -A foss-earth-check/1.0 https://umn-vr.github.io/tour/twin-cities/ | grep -o '<meta name="foss-earth[^>]*>'
+  ```
+
 The tour says what it knows. Settings (the gear on the bar) → Diagnostics → **Copy report**
 gives, as text, the version that ran, the browser, the renderer and its GPU, the settings that
 were changed, and what the visit did: each photograph entered, each warning and error. If the
@@ -118,6 +139,11 @@ has the details, and how to attach a browser's inspector to a phone.
 Routine releases use `npm run deploy`, which builds `dist-app/` and adds just those files to
 `gh-pages`. It does not rebuild, copy or replace the 661 MiB of scene content. Existing
 photographs and old hashed app bundles remain available for people with a page already open.
+
+Commit first, here and in FOSS Earth: the build writes both commits into the page and the app,
+with `-dirty` after one that had changes not committed, and that is how a phone's version is
+told from another. After a release, a page of the app before it reloads itself the next time
+it asks the site, within ten minutes while it is shown, unless someone has touched it.
 
 After a placement or photograph changes, run `npm run build:scene`, then
 `npm run deploy:content`. Content releases validate the manifest and all referenced image files

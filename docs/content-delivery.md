@@ -250,6 +250,42 @@ at: scene umn-twin-cities, revision 4b89d4e2af09, inside the 360 image northrop-
 iPhone's crashes are still not reproduced: the WebKit these checks run has no WebGPU and a
 Mac's memory. The next report from that phone is what will say.
 
+**The phones the day after, and which app they ran.** Tried on the afternoon of 2026-10-04,
+both phones showed the tour, and the iPhone's page stopped after five minutes. Its Settings
+tab had three sections, Presets, Saved settings and About, so no report could be found. That
+is how the app it ran was told:
+
+| Published | Built (UTC) | Bundle | Its Settings tab | What it has |
+| --- | --- | --- | --- | --- |
+| 2026-10-03 00:33 | 2026-10-03 05:33 | `twinCities-R4LARsSE.js` | Presets, Saved settings, About | tiled photographs; **the iPhone's, both days** |
+| 2026-10-03 20:37 | 2026-10-04 01:37 | `twinCities-D8QlvF5C.js` | and App files | the preview sheet, saved images, the service worker, the limits on what the GPU holds |
+| 2026-10-03 20:59 | 2026-10-04 01:59 | `twinCities-Cto4YHjV.js` | the same | a panorama left keeps its tiles on the GPU, where it had been given up at once |
+| 2026-10-03 21:09 | 2026-10-04 02:09 | `twinCities-C9TYTT-e.js` | the same | a deploy's changed files are kept on the first visit after it |
+| 2026-10-04 12:33 | 2026-10-04 17:33 | `twinCities-BVTOJrr3.js` | and Diagnostics | the orbs in Firefox, the sheet as an extension, the report |
+
+Safari had kept its copy of the page of 2026-10-03 00:33 and showed it each time the phone
+came back to the tab: the same app as the evening before, working now because the scene had
+been rebuilt for it. Nothing of two days' work had run on that phone, and the crash after
+five minutes was that app's, from before the limits on what the GPU holds. The Android
+phone's orbs say nothing either way: the evening's app draws them from their face files now
+that it skips the sheet. An app already published cannot be told from here to reload; the tab
+has to be reloaded on the phone.
+
+FOSS Earth's answer is in the app after these, not yet deployed. Each page of a build carries
+its build's time and commits; the app asks the site for its own page as it starts, and a page
+older than the published one reloads itself while nobody has touched it, once, or says so
+with a button; and the log's first line says which version runs, as "App built 2026-10-04
+19:54 UTC from a2c6c28 with FOSS Earth 35ad0e3"
+([its app files page](../../../foss-earth/docs/app-files.md#the-page-and-a-browsers-copy-of-it)).
+On this tour's build, FOSS Earth's `published-version.mjs` played the phone's case, the check
+answering the browser's requests for the page with a copy two days older: in Chrome, Firefox
+and WebKit the copy reloaded itself once into the published page and said so, did not when it
+was touched first or when the browser kept answering with the copy, and in Chrome did the
+same under the tour's service worker. With the site asked on every visit, a reload and a
+revisit still took none of the app's 63 files from the network. What Safari on the phone does
+with it is not known until the release after the one that carries it: the phone's tab then
+holds a page that can ask.
+
 This split removes repeated local copying of the scene from app releases. It does **not**
 split the final GitHub Pages site artifact: its branch build still sees all the media. The
 server-side part of a long deploy can remain. The observed
