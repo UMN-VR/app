@@ -81,9 +81,10 @@ page from days before, with the app of that day: on 2026-10-04 an iPhone was sti
 tour of two days and four releases earlier, and it took the sections missing from its Settings
 tab to tell.
 
-- The log's first line, as the tour opens, says which version runs: "App built 2026-10-04
-  19:54 UTC from a2c6c28 with FOSS Earth 35ad0e3." The first commit is this repository's and
-  the second FOSS Earth's. Settings → About has them in full.
+- The log's first line, as the tour opens, says which version runs, such as "App built
+  2026-10-04 20:23 UTC from a9e8e9d with FOSS Earth 930f725." The first commit is this
+  repository's and the second FOSS Earth's. Settings → About has them in full; its last line,
+  the site's latest deploy, is the site's and not the page's.
 - An app from before that line has none. Its Settings tab tells its age: three sections
   (Presets, Saved settings, About) is an app from before the evening of 2026-10-03; four, with
   App files, from that evening; five, with Diagnostics, from 2026-10-04. Reload the tab, or

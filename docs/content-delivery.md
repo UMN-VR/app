@@ -274,8 +274,8 @@ has to be reloaded on the phone.
 FOSS Earth's answer is in the app after these, not yet deployed. Each page of a build carries
 its build's time and commits; the app asks the site for its own page as it starts, and a page
 older than the published one reloads itself while nobody has touched it, once, or says so
-with a button; and the log's first line says which version runs, as "App built 2026-10-04
-19:54 UTC from a2c6c28 with FOSS Earth 35ad0e3"
+with a button; and the log's first line says which version runs, such as "App built
+2026-10-04 20:23 UTC from a9e8e9d with FOSS Earth 930f725"
 ([its app files page](../../../foss-earth/docs/app-files.md#the-page-and-a-browsers-copy-of-it)).
 On this tour's build, FOSS Earth's `published-version.mjs` played the phone's case, the check
 answering the browser's requests for the page with a copy two days older: in Chrome, Firefox
