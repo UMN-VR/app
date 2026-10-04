@@ -271,7 +271,7 @@ phone's orbs say nothing either way: the evening's app draws them from their fac
 that it skips the sheet. An app already published cannot be told from here to reload; the tab
 has to be reloaded on the phone.
 
-FOSS Earth's answer is in the app after these, not yet deployed. Each page of a build carries
+FOSS Earth's answer is in the app after these, deployed that afternoon. Each page of a build carries
 its build's time and commits; the app asks the site for its own page as it starts, and a page
 older than the published one reloads itself while nobody has touched it, once, or says so
 with a button; and the log's first line says which version runs, such as "App built
@@ -285,6 +285,17 @@ same under the tour's service worker. With the site asked on every visit, a relo
 revisit still took none of the app's 63 files from the network. What Safari on the phone does
 with it is not known until the release after the one that carries it: the phone's tab then
 holds a page that can ask.
+
+- **The app with the version check, 2026-10-04, 15:32** (11 s to publish 86 files, 7.14 MiB;
+  live at 15:34), built at 20:32 UTC from `54b9bea` with FOSS Earth `d538bfa`, bundle
+  `twinCities-DzZbKG1U.js`. On the live site, at a phone's viewport in Chrome 154, Firefox 157
+  and WebKit 26, the log's first line said "App built 2026-10-04 20:32 UTC from 54b9bea with
+  FOSS Earth d538bfa", About and the report said the same in full, and the page found itself
+  to be the published version. Asking cost 300 bytes in Chrome, which was told the page had
+  not changed, and 1.7 KiB in Firefox and WebKit, which took it again. A visitor holding the
+  12:33 version's worker took the 5 files this deploy changed, 1.49 MiB, once, and none on a
+  reload or a later visit; FOSS Earth's crash check passed on the live tour. The iPhone's tab
+  still holds the page of 2026-10-03 and has to be reloaded by hand once.
 
 This split removes repeated local copying of the scene from app releases. It does **not**
 split the final GitHub Pages site artifact: its branch build still sees all the media. The
