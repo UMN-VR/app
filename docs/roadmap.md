@@ -32,24 +32,23 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
   view was covered by its tiles in 0.5 to 1.1 s on WebGPU, WebGL2 and WebGL. Not yet tried by
   hand on a phone in production.
 
-- **Each image is downloaded once, and the map loads what it shows** (2026-10-03; built and
-  checked, not yet deployed). Use of the deployed tour showed tiles loading again on a look
-  back, every orb's previews downloading again on each visit, and the map asking for 720 files.
-  FOSS Earth now keeps every image in the browser under its revision, holds all of a panorama's
-  tiles on the GPU, loads an orb's sharper preview only when the orb is drawn that large, loads
+- **Each image is downloaded once, and the map loads what it shows** (deployed 2026-10-03,
+  the app first and the content eleven minutes after it was live). Use of the deployed tour
+  showed tiles loading again on a look back, every orb's previews downloading again on each
+  visit, and the map asking for 720 files. FOSS Earth now keeps every image in the browser
+  under its revision, holds all of a panorama's tiles on the GPU where the device has room,
+  loads an orb's sharper preview only when the orb is drawn that large, loads
   a panorama's tiles while the camera flies in, and shows every orb from one 445 KiB image,
   which this build now makes. A first visit to the map asks for one image where it asked for
   720, and a reload for none; [content-delivery.md](content-delivery.md) has the measurements.
   A service worker keeps the app's own files, which GitHub Pages had sent again after ten
   minutes, and on a device with little memory the GPU holds the view and the disk the rest.
+  On the live site the first visit asked for one image and showed all 60 orbs after 5.2 s, the
+  app's first download included, and a reload asked for nothing. Not yet tried on a phone.
   The north button not following the view inside a 360 image is reported in FOSS Earth's
   `bugs/north-button-in-panorama.md`.
 
 ## Next
-
-0. **Deploy it:** the app first (`npm run deploy`), then the content (`npm run deploy:content`:
-   the sheet and the manifest are all that changed). An app from before this refuses a scene
-   with a sheet, so the order matters, as it did for the tiles. Then try it on a phone.
 
 1. **Review and prioritize low-end 360° performance before wider release.**
    The photographs are the reported main bottleneck; their loading now comes in tiles, which

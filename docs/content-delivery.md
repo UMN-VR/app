@@ -193,6 +193,21 @@ is now 1.6 GB: keep it, or the next release clones the published branch again. P
 with the tiles took 4.5 minutes as well; the `gh-pages` push uploads the same files again,
 since its cache cannot see `main`'s objects.
 
+**The loading-once release, 2026-10-03.** The app went first (86 files with its service worker;
+Pages built it in 2 minutes), and the content at 20:51, eleven minutes after the app was live,
+since an older app refuses a scene with a preview sheet. With the cache kept, the content
+release took 2 min 12 s for the same 62,582 files, of which only the sheet and the manifest had
+changed, and Pages built it in 2.5 minutes. On the live site, headlessly at a laptop's window,
+the first visit asked for one image, 446 KiB, and showed all 60 orbs 5.2 s after the page
+opened, the app's first download included; a reload asked for none. The app was published again
+at 21:00 with a fix: a panorama left was given up on the GPU at once, because its atlas is larger
+than the tile memory that lays it out. It was published once more at 21:09, so that a visitor
+back after a deploy keeps the files the deploy changed on that first visit, not only on the
+next: from a browser holding the 21:00 version's worker, that visit downloaded those 5 files,
+1.48 MiB, and took the other 58 from the worker, and a reload and a later visit downloaded
+nothing of the app (FOSS Earth's
+[docs/app-files.md](../../../foss-earth/docs/app-files.md)).
+
 This split removes repeated local copying of the scene from app releases. It does **not**
 split the final GitHub Pages site artifact: its branch build still sees all the media. The
 server-side part of a long deploy can remain. The observed
