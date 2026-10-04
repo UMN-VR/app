@@ -54,7 +54,11 @@ most), what the visit took from it, and clears it. The map shows all 60 orbs aft
 from one image that holds every photograph's small preview, and loads a sharper preview only
 for an orb drawn large enough to show it. FOSS Earth's
 [scene format](https://github.com/foss-earth/foss-earth.github.io/blob/main/docs/scenes/format.md#saved-images)
-describes both.
+describes both. The app's own files are kept too, by FOSS Earth's
+[service worker](https://github.com/foss-earth/foss-earth.github.io/blob/main/docs/app-files.md),
+so a later visit downloads none of them however long after the last it comes (Settings → App
+files). On a phone or another device with little graphics memory, the GPU holds the view and
+gives the rest back to the disk: Scenes → Loading and memory and Tiled images set how much.
 
 Two selectors, each a row of buttons:
 

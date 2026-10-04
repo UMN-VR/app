@@ -4,6 +4,7 @@ import { execSync } from 'node:child_process'
 import { cpSync, existsSync, readdirSync } from 'node:fs'
 import path from 'node:path'
 import type { Connect, Plugin } from 'vite'
+import { appFiles } from 'foss-earth/vite'
 
 /** The tour pages this site builds; each is a FOSS Earth app with its own scene. */
 const TOUR_PAGES = { twinCities: 'tour/twin-cities/index.html' }
@@ -87,7 +88,8 @@ export default defineConfig(({ mode }) => ({
     copyPublicDir: mode !== 'app',
     rolldownOptions: { input: TOUR_PAGES },
   },
-  plugins: [react(), tourHome(), wholeSite()],
+  // FOSS Earth's service worker keeps the app's own files on the visitor's device: GitHub Pages lets them go stale after ten minutes.
+  plugins: [react(), tourHome(), wholeSite(), appFiles()],
   test: {
     // .local/ holds the YouVisit backup and scratch; public/ the generated scene.
     exclude: [...configDefaults.exclude, '.local/**', 'public/**', 'dist-app/**'],

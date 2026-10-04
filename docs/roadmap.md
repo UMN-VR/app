@@ -40,6 +40,8 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
   a panorama's tiles while the camera flies in, and shows every orb from one 445 KiB image,
   which this build now makes. A first visit to the map asks for one image where it asked for
   720, and a reload for none; [content-delivery.md](content-delivery.md) has the measurements.
+  A service worker keeps the app's own files, which GitHub Pages had sent again after ten
+  minutes, and on a device with little memory the GPU holds the view and the disk the rest.
   The north button not following the view inside a 360 image is reported in FOSS Earth's
   `bugs/north-button-in-panorama.md`.
 
@@ -61,9 +63,7 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
    and note how long until it looks sharp, as against "Whole image" in 360 image settings. The
    tiles are 22 to 37% larger than the prototype's, because of FOSS Earth's JPEG encoder (its
    panorama proposal, "Built"); encoding them as the prototype did would win that back.
-   The content is now 661 MiB of the 1 GB Pages site limit. The app's own files still download
-   again after ten minutes on Pages, 1.5 MiB a visit; a service worker for the build's hashed
-   files, or the content origin, would stop it (FOSS Earth's TODO).
+   The content is now 661 MiB of the 1 GB Pages site limit.
    App-only releases now avoid copying scene media locally; Pages still builds the whole site.
    See [content-delivery.md](content-delivery.md) for the format, current commands and the
    remaining independent-content-origin boundary.
@@ -71,6 +71,28 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
    Prompt: [placements-prompt.md](placements-prompt.md).
 4. **Put the rest of the tour on the map:** photos, videos, narration and hotspot text. Prompt:
    [tour-media-prompt.md](tour-media-prompt.md).
+5. **Add a Minneapolis and a Saint Paul scene beside the Twin Cities one.** The photographs sit
+   in two clumps 3.1 km apart with none between: 48 around the Minneapolis campus, in 18 stops,
+   and 12 on the Saint Paul campus, in 5. Keep the Twin Cities scene as it is, for anyone who
+   wants one map of both campuses, and add a scene for each campus holding only its own
+   photographs, so each loads and draws less: pages at `/tour/minneapolis/` and `/tour/st-paul/`
+   beside `/tour/twin-cities/`. Still to settle:
+   - The new scenes name the photographs already published and copy none: the content is
+     661 MiB of the 1 GB Pages limit. FOSS Earth's `check-scene.mjs` reads media only from the
+     manifest's own folder, so either the three manifests share a folder or that check learns
+     to read a site.
+   - Four Next and Previous stop links cross between the campuses (stops 12 and 13, 17 and 18),
+     and a scene refuses a link to a photograph it does not hold.
+   - "Earlier tour stops" has two photographs on each campus, and the Saint Paul stops are
+     numbered 13 to 17.
+   - The Commons Park and Stone Arch Bridge, stop 20's two photographs, are in Minneapolis but
+     off the campus, 1.5 km and 1.1 km from the nearest photograph on it. The other 46 span
+     1.6 km by 1.0 km.
+6. **Make the hybrid map the tour's default:** Google 3D tiles on the campus and a free basemap
+   around it. It waits on FOSS Earth's areas and hybrid map (its `TODO.md`). The areas are this
+   tour's, one or more around each campus, drawn in FOSS Earth and kept here. The tour's page
+   carries no Google key, so a visitor sees Google's tiles only with a key of their own;
+   whose key goes in the page, if any, wants deciding first.
 
 ## Also open
 

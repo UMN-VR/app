@@ -81,9 +81,11 @@ Loading and rendering belong to FOSS Earth. The implemented sequence is:
    the preview once usable. Nothing passes through an intermediate size first.
 5. Keep every file downloaded, in the browser's IndexedDB under its photograph's revision in
    the scene, and read it from there before the network is asked: on a reload, a later visit,
-   and a look back. The atlas on the GPU has a slot for all 510 tiles of a panorama, so inside
-   one nothing is dropped and loaded again. Scenes → Saved images holds the limit (256 MiB) and
-   clears it.
+   and a look back. Where the device has room, the atlas on the GPU has a slot for all 510
+   tiles of a panorama, so inside one nothing is dropped and loaded again; on a device with
+   less it holds the view and its margin, and a look back reads the rest from the disk.
+   Scenes → Saved images holds the limit (256 MiB) and clears it; Scenes → Loading and memory
+   and Tiled images hold what stays on the GPU.
 6. Cancel obsolete requests on scene replacement or leaving a panorama. Report response bytes
    and failures through the scene's progress events and the app's log.
 
@@ -102,14 +104,21 @@ apart asked for 98, 64, 64 and 36 files; looking at the first again asked for no
 none; and on the later visit all five asked the network for nothing and were complete in 0.5 to
 0.75 s. The fly-in could not be timed here, since the check serves no map and the tour's orbs
 stand on its ground; on FOSS Earth's own example a view was complete 1.3 s after the click, as
-the flight ends, where it had taken 1.6 s. None of this has run on a phone.
+the flight ends, where it had taken 1.6 s. With the atlas at a phone's 196 tiles, the first view
+again also asked for nothing: its tiles came back from the disk, complete in 0.9 s. None of
+this has run on a phone.
+
+The app's own files are kept too, by FOSS Earth's service worker (its
+[docs/app-files.md](../../../foss-earth/docs/app-files.md)): FOSS Earth's
+`scripts/validation/app-files.mjs` found that this build's first visit kept all 63 files it
+loaded, and that a reload and a later visit asked the network for none of them.
 
 **Why the viewer keeps files itself.** GitHub Pages lets every file go stale after ten minutes
 (`Cache-Control: max-age=600`). Measured on the live tour the same day, a visit 11 minutes
 after the first asked for all 720 preview files again, and Pages sent 306 of them whole, 2.8 MiB,
 instead of answering "unchanged". It did the same for the app's own files: 1.55 of 1.72 MiB
-came again, and still do, since the viewer keeps only the scene's images. A service worker or
-the separate content origin below would stop that.
+came again. The viewer keeps the scene's images itself, and its service worker the app's files,
+so neither depends on the host's ten minutes.
 
 This is progressive delivery through separate image requests. A whole JPEG still has to finish
 before its decoded texture is usable; tiles are each usable as they arrive, so the view
