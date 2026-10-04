@@ -44,9 +44,15 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
   A service worker keeps the app's own files, which GitHub Pages had sent again after ten
   minutes, and on a device with little memory the GPU holds the view and the disk the rest.
   On the live site the first visit asked for one image and showed all 60 orbs after 5.2 s, the
-  app's first download included, and a reload asked for nothing. Not yet tried on a phone.
+  app's first download included, and a reload asked for nothing.
   The north button not following the view inside a 360 image is reported in FOSS Earth's
   `bugs/north-button-in-panorama.md`.
+
+- **Tried on two phones the same evening, which found two faults** (fixed in FOSS Earth and in
+  this build; not yet deployed). Firefox on Android drew every orb black, and an iPhone still
+  showing the day before's page refused the scene for its preview sheet.
+  [content-delivery.md](content-delivery.md) has both, and what each published app does with
+  the rebuilt scene.
 
 ## Next
 
@@ -58,6 +64,9 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
    Implementation choices and device qualification remain open.
 2. **Verify responsive loading on the deployed phone tour, and separate content hosting.**
    The first deployment exposed a long deployment and a blank/loading scene on the phone.
+   On 2026-10-03 the page kept crashing on an iPhone XS Max (iOS 18.2.1, WebGPU turned on in
+   Safari's feature flags): find out whether the current app still does, and whether
+   `?renderer=webgl2` does. No check runs in Safari.
    Tiles are deployed but not yet tried on a phone: enter a panorama on the phone's own network
    and note how long until it looks sharp, as against "Whole image" in 360 image settings. The
    tiles are 22 to 37% larger than the prototype's, because of FOSS Earth's JPEG encoder (its

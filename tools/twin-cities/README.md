@@ -46,9 +46,10 @@ What the build does:
      so an edit to `placements.json` rebuilds in seconds.
 2. **Puts every photograph's 64 px preview cube into one image,** `media/previews-64.jpg`
    (445 KiB for all 60), with FOSS Earth's `scripts/lib/previewSheet.mjs`, and names each
-   cube's place in it in the scene. The map shows all its orbs after that one request; the 360
-   face files stay for a viewer that reads no
+   cube's place in it in the scene, as the scene format's extension for
    [sheets](https://github.com/foss-earth/foss-earth.github.io/blob/main/docs/scenes/format.md#preview-sheets).
+   The map shows all its orbs after that one request; the 360 face files stay, and a viewer
+   from before sheets skips the extension and loads them.
    `--preview-sheet ""` leaves it out.
 3. **Writes `scene.json`.**
 4. **Checks the result** with FOSS Earth's `scripts/check-scene.mjs`, the way the viewer will

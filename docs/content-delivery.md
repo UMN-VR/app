@@ -208,6 +208,30 @@ next: from a browser holding the 21:00 version's worker, that visit downloaded t
 nothing of the app (FOSS Earth's
 [docs/app-files.md](../../../foss-earth/docs/app-files.md)).
 
+**Two phones that evening, and the sheet's move.** The release was tried on two phones within
+the hour. Firefox on an Android phone drew every orb black: FOSS Earth cut the faces out of
+the sheet in a way Firefox's WebGL does not upload, and now cuts them through a canvas. An
+iPhone showed "`$.sheets`: is not a property of this record" and no tour: Safari was still
+showing the day before's page from its cache, whose app knew no sheets, so the eleven minutes
+between the app and the content had not been enough. The page had also kept crashing on that
+iPhone (an iPhone XS Max, iOS 18.2.1, WebGPU turned on in Safari's feature flags); that is not
+reproduced, and which version of the app was running is not known.
+
+The scene is rebuilt with the sheet as the format's extension `foss-earth.preview-sheets`,
+which an app that does not know it skips: revision `4b89d4e2af09`, the sheet's file unchanged.
+With each published bundle in headless Chrome, served this build's images:
+
+| App | The scene as published at 20:51 | The rebuilt scene |
+| --- | --- | --- |
+| The day before's (`twinCities-R4LARsSE.js`), the iPhone's | refused: `$.sheets` and 60 more | 60 orbs, from their face files |
+| The evening's (`twinCities-C9TYTT-e.js`) | 60 orbs after one request; black in Firefox | 60 orbs, from their 360 face files |
+| This build | refused: `$.sheets` and 60 more | 60 orbs after one request |
+
+So the content goes out first, which puts right both phones' faults for every app already
+published, and this build's app ten minutes or more after it, since it refuses the scene as
+published before. An app from before the tiled release of 2026-10-03 still refuses the scene,
+for its tiled cubes.
+
 This split removes repeated local copying of the scene from app releases. It does **not**
 split the final GitHub Pages site artifact: its branch build still sees all the media. The
 server-side part of a long deploy can remain. The observed

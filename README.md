@@ -111,10 +111,14 @@ before publishing. When the app and the content change together, publish first t
 other relies on, so the live pair always works:
 
 - New content an old app can read: the content first, then the app.
-- Content the deployed app cannot read: the app first, then, ten minutes later, when GitHub
-  Pages' cached copies of the old page have expired, the content. The tiled cubes of
-  2026-10-03 are such a change: an app from before then refuses a scene that lists them, and a
-  later app skips any kind of image it does not know.
+- Content the deployed app cannot read: avoid it. The app would go first and the content ten
+  minutes later, when GitHub Pages' cached copies of the old page have expired, but a browser
+  that restores a tab shows the page it has for as long as it keeps it: on 2026-10-03 an
+  iPhone still ran the day before's app an hour after a release, and that app refused the
+  scene for its preview sheet. The sheet is now an extension of the scene format, which an
+  app that does not know it skips, and so is whatever else a scene can be shown without. The
+  tiled cubes of 2026-10-03 were such a change too: an app from before then refuses a scene
+  that lists them, and a later app skips any kind of image it does not know.
 
 Preview what would be sent without publishing:
 
