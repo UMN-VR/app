@@ -93,7 +93,23 @@ fresh conversation with. Work that FOSS Earth owns has its prompt there.
    See [content-delivery.md](content-delivery.md) for the format, current commands and the
    remaining independent-content-origin boundary.
 3. **Set north and correct the positions of all 60, and place the five that aren't placed.**
-   Prompt: [placements-prompt.md](placements-prompt.md).
+   Prompt: [placements-prompt.md](placements-prompt.md). By hand, 60 photographs is slow.
+   FOSS Earth's TODO.md has the tools that would make it quick:
+   - blending a 360 image with the map from its capture point;
+   - moving an orb on the map with handles;
+   - turning and nudging a photograph from inside it;
+   - clicking the same point in the photograph and on the map to solve the heading and
+     position.
+
+   Their edits are exported as JSON keyed by scene entity id. The tour's part is a script in
+   `tools/twin-cities/`, with a test, that merges such an export into `placements.json`:
+   - map each entity id back to its YouVisit key;
+   - write the position and `horizontalAccuracyMeters`;
+   - set `aligned: true`;
+   - write a `provenance` and `source` that say the tool, what it was checked against
+     (Google 3D tiles, landmarks) and the date.
+
+   Rebuild with `npm run build:scene` afterwards.
 4. **Put the rest of the tour on the map:** photos, videos, narration and hotspot text. Prompt:
    [tour-media-prompt.md](tour-media-prompt.md).
 5. **Add a Minneapolis and a Saint Paul scene beside the Twin Cities one.** The photographs sit
