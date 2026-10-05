@@ -33,6 +33,15 @@ Three repositories, three concerns:
   [camera motion rules](../../foss-earth/docs/camera-motion.md): it never jumps, cut short it
   glides on from where it got to, and the person's input acts at once and keeps acting. Build
   such moves in FOSS Earth when a globe without the tour would want them.
+- **Draw only what changed, and each change once.** Compute something once; compute it twice
+  only when that is the cheapest way. The globe draws a frame only when what it shows changes;
+  a change the tour makes to something already in the scene calls `requestRender()` once, and
+  new content is shown only when all of it can be drawn. FOSS Earth's
+  [render on demand](../../foss-earth/docs/render-on-demand.md) says what asks for a frame and
+  what never should.
+- **Dropdowns fit their text.** A dropdown is as wide as its own text, its longest option, and
+  never stretched to its row, column or panel: FOSS Earth's
+  [UI layout](../../foss-earth/docs/ui-layout.md#dropdowns-fit-their-own-text).
 - **Don't edit the generated tour files.** `public/tour/twin-cities/` is generated. Edit
   `tools/twin-cities/placements.json` or the build, then run `npm run build:scene`; see
   [tools/twin-cities/README.md](tools/twin-cities/README.md).
