@@ -4,7 +4,7 @@ import { execSync } from 'node:child_process'
 import { cpSync, existsSync, readdirSync } from 'node:fs'
 import path from 'node:path'
 import type { Connect, Plugin } from 'vite'
-import { appFiles } from 'foss-earth/vite'
+import { appFiles, builtFrom } from 'foss-earth/vite'
 
 /** The tour pages this site builds; each is a FOSS Earth app with its own scene. */
 const TOUR_PAGES = { twinCities: 'tour/twin-cities/index.html' }
@@ -77,7 +77,7 @@ export default defineConfig(({ mode }) => ({
     // One copy of each, shared with FOSS Earth's source.
     dedupe: ['@babylonjs/core', '@babylonjs/loaders', '3d-tiles-renderer', 'react', 'react-dom'],
   },
-  // FOSS Earth's Settings → About shows these.
+  // FOSS Earth's About tab shows these.
   define: {
     __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
     __SOURCE_VERSION__: JSON.stringify(`${sourceCommit}${sourceDirty ? '-dirty' : ''}`),
@@ -89,7 +89,8 @@ export default defineConfig(({ mode }) => ({
     rolldownOptions: { input: TOUR_PAGES },
   },
   // FOSS Earth's service worker keeps the app's own files on the visitor's device: GitHub Pages lets them go stale after ten minutes.
-  plugins: [react(), tourHome(), wholeSite(), appFiles()],
+  // Each page says what it is built from, this repository, FOSS Earth and every package, for the About tab.
+  plugins: [react(), tourHome(), wholeSite(), appFiles(), builtFrom()],
   test: {
     // .local/ holds the YouVisit backup and scratch; public/ the generated scene.
     exclude: [...configDefaults.exclude, '.local/**', 'public/**', 'dist-app/**'],

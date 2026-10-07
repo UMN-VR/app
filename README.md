@@ -83,11 +83,15 @@ tab to tell.
 
 - The log's first line, as the tour opens, says which version runs, such as "App built
   2026-10-04 20:23 UTC from a9e8e9d with FOSS Earth 930f725." The first commit is this
-  repository's and the second FOSS Earth's. Settings → About has them in full; its last line,
-  the site's latest deploy, is the site's and not the page's.
+  repository's and the second FOSS Earth's. The About tab, under +, has them in full, with
+  everything the tour is built from as a tree: this repository's commit, FOSS Earth's and
+  gamepad-tools', each with its latest commits and links to its source, and every package's
+  version. Its line for the site's latest deploy is the site's and not the page's. Until
+  2026-10-07 About was the last section of the Settings tab.
 - An app from before that line has none. Its Settings tab tells its age: three sections
   (Presets, Saved settings, About) is an app from before the evening of 2026-10-03; four, with
-  App files, from that evening; five, with Diagnostics, from 2026-10-04. Reload the tab, or
+  App files, from that evening; five, with Diagnostics, from 2026-10-04; and an app from
+  2026-10-07 on has an About tab under + and four Settings sections, About gone. Reload the tab, or
   close it and open the address in a new one, to get the published app.
 - From the app with that line on, a page that is older than the published one reloads itself
   when it opens, and says so; once it has been touched it says a newer version is published,
