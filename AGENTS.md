@@ -45,8 +45,10 @@ Three repositories, three concerns:
 - **Don't edit the generated tour files.** `public/tour/twin-cities/` is generated. Edit
   `tools/twin-cities/placements.json` or the build, then run `npm run build:scene`; see
   [tools/twin-cities/README.md](tools/twin-cities/README.md).
-- **After an edit:** run `npx tsc -b`, `npx vitest related --run <changed files>` and
-  `npm run lint`.
+- **After an edit:** run `npm run typecheck`, `npx vitest related --run <changed files>` and
+  `npm run lint`. `vitest related` follows imports only: after changing a file a test reads
+  from disk, run that test. How the checks work and what they cost:
+  [CI/CD](../../foss-earth/docs/ci-cd.md).
 - **For finished work:** run `npm run ci`, once. A change to FOSS Earth also needs FOSS Earth's
   own checks.
 - **Measure the tour headlessly.** FOSS Earth's
