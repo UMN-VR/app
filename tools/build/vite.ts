@@ -83,6 +83,8 @@ export function campusRouteConfig({ root, id, title, description, input, workerP
       if (!root) throw new Error('Expected Campus root.');
       const options = ${JSON.stringify(nativeOptions)};
       options.about.builtFrom = readBuiltFrom(document);
+      // The runtime entry URL supplies its actual hashed bundle name without a build hash cycle.
+      options.about.identity.bundle = new URL(import.meta.url).pathname.split('/').at(-1) ?? '';
       const native = createNative(options);
       const mounted = await mountCampusApp(root, ${JSON.stringify({ examples: [{ id, title, description, url: input.content.manifestUrl }], initialSceneId: id })}, native);
       // Observe the actual public controller; this port has no navigation or readiness setters.

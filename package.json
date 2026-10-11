@@ -87,7 +87,7 @@
     "@foss-earth/renderer": "file:deps/foss-earth-renderer-c6980ea5773e8d593586283f4e7929055f213015.tgz",
     "@foss-earth/sky": "file:deps/foss-earth-sky-6720abe37543682e118e5cee85dff9243449dd2d.tgz",
     "@foss-earth/tiled-cubemap": "file:deps/foss-earth-tiled-cubemap-987c673ed25c402766c38cdef1d9273970f05427.tgz",
-    "@foss-earth/toolbar": "file:deps/foss-earth-toolbar-6918624c214f1619b80a9ed8d7c90e10b10b9cab.tgz",
+    "@foss-earth/toolbar": "file:deps/foss-earth-toolbar-92e8c4ae80b8a647057c6f1728842f64abbd3672.tgz",
     "@foss-earth/ui": "file:deps/foss-earth-ui-bc78085cc2cf2342fa5bbe4ae57401c3cc76854e.tgz",
     "@foss-earth/scenes": "file:deps/foss-earth-scenes-007b8b3df0c6b74f754de19f93afc323be3739e5.tgz",
     "@foss-earth/ci": "file:deps/foss-earth-ci-1db73d1ddb342e348a2c9e8387f7bbc7ebb3225e.tgz",
@@ -132,9 +132,9 @@
     "ci": "npm run check:conformance && npm run check:implementation"
   },
   "migration": {
-    "state": "MAINTAINED_LOCAL_SOURCE; exact qualified shared/About archive adoption and retained-lock preparation; App implementation/source-free compiled/native qualification pending",
+    "state": "MAINTAINED_CAUSAL_NATIVE_ADAPTERS_AND_QUALIFIED_TOOLBAR_EXPORT; exact package implementation qualification pending",
     "inputPins": "release/earth-inputs.json",
-    "lockQualification": "Exact retained registry records and measured public local archives prepared in package-lock.json; offline npm ci integrity qualification pending",
+    "lockQualification": "Prepared exact retained registry records, measured successor Toolbar archive and other qualified public archives; offline qualification pending",
     "nativeContracts": "release/shared-contract-requests.json"
   }
 }

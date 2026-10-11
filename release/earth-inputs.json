@@ -2500,11 +2500,11 @@
     {
       "package": "@foss-earth/toolbar",
       "version": "0.1.0",
-      "revision": "6918624c214f1619b80a9ed8d7c90e10b10b9cab",
+      "revision": "92e8c4ae80b8a647057c6f1728842f64abbd3672",
       "archive": {
-        "path": "deps/foss-earth-toolbar-6918624c214f1619b80a9ed8d7c90e10b10b9cab.tgz",
-        "sha256": "91436856c075797b61679b833eb8002841347bb019a1df3eabc2e0a8c8a73215",
-        "sizeBytes": 147433
+        "path": "deps/foss-earth-toolbar-92e8c4ae80b8a647057c6f1728842f64abbd3672.tgz",
+        "sha256": "ed64ee58c12e49aa0903022e796422927708d9449962cd9e83ee35a46bb83efe",
+        "sizeBytes": 147749
       },
       "publicExports": {
         ".": {
@@ -2545,7 +2545,7 @@
         "dist/browser/positionReadout.js": "3ad12b1244e5cd96f685f7765f021ae9c7ce3ea244b73771424a85c537d3ed5a",
         "dist/browser/rendererActivity.js": "19c4e2de98fcbbd441b06530299f24c97bd34c9c3296452315f6dc450e84fbcb",
         "dist/browser/sceneHud.js": "932ca295ed56992dc04322a62eb8c754d13a5064024697f4fe872abf98b5e2fb",
-        "dist/settings.js": "536abe67fe3bb2152f4e8f2bcddceb201835c158eff22cafccb5b680a4864df8",
+        "dist/settings.js": "f23ad0d987b204a2b45271a6c4e99159cfd2b91c7479eebdb96b02f0398194d8",
         "dist/browser/statusHud.js": "602e0d63a7ffb7997662091258a0ca55e63947631d44a1583e36dbbb53292f51",
         ".attribution-release.json": "d60ee5067185a768f0890da2ed87d82dbfa08f28282e4d05a35e823c70307122",
         ".attribution.json": "f4be8310bb514e13808115779d13d130ac3bbed54e4fca9de6af00602da8d994",
@@ -2587,9 +2587,22 @@
         "dist/browser/positionReadout.d.ts": "f4fff3caaea5b7e6873f8e16fa5b275359dd328119a1dc0a84fe39f8ff70afd3",
         "dist/browser/rendererActivity.d.ts": "629c8520ac36b8506d630dce29ceb97a82ba9fb37b5a84a01f4962a8ad6d66e0",
         "dist/browser/sceneHud.d.ts": "a66e76ea808a5eca2925442ea8e19cc51b9fc834f8bbb6207cc3287a4a787e70",
-        "dist/settings.d.ts": "15fd387573ec547ccdec485baee57c678f1efde847f633c7a64d86d3d8558da1",
+        "dist/settings.d.ts": "768929881ecaae1c906aa87dbab640a3c088124f392e89d1bf01771252a5bdf6",
         "dist/browser/statusHud.d.ts": "5f6e3db2d3758d85b5da426e11a7898634f8b593a6b030437945b7891ea600c7",
         ".github/workflows/attribution-check.yml": "b9fdfbf4bd61ed727abaef4fd9990b92714a6d2c1388feec600dc16337436b2c"
+      },
+      "sourceIdentity": {
+        "state": "QUALIFIED_PACKED_BYTES_AT_REAL_LOCAL_SOURCE",
+        "currentEquivalentRevision": "92e8c4ae80b8a647057c6f1728842f64abbd3672",
+        "currentEquivalentTree": "5edb7d14c5d8f78cab433bac5090e8279c6fefb3",
+        "dirty": true,
+        "packTimeGitHead": null,
+        "archiveRepacked": true,
+        "sourceReceiptSha256": "8a8e817eddb0cc5a101517ff1a92b09675bf580aba963427c31c8d845e161d97",
+        "publicationAuditSha256": "99e4ffeac259fa757781a9fa6f459535a14849f687151db10db3f04c1ed4ef4d",
+        "qualificationReceiptSha256": "b028b576d386f5ee98728857b6f40d31b4b22ab297e4975f85820079787ae1ca",
+        "publicAttributionAuditRequired": false,
+        "remoteAdmissionVerified": false
       }
     },
     {
@@ -3340,9 +3353,128 @@
           "remoteAdmissionVerified": false,
           "sourceReceiptSha256": "a76a712db4697586ed27a4cdd29ba987d48f642e64c186c905cff28eb7344e00"
         }
+      },
+      {
+        "package": "@foss-earth/toolbar",
+        "version": "0.1.0",
+        "revision": "92e8c4ae80b8a647057c6f1728842f64abbd3672",
+        "archive": {
+          "path": "deps/foss-earth-toolbar-92e8c4ae80b8a647057c6f1728842f64abbd3672.tgz",
+          "sha256": "ed64ee58c12e49aa0903022e796422927708d9449962cd9e83ee35a46bb83efe",
+          "sizeBytes": 147749
+        },
+        "sourceIdentity": {
+          "state": "QUALIFIED_PACKED_BYTES_AT_REAL_LOCAL_SOURCE",
+          "currentEquivalentRevision": "92e8c4ae80b8a647057c6f1728842f64abbd3672",
+          "currentEquivalentTree": "5edb7d14c5d8f78cab433bac5090e8279c6fefb3",
+          "dirty": true,
+          "packTimeGitHead": null,
+          "archiveRepacked": true,
+          "sourceReceiptSha256": "8a8e817eddb0cc5a101517ff1a92b09675bf580aba963427c31c8d845e161d97",
+          "publicationAuditSha256": "99e4ffeac259fa757781a9fa6f459535a14849f687151db10db3f04c1ed4ef4d",
+          "qualificationReceiptSha256": "b028b576d386f5ee98728857b6f40d31b4b22ab297e4975f85820079787ae1ca",
+          "publicAttributionAuditRequired": false,
+          "remoteAdmissionVerified": false
+        }
       }
     ],
     "campusInstallBuildPackExecuted": false,
-    "currentCompiledBrowserReadiness": false
+    "currentCompiledBrowserReadiness": false,
+    "toolbarRootIntakeSha256": "ae0519e2ee760a7237486ac7393652cba185533e4dbf9fcbd3b1c86e15450326"
+  },
+  "historicalToolbarBindingBeforeCausalLayoutAdoption": {
+    "package": "@foss-earth/toolbar",
+    "version": "0.1.0",
+    "revision": "6918624c214f1619b80a9ed8d7c90e10b10b9cab",
+    "archive": {
+      "path": "deps/foss-earth-toolbar-6918624c214f1619b80a9ed8d7c90e10b10b9cab.tgz",
+      "sha256": "91436856c075797b61679b833eb8002841347bb019a1df3eabc2e0a8c8a73215",
+      "sizeBytes": 147433
+    },
+    "publicExports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js"
+      },
+      "./browser": {
+        "types": "./dist/browser/index.d.ts",
+        "import": "./dist/browser/index.js"
+      },
+      "./legacy": {
+        "types": "./dist/legacy/index.d.ts",
+        "import": "./dist/legacy/index.js"
+      },
+      "./styles.css": "./dist/styles/toolbar.css"
+    },
+    "fullFileMap": {
+      "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+      "NOTICE": "323da85db96d02ed0cf48db889efa184037f538f002e868aeeff396ebb44a993",
+      "dist/styles/toolbar.css": "6217a5d129cbf5baf40ea805cd102842cd9b02d5b78b7d244617b4ae4599d6f3",
+      "dist/browser/fitting.js": "40bbfb935d9134556f2177a8457d0fb92451418e5e225e4feea455920e2cc930",
+      "dist/browser/fullscreen.js": "ade8c8a42cdb414e5e0354cd5371538b40906a9ed3d42b1e6af297e31fb595d5",
+      "dist/browser/helpModal.js": "d485459b85f0476d470eb86164d6ef11bc2873c50c97bef08d148d7b0e1e0856",
+      "dist/browser/hudBar.js": "171ee62ee29729f8f8eec7b8ac441678954a319fad7b493512cbdbab97ed548c",
+      "dist/legacy/hudBar.js": "670cce80883c139fbd3a5de66f411d45c71526cc367857c0d495996f2bb0ed69",
+      "dist/browser/hudBarFit.js": "67dd22000b2444d5666b1c594602455263e8c2879787791afb6ac0cb69033799",
+      "dist/hudButtonVisibility.js": "4d30ac2cca80407dde776b8f0cda08115fce24794fb83bd476b135bae1d04501",
+      "dist/browser/index.js": "16cc32fbca1910efccbe3d8bdb36844ba32de48fd3f4f5fc4491b2c99bbfe40e",
+      "dist/index.js": "0c39cee15849dd40d8d2b33fdec6da71db1054d6ea089568f25205ebf07050d0",
+      "dist/legacy/index.js": "a0df2e5c2ae1aaf40e149bb68f36d0d255d41198f98959213d9b0b75228a45fa",
+      "dist/browser/interfaceSection.js": "bfdcf1974303e275b6e561ceff8319cf4ea86732a6a41ed675ba5857784cd09e",
+      "dist/browser/launcher.js": "d5ba71011c66248f1f43f2c8b2b3ac25104a866ebf5cd7ab40149021f38747cb",
+      "dist/browser/mapDownloadHud.js": "c1db400fcd1eca59fb6aa507ff6e39e63fc408597d40f51413aab5d8aad93b87",
+      "dist/browser/northButton.js": "f227a6cebf62b893a2deacb3a0cd98aef857dc4906bb5ef7c06fcf8a562c1667",
+      "dist/performance.js": "794c1f8dce722956e0d83f3de0be00af053470dbe24be1908baf6b764809bffe",
+      "dist/browser/performanceChips.js": "34449f9f2ec401966305e9a11fd00719a9154c25bdad947bb151c7b80501de1c",
+      "dist/position.js": "19f9c51e058f49637fd0545ccb3e67a97a86bd319a39a7c20ddb75f6f6e3dd0f",
+      "dist/browser/positionReadout.js": "3ad12b1244e5cd96f685f7765f021ae9c7ce3ea244b73771424a85c537d3ed5a",
+      "dist/browser/rendererActivity.js": "19c4e2de98fcbbd441b06530299f24c97bd34c9c3296452315f6dc450e84fbcb",
+      "dist/browser/sceneHud.js": "932ca295ed56992dc04322a62eb8c754d13a5064024697f4fe872abf98b5e2fb",
+      "dist/settings.js": "536abe67fe3bb2152f4e8f2bcddceb201835c158eff22cafccb5b680a4864df8",
+      "dist/browser/statusHud.js": "602e0d63a7ffb7997662091258a0ca55e63947631d44a1583e36dbbb53292f51",
+      ".attribution-release.json": "d60ee5067185a768f0890da2ed87d82dbfa08f28282e4d05a35e823c70307122",
+      ".attribution.json": "f4be8310bb514e13808115779d13d130ac3bbed54e4fca9de6af00602da8d994",
+      "dependency-pins.json": "fcb2b206eed903abe9b3662d20d8f0348c38d4034a288b16c7c7e27cc45a6850",
+      "fixtures/earth-toolbar.json": "c3d3bf1cb91eb432b8ef46ec92d0d2a32b469f64337ba6727f55bb8361d544c6",
+      "package.json": "caa2ddc2f38cd859d57ceb546ef799d5159039c64f3a86e5825abf94d7555774",
+      "fixtures/presentation-extraction.json": "2ebddec3e103a4a09141bc87040dc8b30b1edf806bde77f2ac21034726a071ca",
+      "provenance.json": "7655a734b60e9dd3f01077493f33cb193b56748ad6dbd244266945121f75c63f",
+      "fixtures/renderer-activity-extraction.json": "42bcfd3228eeb07d7c82a3185d1dea0e8407900c0edd82f4e8193f419287854f",
+      "fixtures/selected-original-paths.json": "586118af93d44fad007067930c71c47e8ea871271f6d85b4790c10b95e13c62b",
+      "SOURCE_LINEAGE.json": "c077a83c2bb9936d56966270b68c607ead9c8adf5b9515fc0ad50ce42b33b9cd",
+      "SOURCE_RECEIPT.json": "d611a2783dedc92da725d139aa923669f876f4e0bef45340e02a540252014d11",
+      "fixtures/consumer/tsconfig.json": "d3dca0e2f4a3036d6b1c9d8b0cec371392453f05b3999c0e932d8b6ac85b2440",
+      "CODE_OF_CONDUCT.md": "c3a907b9e659a0f5a4c701be1b34a7d416526c3a99f129bf4d3b9db09c7ffa9d",
+      "CONTRIBUTING.md": "d1c8e8ff3427a5402751a2cff187940d10227aaf65bb40ee150deae3446ac78f",
+      "README.md": "32fa982a87585e33ba7b6ec502d20ab4cdd18b6df03cc043d2a462ae64e192e3",
+      "SECURITY.md": "6baf6d3c1755360f5d902275c893074fd17af2fc10c140fe932b8a90d77d9942",
+      "fixtures/consumer/host-dom.mjs": "e486f296ca12790e87d5df02fb19387163c46f9dfb637e0a762d905f8803a9b3",
+      "fixtures/consumer/minimal.mjs": "bc88a848d55fe8be43f80ba9e17b99ed3fe7c224eec58db699c6a6182c0c4df9",
+      "deps/foss-earth-ci-1db73d1ddb342e348a2c9e8387f7bbc7ebb3225e.tgz": "bd884d925b8a7339b15fa61a477cf652bb73d41cc68addf50a050ab6cb151611",
+      "dist/browser/fitting.d.ts": "c8e7d866b931f7063fbac76275bcaebe92a35c1019747340fc05a07dc770918b",
+      "dist/browser/fullscreen.d.ts": "459762b57ef11c8ccf11f7ef1defcf731fc903d47e8890ba5d377c016e82e29a",
+      "dist/browser/helpModal.d.ts": "0c33af196d827aa7979838a9122478409ef100871561ae0753221ef7d0edff90",
+      "dist/browser/hudBar.d.ts": "bfa5bf54691015aa252d0e0466a501d639e1d988988442d652cff2212e053949",
+      "dist/legacy/hudBar.d.ts": "26f1e87de57a5608325c7add148fc87c4682fd45ba0e22146ea535fec8f6b016",
+      "dist/browser/hudBarFit.d.ts": "d4f38e6113a0bb29b1fb7f4ab936774a4f2e5ef880b4691d4a56380746d81ff2",
+      "dist/hudButtonVisibility.d.ts": "9a858d197e1fbb8a260316021e4bb535777a851908809516d571c49413b3ac58",
+      "dist/browser/index.d.ts": "16cc32fbca1910efccbe3d8bdb36844ba32de48fd3f4f5fc4491b2c99bbfe40e",
+      "dist/index.d.ts": "d7c98ace5c0a6fb06de9da8f0e7ca5d3a04b9e29c62f014bf24d9f60ba7c028c",
+      "dist/legacy/index.d.ts": "a0df2e5c2ae1aaf40e149bb68f36d0d255d41198f98959213d9b0b75228a45fa",
+      "dist/browser/interfaceSection.d.ts": "a63168d38bc455021dccfa60f119a56948407b1e28977681f67cb1bbfb37a1ec",
+      "dist/browser/launcher.d.ts": "0f99c269c52ccddae07878030e0c5c7f77d26d0ba6987def4341216786889d2e",
+      "dist/browser/mapDownloadHud.d.ts": "0ee13d7438cb95c09f41f3e0441e94ad8be82c6e470b63b6a7faa04878fa5227",
+      "fixtures/consumer/minimal.ts": "38408dd50b1286885e20c1abd2702f2d38ad6c7140f8f2f1d0d218742df3f9ee",
+      "dist/browser/northButton.d.ts": "a29acb63daf136bffe78c21ddfb7e288ca5235742e732b0e04068d4532086b31",
+      "dist/performance.d.ts": "391b2473ada9735dc7ae0bb779e6e9c6ef66fcb2817c99989de7a96411ed1da4",
+      "dist/browser/performanceChips.d.ts": "4e5d9d125a587261d3aaaa8f7d7a7bee4c666993bd6e533d59a0a88c3384f179",
+      "dist/position.d.ts": "bdbb94a1aea3f2d4ed8e9e1fe7410d1b43aee026ff3d9084cc73d044dfbcdee4",
+      "dist/browser/positionReadout.d.ts": "f4fff3caaea5b7e6873f8e16fa5b275359dd328119a1dc0a84fe39f8ff70afd3",
+      "dist/browser/rendererActivity.d.ts": "629c8520ac36b8506d630dce29ceb97a82ba9fb37b5a84a01f4962a8ad6d66e0",
+      "dist/browser/sceneHud.d.ts": "a66e76ea808a5eca2925442ea8e19cc51b9fc834f8bbb6207cc3287a4a787e70",
+      "dist/settings.d.ts": "15fd387573ec547ccdec485baee57c678f1efde847f633c7a64d86d3d8558da1",
+      "dist/browser/statusHud.d.ts": "5f6e3db2d3758d85b5da426e11a7898634f8b593a6b030437945b7891ea600c7",
+      ".github/workflows/attribution-check.yml": "b9fdfbf4bd61ed727abaef4fd9990b92714a6d2c1388feec600dc16337436b2c"
+    }
   }
 }

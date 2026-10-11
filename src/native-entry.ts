@@ -74,18 +74,19 @@ export async function mountCampusApp(
     if (new URLSearchParams(search).has("report")) {
       host = await native.report({ container, signal: cancellation.signal, search });
     } else {
-      host = await native.prepare({ container, signal: cancellation.signal, route });
+      const preparedHost = await native.prepare({ container, signal: cancellation.signal, route });
+      host = preparedHost;
       if (cancellation.signal.aborted) throw new Error("Campus startup was cancelled.");
       composition = await createCampusComposition({
-        ...host.bindings, container: host.shellContainer, search, signal: cancellation.signal,
+        ...preparedHost.bindings, container: preparedHost.shellContainer, search, signal: cancellation.signal,
         defaultSceneId: route.initialSceneId,
-        scene: { ...host.bindings.scene, examples: route.examples, signal: cancellation.signal },
+        scene: { ...preparedHost.bindings.scene, examples: route.examples, signal: cancellation.signal },
       });
-      if (host.externalArrival) {
+      if (preparedHost.externalArrival) {
         if (!composition || !await composition.initialScene)
           throw new Error("The selected external Campus scene could not be loaded.");
         cancellation.signal.throwIfAborted();
-        const arrival = host.externalArrival, handle = composition.content.controller.handle();
+        const arrival = preparedHost.externalArrival, handle = composition.content.controller.handle();
         if (!handle || handle.status.sceneId !== arrival.sceneId)
           throw new Error("The loaded Campus scene does not match the external arrival identity.");
         const entered = await handle.enter(arrival.panoramaId, {

@@ -1,3 +1,4 @@
+import { copyCampusCodecInput, estimateCampusImage, subscribeCampusResourceSettings } from "./adapters";
 import type { AppIdentity, BuiltFrom, ReleaseManifest } from "@foss-earth/about";
 import type { SettingsRegistry, SettingsStorage } from "@foss-earth/ui/settings";
 import type { CampusNativeHostFactory, CampusNativeHost, CampusExternalArrival, CampusRoute } from "../native-entry";
@@ -296,10 +297,10 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
         const track = <T>(work: Promise<T>): Promise<T> => { nativeOperations.add(work); void work.then(() => nativeOperations.delete(work), () => nativeOperations.delete(work)); return work; };
         drains.push(async () => { while (nativeOperations.size) await Promise.allSettled([...nativeOperations]); });
         const decode = (bytes: Uint8Array, mimeType: "image/jpeg" | "image/png"): Promise<ImageBitmap> => {
-          const grant = broker.pools.reserve("encoded", bytes.byteLength, "Campus native codec input copy");
+          const grant = broker.pools.reserve("encoded", 2 * bytes.byteLength, "Campus ArrayBuffer and Blob native codec input copies");
           if (!grant.ok) return Promise.reject(new Error("No encoded headroom for the native codec's input copy."));
           let work: Promise<ImageBitmap>;
-          try { work = view.createImageBitmap(new view.Blob([bytes], { type: mimeType }), { colorSpaceConversion: "none", premultiplyAlpha: "none", imageOrientation: "from-image" }); }
+          try { work = view.createImageBitmap(new view.Blob([copyCampusCodecInput(bytes)], { type: mimeType }), { colorSpaceConversion: "none", premultiplyAlpha: "none", imageOrientation: "from-image" }); }
           catch (error) { grant.reservation.release(); throw error; }
           return track(work.finally(() => grant.reservation.release()));
         };
@@ -354,11 +355,8 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
         const representations = viewerApi.createBuiltInRepresentations(() => ({ tileMemoryBytes: policy.n("tileMemoryMiB") * 1024 * 1024,
           responseBytes: policy.transfer().responseBytes, requests: policy.count("tileRequests"), waiting: policy.count("tilesWaiting"),
           uploadOutstandingBytes: policy.upload().outstandingBytes }));
-        const owner = (record: import("@foss-earth/images").ImageRepresentation) => {
-          const value = representations.find(candidate => candidate.hooks.projection === record.projection);
-          if (!value) throw new Error(`No representation owner for ${record.projection}.`); return value;
-        };
-        const estimate = (record: import("@foss-earth/images").ImageRepresentation) => owner(record).hooks.estimate(record, { maxTextureSide: renderer.engine.getCaps().maxTextureSize });
+        const estimate = (record: import("@foss-earth/images").ImageRepresentation) =>
+          estimateCampusImage(record, representations, renderer.engine.getCaps().maxTextureSize, view.location.href);
         let viewer: ReturnType<typeof viewerRuntime.createImageViewer> | undefined;
         const choice = viewerApi.createViewerSelection({ representations, parameters: policy.selection,
           maxTextureSide: () => renderer.engine.getCaps().maxTextureSize,
@@ -482,9 +480,13 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
         cleanups.push(() => controllerInput.dispose(), () => controller.dispose(), () => controllerEditor.destroy(),
           controllerInput.subscribe(frame => controller.dispatch(frame)), controllerInput.start({ intervalMs: 33, shouldPoll: () => !document.hidden }),
           settings.watch("input.gamepad.deadzone", () => controller.setProfile(engineGamepad.withStickDeadzone(controller.getProfile(), settings.get<number>("input.gamepad.deadzone")))));
-        const resourceWatch = settings.subscribe(changed => { if (changed.some(id => policy.resourceParameterIds.includes(id))) {
-          broker.setLimits(policy.session()); cache.setKeptGpuBytes(policy.n("keptGpuMiB") * 1024 * 1024); native!.uploader.setLimits(policy.upload()); live.requestRender(); }
-          if (changed.includes("scene.panorama.savedMiB")) store.setLimits({ maxBytes: policy.n("savedMiB") * 1024 * 1024 }); });
+        const resourceWatch = subscribeCampusResourceSettings(settings, policy.resourceParameterIds, {
+          updateResources() {
+            broker.setLimits(policy.session()); cache.setKeptGpuBytes(policy.n("keptGpuMiB") * 1024 * 1024);
+            native!.uploader.setLimits(policy.upload()); live.requestRender();
+          },
+          updateSavedImages() { store.setLimits({ maxBytes: policy.n("savedMiB") * 1024 * 1024 }); },
+        });
         cleanups.push(resourceWatch);
         signal.throwIfAborted();
         scheduler.requestRender();
@@ -497,11 +499,12 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
             const glVersion = gl ? String(gl.getParameter(gl.VERSION)) : null;
             const actual = renderer.mode === "webgpu" ? "webgpu"
               : glVersion?.startsWith("WebGL 2") ? "webgl2" : glVersion?.startsWith("WebGL 1") ? "webgl1" : "unknown";
+            const engineClass = renderer.engine.getClassName?.() ?? null;
             const engineVersion = (renderer.engine.constructor as unknown as { Version?: string }).Version ?? null;
             return {
               authorities: { ...authorities },
               backend: { actual, requested: renderer.requested, mode: renderer.mode, glVersion,
-                engineVersion: engineVersion ?? renderer.engine.getClassName(), engineClass: renderer.engine.getClassName(),
+                engineVersion: engineVersion ?? engineClass, engineClass,
                 deviceKind: "unknown", fallbackReason: renderer.fallbackReason ?? null },
               runtimeStatus: { ...live.status }, navigation: live.getNavigationState(), camera: live.getViewState(),
               viewer: viewer!.status(), activeImage: viewer!.status().active ? viewer!.describeImage(viewer!.status().active!) : null,
