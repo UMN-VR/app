@@ -17,7 +17,7 @@ browser factory, checked scene producer and worker/update producer are still
 requested from their owners. A typed injected host is not a passing browser
 receipt. Source tests/declarations/lint/build/pack remain unrun while queued.
 
-- [Code of conduct](CODE_OF_CONDUCT.md)
-- [Contributing](CONTRIBUTING.md)
+- [Code of conduct](https://github.com/UMN-VR/.github/blob/main/CODE_OF_CONDUCT.md)
+- [Contributing](https://github.com/UMN-VR/.github/blob/main/CONTRIBUTING.md)
 - [AGPL-3.0 license](LICENSE)
-- [Security](SECURITY.md)
+- [Security](https://github.com/UMN-VR/.github/blob/main/SECURITY.md)

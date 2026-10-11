@@ -54,10 +54,7 @@
     "README.md",
     "AGENTS.md",
     "SOURCE_PROVENANCE.json",
-    "CODE_OF_CONDUCT.md",
-    "CONTRIBUTING.md",
     "LICENSE",
-    "SECURITY.md",
     "dist"
   ],
   "devDependencies": {
