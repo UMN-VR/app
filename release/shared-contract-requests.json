@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "state": "NAVIGATION_AND_CLEANUP_SOURCE_PREPARED_UNQUALIFIED; 77 prior assertions and6syntax PASS retained subject to final exact-input reconciliation; successor CPU/compiled checks QUEUED_UNRUN",
+  "requests": [
+    {
+      "id": "campus-native-globe-session",
+      "owner": "foss-earth/engine with renderer/images/sky",
+      "status": "ACTUAL_PUBLIC_SOURCE_CONSUMER_ADAPTED; NEW_ENGINE_RENDERER_ARTIFACTS_NOT_BOUND",
+      "needed": [
+        "Public browser map/transport/decoder/lighting ports over one renderer/scene/scheduler/profile/lifecycle",
+        "Shared image broker/files/uploader/transfer authority with borrowed ownership",
+        "One frame preparation/work/closure path; startup/device-loss/cancellation/settled retirement",
+        "Qualified SettledGlobeRuntime.whenSettled and NativeMapStartupError.whenSettled: actual declared source exists; Campus consumes the real native retirement promises and rejects older artifacts without them."
+      ],
+      "excluded": [
+        "website/mount wrappers",
+        "copied Earth App algorithms",
+        "second cache/scheduler/renderer"
+      ],
+      "declaredContract": {
+        "factory": "@foss-earth/engine/browser-globe.createBrowserGlobeBindings",
+        "mapCache": "@foss-earth/engine/browser.createMapCache",
+        "runtime": "@foss-earth/engine/babylon.SettledGlobeRuntime",
+        "startupFailure": "@foss-earth/engine/babylon.NativeMapStartupError",
+        "qualification": "UNQUALIFIED_SOURCE_NOT_BOUND"
+      }
+    },
+    {
+      "id": "campus-native-image-viewer-binding",
+      "owner": "foss-earth/360 over public engine/images/renderer ports",
+      "status": "ACTUAL_PUBLIC_DESCRIPTION_PORTS_ADAPTED; NEW360_ARTIFACT_NOT_BOUND",
+      "needed": [
+        "Borrowed GlobeRuntime/navigation/image-resource ports for public createImageViewer/createViewerResources",
+        "Native navigation leases and signal/focus handback",
+        "Fresh-input cancellation preserving momentum; owner representation costs/resources",
+        "Actual projectLink/describeImage/frame subscriptions and settled cleanup",
+        "Qualified shared createGlobeViewerFrameBinding description/projection adapter using actual representations, tileMemoryMiB policy getter and renderer caps; no copied image-cost formulas."
+      ],
+      "declaredDescription": {
+        "representations": "shared registry",
+        "tileMemoryBytes": "policy.n(\"tileMemoryMiB\") *1024*1024",
+        "maxTextureSide": "renderer.engine.getCaps().maxTextureSize",
+        "qualification": "UNQUALIFIED_SOURCE_NOT_BOUND"
+      }
+    },
+    {
+      "id": "campus-update-and-worker-build",
+      "owner": "foss-earth/ui",
+      "status": "EARTH_SOURCE_ONLY_GRANTED_QUALIFICATION_PENDING",
+      "needed": [
+        "Public kept-file client and report-only published-version watcher",
+        "Public worker/kept-file build producer with opaque exact seal/qualification receipt",
+        "Canonical /foss-earth-sw.js scope / across three current scene artifacts; retained older files/legacy content; explicit reload only"
+      ],
+      "existingPublicCoverage": "About/vite builtFrom and renderer/vite babylonShaderChunks are adopted; neither produces workers."
+    },
+    {
+      "id": "finite-pinned-scene-composition",
+      "owner": "foss-earth/scenes",
+      "baselineRevision": "d58408d90542a73282d8bf544c54e0c9bf847b56",
+      "status": "NEW_ADDITIVE_PUBLIC_SOURCE_CONSUMER_PREPARED; CHECKED_SUCCESSOR_ARTIFACT_NOT_BOUND",
+      "needed": [
+        "Checked finite deterministic child/aggregate producer with exact documents/revisions/media bases/limits",
+        "Standalone child treatment of4external directions preserving134original link records and real cross-route target selection",
+        "Authored60entity/24grouporder including reconstructed mixed retired group; parent overview",
+        "No ID/cellmap/reference-base drift, no photos duplicated, one viewer; oldv1 compatibility"
+      ],
+      "preparedSources": {
+        "minneapolis": "UMN-VR/minneapolis/content/scene-records.json",
+        "st-paul": "UMN-VR/st-paul/content/scene-records.json",
+        "aggregate": "UMN-VR/twin-cities/content/composition.json",
+        "media": "UMN-VR/app/content/shared-legacy-media-release.json"
+      },
+      "prohibited": "No local generic compiler/validator copy or hand-authored generated Scene v1.",
+      "acceptedRevision": "f5daa60273a4b5d89ca62efec94be61bc07f6dfc",
+      "acceptedArchiveSha256": "a3f6c3d5e84906dea2e10c8452f4224a4c896ebca450972b738b147d56c58ccf",
+      "ownerHookExport": "@umn-vr/app/scene-composition",
+      "causalExamples": [
+        "regis-hall retained next-stop to saint-paul-campus precedes previous-stop in original links; explicit insertion required",
+        "community-connections next-stop to recreation-and-wellness-center precedes previous-stop",
+        "Both earlier-tour-stops child projections must be consumed/replaced with the original four-member mixed group; authored order and metadata must remain verbatim"
+      ],
+      "missingPublicOperations": [],
+      "declaredOperations": [
+        "ExternalDestinationRecord{id,sceneId,routeId?}, LinkRecord.externalDestination; LoadSceneOptions.externalNavigation.navigate(input)",
+        "SceneCompositionLink.consume and insert:{before}|{after}|{index}; replace four original cross-links without duplicates",
+        "SceneCompositionRequest.groupReplacements plus groupOrder composed references; consume two earlier-tour-stops projections into the original mixed four-member group"
+      ],
+      "remainingBindings": [
+        "Checked successor Scenes producer/runtime/public type artifact and complete qualification receipt",
+        "Actual complete child/aggregate outputs and content parity against retained authored records:48/12/60 panoramas,134links,24groups/order/credits",
+        "Qualified media measurement and finite producer mediaMap; no partial scene or fabricated release"
+      ],
+      "controllerForwarding": {
+        "state": "SOURCE_REPAIRED_UNQUALIFIED",
+        "binding": "CampusSceneBindings.externalNavigation?:LoadSceneOptions[\"externalNavigation\"]",
+        "delivery": "Same optional host port forwarded unchanged to sole loadScene; native-entry uses the normal binding. Existing fixed routes/history arrival retained.",
+        "regressions": {
+          "newCases": 9,
+          "controllerCases": 5,
+          "nativeEntryCases": 11,
+          "status": "ALL16_UNRUN; compiled grant with qualified Scenes required"
+        }
+      }
+    },
+    {
+      "id": "campus-workspace-mutable-selection",
+      "owner": "foss-earth/dev_installer",
+      "status": "ACCEPTED_FA8_SHARED_INSTALLER_RETAINED; CAMPUS_FULL_BOOTSTRAP_UNRUN",
+      "currentRevision": "ff46c57de0789417c9794a44a0710bedb6bae9cf",
+      "needed": [
+        "Bind Campus wrapper to the accepted fa8f021/5ae879 shared installer through its exact delivered contract during the later adoption grant; tilde successor stays separate.",
+        "Source/package/hybrid persisted per component choices after setup",
+        "Exact local working-source archive/effective checkpoint/base HEAD/delta identities for local qualification; clean publication refs remain a separate release gate.",
+        "Fresh accepted full workspace source/exact/hybrid bootstrap, not fixture-only success"
+      ],
+      "acceptedRevision": "fa8f021c34868f52ff27c3fd2821df3701932518",
+      "acceptedArchiveSha256": "5ae8792a3d8703a2fac01455f209aafc634843ecb0d679357458cc8c1cd11f91"
+    }
+  ],
+  "nativeConsumer": "src/native/host.ts actual public browser-globe/settled/description source adaptation; new provider artifact/type/installed/native/browser checks UNRUN",
+  "sourceLease": "All renewed source scopes released after exact successor seal; sole Campus handoff is request channel. No Earth checkout edits.",
+  "phaseACpuBlocker": {
+    "owner": "UMN-VR/app/tools/verification",
+    "sourceSha256": "59bf68b82ef80e30d2ead4674cc57ba6259a314645c9999e5f813e5683f3c98a",
+    "outsideLease": false,
+    "cause": "Original exact zero-size package-root admission failure retained; subsequent static review found wrapper could be killed before CI restoration. Both causal source repairs are prepared, qualification UNRUN.",
+    "repairRequest": "Sealed successor14-row CPU request:18 unchanged archive/root/authentication cases, real accepted archive intake,17 hook cases,10x19 actual consumer conformance cases and15 new deterministic cleanup cases (<=60s). Retain77 unaffected source assertions/6syntax passes after exact final reconciliation.",
+    "slot": "Earth retains sole slot; Campus NOT_ACQUIRED; separate exact coordinator execution grant required",
+    "status": "CAUSAL_SOURCE_REPAIRS_PREPARED_UNRUN",
+    "failedReceiptRetained": true,
+    "fixedToolSha256": "e7ed625a2ea0583ff2a660dc9d7f9531e0646a98b94f123cd692e7b6800ec4d0",
+    "newCausalCases": 18,
+    "cleanupCases": 15,
+    "requestEvidence": ".local/repository-split/navigation-cleanup/20261010-source/cpu-successor-request-v2.json"
+  },
+  "phaseBInputStatus": "Controller forwarding source repaired; native/provider type/runtime qualification, latest Google loader contract, worker/media/provenance adoption and compiled/browser bindings remain pending. Accepted installed provider pins unchanged.",
+  "sourceObservationsEvidence": ".local/repository-split/contract-repair/20261010-source/public-api-observations-v2.json",
+  "sourceObservationsSha256": "d69c7f6b8a7c62a2ab653c61e6e1ad87c8c198411b2551018b934394c8d145fa",
+  "sceneProducerFiniteLimits": "Default512MiB totalInputBytes is smaller than the retained694MB corpus; default8MiB mediaIndexBytes/jsonNodes400000 are not qualified for the full index. Bind explicit finite limits to actual measured index/mediaMap, not unbounded overrides.",
+  "compiledProvenanceScope": "Current Vite/App release provenance requires commit OIDs for unborn source repos. A later exact adoption/source lease must carry actual archive+effective checkpoint/baseHEAD/delta working-source evidence through build/release ABI; final clean publication refs remain separate. No fake OID or human commit prerequisite for local source qualification.",
+  "cleanupSourcePreparation": {
+    "state": "SOURCE_PREPARED_UNRUN",
+    "runner": "tools/verification/run-campus-cpu.py",
+    "regressionSuite": "tools/verification/run-campus-cpu.test.py",
+    "authoredCases": 15,
+    "wrapperKillGraceSeconds": 20,
+    "nestedChildKillGraceSeconds": 10,
+    "singleCleanupDeadlineSeconds": 55,
+    "restoration": "Independent prior CI installation/absence and root/hidden lock proofs on every actual conformance row including failure/resume; real errors and owned closure retained. Forced cleanup/deadline/restoration failure is FAIL.",
+    "ownership": "Only current explicitly recorded owned groups; closed historical generations are retained as evidence and removed from the signal registry. No arbitrary process matching."
+  },
+  "verificationEvidence": {
+    "sourceCheckpoint": ".local/repository-split/navigation-cleanup/20261010-source/source-checkpoint-v2.json",
+    "cpuRequest": ".local/repository-split/navigation-cleanup/20261010-source/cpu-successor-request-v2.json",
+    "compiledBindingRequest": ".local/repository-split/navigation-cleanup/20261010-source/compiled-successor-binding-request-v2.json"
+  }
+}

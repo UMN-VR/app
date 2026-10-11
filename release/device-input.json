@@ -1,0 +1,163 @@
+{
+  "package": "@felipegalind0/gamepad-tools",
+  "version": "0.1.0",
+  "revision": "device-owner retained exact artifact fixture",
+  "archive": {
+    "path": "deps/felipegalind0-gamepad-tools-6916368e48928e49c7630578a4da3c42aac82a2fe492c1807c033b420a8b8f63.tgz",
+    "sha256": "6916368e48928e49c7630578a4da3c42aac82a2fe492c1807c033b420a8b8f63",
+    "sizeBytes": 72463
+  },
+  "publicExports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "import": "./dist/core/index.js"
+    },
+    "./browser": {
+      "types": "./dist/browser/index.d.ts",
+      "import": "./dist/browser/index.js"
+    },
+    "./viewer": {
+      "types": "./dist/viewer/index.d.ts",
+      "import": "./dist/viewer/index.js"
+    },
+    "./ui": {
+      "types": "./dist/ui/index.d.ts",
+      "import": "./dist/ui/index.js"
+    },
+    "./styles.css": "./src/styles.css"
+  },
+  "fullFileMap": {
+    "LICENSE": "9e7ab84f0898ff251a7ea29a04fc2a51a6c12ee5a5888f34d373a9900323804f",
+    "src/styles.css": "68dc2792647f2c43ba7914f628f896a778c48d4701496c1d0787f2dfedb30356",
+    "dist/core/capture.js": "bde1a0de90dcee7e979361e5cc89041583c8fd7817730de115e88bea9a201939",
+    "dist/core/contracts.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "dist/browser/controlKeys.js": "dbecf7f5f9fa9b30278c26cf207a1afad95ece831e93691b7c90d6f702dbe93c",
+    "dist/ui/editor.js": "3e35a03430fd18266c36fcddf2a21bc3f6adcc5c746b897f405f529d502be9eb",
+    "dist/core/evaluator.js": "102b7cdab8831580618042e499577b4c5c311d7074ebf1f88c25aa39a432d3ad",
+    "dist/browser/index.js": "47f50298d6ce91fac15b94eb266a7023177969b430fbbe40c8044e678e3f857c",
+    "dist/core/index.js": "167f8aecc23ee89fdcee8c82467eedec4f756f91224d506903650e235b5b4f7d",
+    "dist/index.js": "4eddec6becd4c041ca5e2fe080a8aff6cfb84754143ed873350a42cb4afe4e09",
+    "dist/ui/index.js": "5bcdb94fa14930b800442dab4e1288fefc7ac76eec30630a5aa97cffca5f2b32",
+    "dist/viewer/index.js": "f1aa8b52b3ab4731882d68760fd62c10953dc356945853e4c52f02a8caa48ac8",
+    "dist/core/inputs.js": "d9dc1876de48e5a79410a1322c33fe3572243ec4f109e140c0850debc37c58f6",
+    "dist/core/persistence.js": "385938a9630eed39987ffc9c933bf65c43c00eb9daace95fd62b9e24da23dc39",
+    "dist/core/profiles.js": "afb1d7ffbd4763d0948a1cc9884026f557ae39b146077641f3747812d75bd1b8",
+    "dist/core/response.js": "27dc7f11ffc26006b92096df077a7e379240a9b0dababd0dfa207c24f15423b1",
+    "dist/core/runtime.js": "0393f014c73bb574df6ba9e596b3b6a999f7de4d0f619463f44c700a032e0913",
+    "dist/browser/source.js": "a250027ad308343ea7f5ae092f525b215eba0c90f4bfa788c1fb851e56f58774",
+    "dist/core/transform.js": "4d2830a58df1b33dc1ea636bd583cd0a8dd35601de551e2ddaedf7355e7d2797",
+    "package.json": "96c0492d27be9f806d5eec86ed885ed44ef21c885e14c2df43283437d885ba6e",
+    "ASSETS.md": "7198421a110790bd3d0d226d2c0fcf18f2555ddadd8ca818b683ec496d69a917",
+    "docs/implementation-prompt.md": "c266d23d93d4c4dcea6c5e1eea463061fba93ca0ad24d322b8eb27fc665c5fb5",
+    "docs/integration-research.md": "5dd810a0e00a51e5303ca2a0e91338a9f799d925227048455e8d68925b39db42",
+    "README.md": "d5fd4da7b2d3fa64f703d59a2d8c2a127107a5d395683e74562e4414eb4d2874",
+    "TODO.md": "a0ce227fa0ac48b491f2a19470858e0f6292e5f6cad57b27aad81551f4e65d8e",
+    "dist/core/capture.d.ts": "ae92f731b9e44df53f25049ccf3e0149479bc93f34011ff6401bdd7f5a2cd3f1",
+    "src/core/capture.ts": "4f5bdaababa4ef544e8ffa2d3339c494d7c5be0f870efe73b480b85022da02f7",
+    "dist/core/contracts.d.ts": "89aa2b8523f718213709e3080c980756611787c049354f995433b1951a37ce39",
+    "src/core/contracts.ts": "a68619724fb09d761b807f02f9bfbde52eb64a54a602150536521f6d738def99",
+    "dist/browser/controlKeys.d.ts": "1e04f1a0f3103a6de257a76f1c205107b63d3a454d19a9246f6239bc59ca18d5",
+    "src/browser/controlKeys.ts": "65abbf56635da66a04b4f94c83c47074d8e6054a5610f83bc044c24ebad8363e",
+    "dist/ui/editor.d.ts": "1e9e3131114512e96da58bb73ec60a36e6e38cffa7c98031a9602d91f308825b",
+    "src/ui/editor.ts": "e1d578b80204b76e9c02d20c0b1d1d059e19a005b18cd17f3c3a9f701a7aaf08",
+    "dist/core/evaluator.d.ts": "0d8d5e256171e6fc1ce06245a2fba7ea5fbcf338d1fe8c0cd2b113a136640389",
+    "src/core/evaluator.ts": "55de6e2d0588efdad6932a9a80acf7bc96938ec61ef8ed4d332073fd3cebdf42",
+    "dist/browser/index.d.ts": "023ce5f82ca8cc49efc80ce32499a7fbac62a9774e5320df6900d79d272a909e",
+    "dist/core/index.d.ts": "167f8aecc23ee89fdcee8c82467eedec4f756f91224d506903650e235b5b4f7d",
+    "dist/index.d.ts": "4eddec6becd4c041ca5e2fe080a8aff6cfb84754143ed873350a42cb4afe4e09",
+    "dist/ui/index.d.ts": "c912bd5728ab1b191e6853b85197ce814f118d7277ef3c99909caeeb2a5d9e46",
+    "dist/viewer/index.d.ts": "af00b242ae5142b8f682758912708e98c8aefe05c83b488f94ee929f41568703",
+    "src/browser/index.ts": "3531184a50583473d2502eb4ed407b09244d3364e7a45a303976e2ffe1c4f204",
+    "src/core/index.ts": "167f8aecc23ee89fdcee8c82467eedec4f756f91224d506903650e235b5b4f7d",
+    "src/index.ts": "4eddec6becd4c041ca5e2fe080a8aff6cfb84754143ed873350a42cb4afe4e09",
+    "src/ui/index.ts": "e19d4a71919faee2ccc7675b081063043e500b28454d4b1fcef4ebbf89fd5c50",
+    "src/viewer/index.ts": "44e418e120a3d36db4590cf126f41c906a4d67d690430a7a4990e46185e8ce55",
+    "dist/core/inputs.d.ts": "8af622691749df4beb86f03d5f2ac42ef73b7449bc7757aa466be1c51ac811df",
+    "src/core/inputs.ts": "6f9104ab982347adaa393bbcc9a5b943501bb54a720e66740d87361962c2c149",
+    "dist/core/persistence.d.ts": "e843cf278b18f8363b85a85d6424e37a5c9584442277ee429cce6fdf0d8790f9",
+    "src/core/persistence.ts": "bfc32355b64bb27677d57fddf8c971ff21da40aeba2e73638895a057c67c9940",
+    "dist/core/profiles.d.ts": "b9d7e83c9f8c53fce3f4a47236c46d278691fecf628f057b8e3a750206083449",
+    "src/core/profiles.ts": "f6910ff57828815b96fd1e2f8dca081f8b88c09d60d796f920449d78d9c11b3d",
+    "dist/core/response.d.ts": "cf6aa35a0ad9ab71f00231e31f4705fde9db7a61ffbe067031d07be4ce031ee3",
+    "src/core/response.ts": "ce8ee0691bbd6f4a4d4746403c41935d64bf0426203d0e626ebda72bd5643acd",
+    "dist/core/runtime.d.ts": "899a215854c1a736e7c0720f13b1a4d098da8062f4e8de122f4fb9088447286a",
+    "src/core/runtime.ts": "c5e957e61a50fa284b44e9fa172a7b0155d9bc153a7ec0ee569b406047685725",
+    "dist/browser/source.d.ts": "727eee8b113dece1f4a57a4faebefa70932fa0a4c90f1a538e8ce492869d1e5d",
+    "src/browser/source.ts": "ada0124be30b4f2c25a6bdc4313c74dc6588f1182cd328cb95e712736a60086e",
+    "dist/core/transform.d.ts": "5d2552ef1399b5aeebcaa9c589c34f149f936cc9c6fb83ff3f1337d300549563",
+    "src/core/transform.ts": "c386496085ae61348559db848c870b01265198cb04c4779df7b8033126c045a7"
+  },
+  "packageIdentity": {
+    "name": "@felipegalind0/gamepad-tools",
+    "private": false,
+    "version": "0.1.0",
+    "description": "Gamepad input snapshot, profile and binding toolkit for foss-earth and 0sfs",
+    "type": "module",
+    "license": "MIT",
+    "keywords": [
+      "gamepad",
+      "bindings",
+      "foss-earth",
+      "0sfs",
+      "webgpu",
+      "babylon"
+    ],
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "sideEffects": [
+      "./src/styles.css"
+    ],
+    "files": [
+      "dist",
+      "src",
+      "README.md",
+      "TODO.md",
+      "LICENSE",
+      "docs",
+      "ASSETS.md"
+    ],
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "typecheck": "tsc -p tsconfig.json --noEmit",
+      "demo": "vite demo"
+    },
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js",
+        "default": "./dist/index.js"
+      },
+      "./core": {
+        "types": "./dist/core/index.d.ts",
+        "import": "./dist/core/index.js"
+      },
+      "./browser": {
+        "types": "./dist/browser/index.d.ts",
+        "import": "./dist/browser/index.js"
+      },
+      "./viewer": {
+        "types": "./dist/viewer/index.d.ts",
+        "import": "./dist/viewer/index.js"
+      },
+      "./ui": {
+        "types": "./dist/ui/index.d.ts",
+        "import": "./dist/ui/index.js"
+      },
+      "./styles.css": "./src/styles.css"
+    },
+    "peerDependencies": {
+      "@babylonjs/core": "^8.21.1"
+    },
+    "devDependencies": {
+      "@babylonjs/core": "^8.21.1",
+      "typescript": "^5.9.3",
+      "vite": "^8.0.1"
+    }
+  },
+  "status": "Retained reviewed exact device artifact fixture; no invented Git revision or current remote/full-ref/installed Campus qualification"
+}

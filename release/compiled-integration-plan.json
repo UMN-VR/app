@@ -1,0 +1,98 @@
+{
+  "format": "umn-campus-compiled-integration-source-plan",
+  "version": 1,
+  "state": "FROZEN_SOURCE_PREPARATION; NOT_EXECUTABLE_UNTIL_ALL_INPUTS_RESEALED_AND_NEW_GRANT",
+  "sourceOwner": "UMN-VR/app",
+  "routes": [
+    "/tour/",
+    "/tour/minneapolis/",
+    "/tour/st-paul/",
+    "/tour/twin-cities/"
+  ],
+  "architecture": {
+    "selector": "Runtime-free UMN-VR/tour; three ordinary route links",
+    "app": "One Campus native factory and shell, public shared owner ports, thirteen existing tabs",
+    "scenes": "Independent 48/12 authored memberships; thin 60-panorama aggregate; no copied child runtime or media",
+    "media": "One App-owned immutable measured release borrowed by all three scenes",
+    "assembly": "Club public artifact assembler receives four exact releases, common root worker and explicitly retained older files"
+  },
+  "operations": [
+    {
+      "publicExport": "@umn-vr/app/native",
+      "operation": "createCampusNativeHostFactory",
+      "state": "SOURCE_ONLY; native provider qualification and type/runtime tests pending"
+    },
+    {
+      "publicExport": "@umn-vr/app/scene-composition",
+      "operation": "createCampusTourCompositionOwner",
+      "state": "SOURCE_ONLY; seventeen fixtures unrun after PhaseA stop"
+    },
+    {
+      "publicExport": "@umn-vr/app/scene-production",
+      "operation": "prepareCampusScenes",
+      "state": "BLOCKED; accepted shared composition cannot yet express three original parity operations"
+    },
+    {
+      "publicExport": "@umn-vr/app/prepared-media",
+      "operation": "measureNamedPreparedMedia",
+      "state": "UNRUN; complete named file inventory must be frozen before any acquisition"
+    },
+    {
+      "publicExport": "@umn-vr/app/compiled-integration",
+      "operation": "createFourRouteAssemblyInput",
+      "state": "UNRUN; consumes actual compiled descriptors; no generated release substitution"
+    },
+    {
+      "publicExport": "@umn-vr/browser-testing/local-smoke",
+      "operation": "runCompiledCampusSmoke",
+      "state": "SOURCE_ONLY; exact checked assembly, driver, helper and browser grant required"
+    }
+  ],
+  "acceptedCompositionInputs": [
+    {
+      "repository": "foss-earth/scenes",
+      "revision": "f5daa60273a4b5d89ca62efec94be61bc07f6dfc",
+      "archiveSha256": "a3f6c3d5e84906dea2e10c8452f4224a4c896ebca450972b738b147d56c58ccf"
+    },
+    {
+      "repository": "foss-earth/preview-sheets",
+      "revision": "4b688d341e8d557f19ef6ab19528fe541cbde1bc",
+      "archiveSha256": "254d5e36d447abdd6924d1b020ebd2df6e609f879a88ef5eaf35d6e225e2dc82"
+    },
+    {
+      "repository": "foss-earth/images",
+      "revision": "02523eae1c8c3acd461bfe13111116fbb8d80f28",
+      "archiveSha256": "cca1df6798d4d5eccf347ac995e00816529b84bdda7b6914268ff2998341f1f8"
+    }
+  ],
+  "missingSharedContracts": [
+    "Standalone cross-campus destination selection preserving original four external directions",
+    "Ordered cross-child link insertion at Regis Hall and Community Connections",
+    "Consume/replace both projected earlier-tour-stops groups with original four-member mixed group, retaining 24 groups/order/provenance",
+    "Qualified Engine browser bindings and actual GlobeRuntime settlement including Google downloads/model parsing",
+    "Qualified 360 image description compatible with Scenes representation status dimensions/cost/density",
+    "Qualified Renderer frame/device retirement and UI worker/keeper/version watcher build exports"
+  ],
+  "missingDerivedInputs": [
+    "Complete named 62582-file path/size/hash inventory and reviewed input-file seal; prior corpus totals alone are insufficient",
+    "Actual Campus human source heads and checked App/About/scene/selector artifacts",
+    "Exact installed qualified public provider closures/locks; current manifests/locks remain frozen",
+    "Three generated scene descriptors and common worker build seal",
+    "Exact older retained release descriptors and local smoke driver/browser/helper seals"
+  ],
+  "futureLimits": {
+    "wallSeconds": 7200,
+    "cleanupSeconds": 90,
+    "processConcurrency": 1,
+    "nodeTestConcurrency": 1,
+    "vitestMaxWorkers": "50%",
+    "localServerPort": 4176,
+    "browser": "one sequential local smoke through qualified shared helper; no download/benchmark/backend sweep"
+  },
+  "sourcePreservation": "Authored sources, legacy expectations, credits, routes, media, private backup and every .local receipt preserved. No install/adoption, media scan/copy, module/check/build/pack, browser/server, commit/ref/remote/deployment performed in PhaseB.",
+  "firstHumanPreview": "Checked new canonical four-route assembly plus real startup/navigation/resource smoke. Separate final installer/full backend/update/publication/admission and future accessibility/media gates remain incomplete.",
+  "privateRequest": "Frozen exact command and input/output seal request is retained in the Campus handoff; this portable source plan is not an execution grant.",
+  "rollback": "Keep prior source bytes, all old artifacts and exact media. Additive output only; never reset/clean or delete evidence. No production change has occurred.",
+  "assemblyPreparedContent": "Exactly three checked same-origin immutable manifest file pins supplied in preparedContent; App route artifact includes only compiled index/bundles, never generated scene files. Club validates all bytes and copies those manifests once.",
+  "localCandidateMedia": "The frozen localhost4176 candidate must bind producer media.baseUrl to http://127.0.0.1:4176/tour/twin-cities/ and page content URL to root-relative immutable manifest paths, so the actual app requests the assembled original bytes. Same file/media identities retained. Candidate metadata is not a production/public transport release; final public URL/scene metadata qualification remains separate."
+}

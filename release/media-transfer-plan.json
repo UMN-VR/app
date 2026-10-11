@@ -1,0 +1,108 @@
+{
+  "format": "umn-campus-single-copy-prepared-media-plan",
+  "version": 3,
+  "status": "COMPLETE_NAMED_METADATA_INVENTORY; FRESH_FILE_HASHING_MEASUREMENT_ACQUISITION_UNRUN",
+  "retainedArtifactOwner": "UMN-VR/app",
+  "sharedArtifactIdentity": "umn-campus-legacy-prepared-media:4b89d4e2af09:61c25d55523be24e4d937e594169c3d5d385f816005bc20bf209201c794686ed",
+  "input": {
+    "selectedLegacyDirectory": "tour/twin-cities",
+    "baseline": "release/content-baseline.json",
+    "legacyManifest": {
+      "path": "tour/twin-cities/scene.json",
+      "bytes": 377117,
+      "sha256": "61c25d55523be24e4d937e594169c3d5d385f816005bc20bf209201c794686ed"
+    },
+    "priorKnownFullCorpus": {
+      "files": 62582,
+      "bytes": 694126088,
+      "treeSha256": "5741f8a4b9e2e4f129fcce2a2d44fa2c49bc4e43e54d24757af2f949f6d7d0d3"
+    },
+    "priorKnownReferencedMedia": {
+      "files": 62461,
+      "bytes": 693137598,
+      "treeSha256": "39b49775ef220f6811fcd1d2d14054f99d31058fa57ceba7feb9d24aca009f0b"
+    },
+    "baselineStatus": "Retained legacy baseline and fresh metadata counts/sizes agree; this is not a new byte-level verification or acquisition.",
+    "namedSourceFiles": {
+      "inventoryEvidence": ".local/repository-split/contract-repair/20261010-source/media-names/inventory.json",
+      "inventorySha256": "fb681b3e979dc5358cbbf5c59706420d0da125ee7aed6d2af78fec0daaca7ce1",
+      "inventorySizeBytes": 28458321,
+      "sourceNamesEvidence": ".local/repository-split/contract-repair/20261010-source/media-names/source-names.txt",
+      "sourceNamesSha256": "b29a2ce38799ecb46e489b2d75845b395ffc99fb6c25b9838a11e9789870d995",
+      "sourceNamesSizeBytes": 7872187,
+      "metadataReceiptEvidence": ".local/repository-split/contract-repair/20261010-source/media-names/metadata-receipt.json",
+      "files": 62582,
+      "entries": 77343,
+      "statBytes": 694126088,
+      "priorFileHashCount": 2,
+      "missingFreshFileHashes": 62580,
+      "freshMediaFilesRead": 0,
+      "scope": "Metadata-only exact-root enumeration,120seconds/100000entries; no symlink following/copy/hash/decode/backup.",
+      "metadataReceiptSha256": "43788ca4790b4e15db99a10f088ce264b72267a88320c65d6309d2ebe09091cd",
+      "closedExecutionReceiptEvidence": ".local/repository-split/contract-repair/20261010-source/metadata-enumeration-closed-receipt.json",
+      "closedExecutionReceiptSha256": "e20cd3b7c234c9a12f118710ad1f387eb461d19fac8fdbfa3a45f4f741bdff75",
+      "symlinks": 0,
+      "specialEntries": 0
+    }
+  },
+  "sourcePreparationPerformed": {
+    "manifestOnlyRead": true,
+    "authoredPlacementsRead": true,
+    "sheetCellMetadataRead": true,
+    "fullCorpusReadOrTransfer": false,
+    "photosReencoded": false,
+    "privateBackupRead": false,
+    "metadataOnlyEnumeration": true,
+    "freshCorpusByteReads": 0
+  },
+  "laterBoundedScope": {
+    "request": "Separate finite media/content grant after exact shared producer/installer transport contracts. Coordinator grants actual frozen command/source/target/deadlines first.",
+    "allowedWork": [
+      "Bind all62,582 already enumerated physical names, existing modes/sizes and2 prior hashes; freshly hash exactly62,580 still-unbound files (or explicitly reviewed complete requalification), with bounded source identity/target/deadline grant before opening any media bytes.",
+      "One full inventory/shared Scenes file check against the retained legacy baseline;retain complete receipt/log",
+      "One immutable archive directly from the prepared public corpus;measure archive SHA/size/full exact file map and cell-map seal",
+      "One checked public artifact transport/descriptor with App owner;no guessed URL or hash",
+      "One workspace prepared artifact cache, borrowed by both children/aggregate;references preserve base URLs and exact original asset identities",
+      "Retain exact legacy route/manifest bytes/preview sheet/older bundles during additive Club overlay"
+    ],
+    "proposedOwnerOutputRoot": "UMN-VR/app/build/repository-split/prepared-media (new isolated child per granted run)",
+    "installLayout": "One measured immutable App media release shared by all3routes; canonicalClubassembly copieseach retainedmediafileonce,neverintochildren",
+    "forbidden": [
+      "Backup input",
+      "Photo regeneration or reencoding",
+      "Source corpus deletion/move",
+      "62582-file copies into children or aggregate",
+      "Silent provider/source revision follow",
+      "Release URL without checked immutable bytes"
+    ],
+    "producerLimits": "Freeze explicit finite totalInputBytes/mediaIndexBytes/jsonNodes from actual measured mediaMap/index. Default512MiB input/8MiB index cannot be assumed to cover694MB/62582files."
+  },
+  "publication": {
+    "archiveURL": null,
+    "archiveSha256": null,
+    "archiveSizeBytes": null,
+    "releaseDescriptorSha256": null,
+    "cellMapSealSha256": null,
+    "ready": false,
+    "localHumanPreview": "Actuallocalcompiledassembly may consume measured preparedpublicbytes and no publictransport; finalworkspace/publicdistribution requires archive/transportqualification"
+  },
+  "retainedOwnerDecisions": {
+    "media": "App owns the retained legacy corpus/single sheet release and optional authoring;each content owner owns membership/placements/prepared-media selection;no separate empty media repo",
+    "docs": "Current owner-local docs and frozen migration provenance retained in App,scene owners,Tour,About,club,installer,browser-testing and .github",
+    "research": "Retained App methodology/roadmap/WebGL review and relevant owner-local proposal docs;no independently deliverable research artifact currently requires a repo",
+    "privateBackup": "Retained in original .local evidence only;never default setup/build/runtime input"
+  },
+  "mediaBaseUrl": "https://umn-vr.github.io/tour/twin-cities/",
+  "producer": {
+    "publicExport": "@umn-vr/app/prepared-media",
+    "source": "tools/release/prepared-media.mjs",
+    "operation": "measureNamedPreparedMedia",
+    "acquisition": "No bytes read in current source phase; complete named inventory frozen; future byte hashing/measurement only under exact media grant."
+  },
+  "localInputConfiguration": {
+    "sourceRoot": "Explicit local retained prepared-directory path in ignored named-input.json; no defaultmachine path",
+    "selectedLegacyDirectory": "tour/twin-cities",
+    "examplePublicRoot": "~/gh/UMN-VR/UMN-VR.github.io-archive/public",
+    "releaseIdentity": "Repository UMN-VR/app; exact revision/media hashes retained; localinput never becomes an unverified public URL"
+  }
+}

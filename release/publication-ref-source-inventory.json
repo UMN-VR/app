@@ -1,0 +1,62 @@
+[
+  {
+    "repository": "UMN-VR/app",
+    "actualRefs": 0,
+    "manifestSha256": "590dff15702658f06b85bab2e7e32cfc3e324d3fd7d1ff16fb7311e2317b3f68",
+    "scope": "Lightweight ref data inventory only; NO attribution/full-ref audit executed; empty/unborn refs cannot qualify final publication"
+  },
+  {
+    "repository": "UMN-VR/minneapolis",
+    "actualRefs": 0,
+    "manifestSha256": "16d4e61fee4e0f17cab36675f679e2de12f35b25643f441e8a841b40729d9d58",
+    "scope": "Lightweight ref data inventory only; NO attribution/full-ref audit executed; empty/unborn refs cannot qualify final publication"
+  },
+  {
+    "repository": "UMN-VR/st-paul",
+    "actualRefs": 0,
+    "manifestSha256": "62866b7bfa617d078a1933902791961d4b9418e997d4bc7c821bd69dab3b0b24",
+    "scope": "Lightweight ref data inventory only; NO attribution/full-ref audit executed; empty/unborn refs cannot qualify final publication"
+  },
+  {
+    "repository": "UMN-VR/twin-cities",
+    "actualRefs": 0,
+    "manifestSha256": "58790942f184cf194c9aaeab8149b19befbd22a029de10fc5d45ec6b37e21b8a",
+    "scope": "Lightweight ref data inventory only; NO attribution/full-ref audit executed; empty/unborn refs cannot qualify final publication"
+  },
+  {
+    "repository": "UMN-VR/tour",
+    "actualRefs": 2,
+    "manifestSha256": "9a5abef2261c4c9fc64e379850bbe5008da868fdd2ed09db1c14911355511614",
+    "scope": "Lightweight ref data inventory only; NO attribution/full-ref audit executed; empty/unborn refs cannot qualify final publication"
+  },
+  {
+    "repository": "UMN-VR/about",
+    "actualRefs": 1,
+    "manifestSha256": "c120a5d241f6384aeb1436ff78433b946d169d1f7d15923e1fb2b118169a28f3",
+    "scope": "Lightweight ref data inventory only; NO attribution/full-ref audit executed; empty/unborn refs cannot qualify final publication"
+  },
+  {
+    "repository": "UMN-VR/dev_installer",
+    "actualRefs": 0,
+    "manifestSha256": "b7a7e0f146ff677f0f3735204d125f1b9f7d4cc7e699a0bbafaa4f5364218054",
+    "scope": "Lightweight ref data inventory only; NO attribution/full-ref audit executed; empty/unborn refs cannot qualify final publication"
+  },
+  {
+    "repository": "UMN-VR/UMN-VR.github.io",
+    "actualRefs": 1,
+    "manifestSha256": "af85abcf52936e740a6f833b294c30f10b39c2b90d2a6f019655b7dcf92411f9",
+    "scope": "Lightweight ref data inventory only; NO attribution/full-ref audit executed; empty/unborn refs cannot qualify final publication"
+  },
+  {
+    "repository": "UMN-VR/browser-testing",
+    "actualRefs": 0,
+    "manifestSha256": "19b7f69e732d07c6bd326ca5061dcc1710335f3b38eec3e39e0cb39181150fe2",
+    "scope": "Lightweight ref data inventory only; NO attribution/full-ref audit executed; empty/unborn refs cannot qualify final publication"
+  },
+  {
+    "repository": "UMN-VR/.github",
+    "actualRefs": 0,
+    "manifestSha256": "d7b3ab9b8a997dd40788dff57c9f10d1363505aa5504de26db986fbf5416c2a9",
+    "scope": "Lightweight ref data inventory only; NO attribution/full-ref audit executed; empty/unborn refs cannot qualify final publication"
+  }
+]

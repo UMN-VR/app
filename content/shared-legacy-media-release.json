@@ -1,0 +1,577 @@
+{
+  "format": "umn-shared-legacy-media-source-plan",
+  "version": 1,
+  "owner": "UMN-VR/app",
+  "artifactId": "UMN-VR/app:legacy-prepared-media",
+  "status": "SOURCE_ONLY; retained once, full corpus artifact/immutable URL seal pending separate bounded transfer grant",
+  "legacyScene": {
+    "id": "umn-twin-cities",
+    "revision": "4b89d4e2af09",
+    "sha256": "61c25d55523be24e4d937e594169c3d5d385f816005bc20bf209201c794686ed",
+    "sizeBytes": 377117,
+    "publicURL": "https://umn-vr.github.io/tour/twin-cities/scene.json"
+  },
+  "previewSheet": {
+    "id": "previews-64",
+    "revision": "e2bebc5b31f1",
+    "mimeType": "image/jpeg",
+    "width": 1536,
+    "height": 960,
+    "encodedBytes": 455974,
+    "url": "media/previews-64.jpg",
+    "publicURL": "https://umn-vr.github.io/tour/twin-cities/media/previews-64.jpg",
+    "sha256": "e2bebc5b31f180d9803666053a901833c49d32ec3a7671aebc273340d7df85f1"
+  },
+  "cells": [
+    {
+      "assetId": "northrop-mall",
+      "assetRevision": "ac6969926c0b",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "assetId": "folwell-hall",
+      "assetRevision": "91f24885aec2",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 0
+    },
+    {
+      "assetId": "inside-northrop-auditorium",
+      "assetRevision": "7cc5717d8036",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 0
+    },
+    {
+      "assetId": "walter-library-lobby",
+      "assetRevision": "7bcdf8d79c35",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 0
+    },
+    {
+      "assetId": "the-toaster-innovation-hub",
+      "assetRevision": "577bc28059e2",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 64
+    },
+    {
+      "assetId": "walter-library-study-space",
+      "assetRevision": "1411f60eeb5b",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 64
+    },
+    {
+      "assetId": "walter-library-computer-lab",
+      "assetRevision": "b54fe75e1d8d",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 64
+    },
+    {
+      "assetId": "fraser-hall-student-lounge",
+      "assetRevision": "36f762dbc5c7",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 64
+    },
+    {
+      "assetId": "undergraduate-teaching-labs",
+      "assetRevision": "460b65501167",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 128
+    },
+    {
+      "assetId": "education-sciences-building",
+      "assetRevision": "41db3dd0c616",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 128
+    },
+    {
+      "assetId": "washington-avenue-walking-bridge",
+      "assetRevision": "a58e6ddb3048",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 128
+    },
+    {
+      "assetId": "atrium-of-tate-hall",
+      "assetRevision": "8960b740855b",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 128
+    },
+    {
+      "assetId": "taylor-center",
+      "assetRevision": "718a24e7b138",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 192
+    },
+    {
+      "assetId": "circle-of-indigenous-nations",
+      "assetRevision": "d0bc63ea250d",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 192
+    },
+    {
+      "assetId": "bruininks-hall-student-services",
+      "assetRevision": "51df22d969f6",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 192
+    },
+    {
+      "assetId": "center-for-academic-planning-and-exploration",
+      "assetRevision": "b4b17d041fb1",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 192
+    },
+    {
+      "assetId": "one-stop-student-services",
+      "assetRevision": "b94c6c00cbda",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 256
+    },
+    {
+      "assetId": "health-sciences-education-center",
+      "assetRevision": "c9c8856fc62b",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 256
+    },
+    {
+      "assetId": "nursing-labs-at-the-bentson-center",
+      "assetRevision": "cb4aa86ca343",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 256
+    },
+    {
+      "assetId": "immersive-learning-at-the-bentson-center",
+      "assetRevision": "59a4d2a9fea1",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 256
+    },
+    {
+      "assetId": "health-sciences-education-center-7th-floor",
+      "assetRevision": "a3d761d7fa26",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 320
+    },
+    {
+      "assetId": "m-simulation-lab",
+      "assetRevision": "9a437194f316",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 320
+    },
+    {
+      "assetId": "coffman-memorial-union",
+      "assetRevision": "435403b7838a",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 320
+    },
+    {
+      "assetId": "student-union-bookstore",
+      "assetRevision": "fc28321a6c15",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 320
+    },
+    {
+      "assetId": "coffman-memorial-union-2nd-floor",
+      "assetRevision": "89085c680222",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 384
+    },
+    {
+      "assetId": "washington-avenue-bridge-and-the-mississippi-river",
+      "assetRevision": "b1940456c51c",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 384
+    },
+    {
+      "assetId": "west-bank-heller-hall",
+      "assetRevision": "6f887aff8c6f",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 384
+    },
+    {
+      "assetId": "international-student-and-scholar-services-isss",
+      "assetRevision": "b55f301ab014",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 384
+    },
+    {
+      "assetId": "hanson-hall-minnesota-carlson",
+      "assetRevision": "5fea16c980f3",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 448
+    },
+    {
+      "assetId": "carlson-school-of-management",
+      "assetRevision": "7691e1337e8e",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 448
+    },
+    {
+      "assetId": "rarig-theater",
+      "assetRevision": "3f38cf8c446b",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 448
+    },
+    {
+      "assetId": "regis-center-for-art-gallery",
+      "assetRevision": "536cd290397c",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 448
+    },
+    {
+      "assetId": "classroom-studio-spaces",
+      "assetRevision": "8ca522d2ed6e",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 512
+    },
+    {
+      "assetId": "saint-paul-campus",
+      "assetRevision": "29a9e994a36f",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 512
+    },
+    {
+      "assetId": "horticulture-display-garden",
+      "assetRevision": "a9566f8bdc02",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 512
+    },
+    {
+      "assetId": "life-and-environmental-sciences",
+      "assetRevision": "1701a4c42667",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 512
+    },
+    {
+      "assetId": "plant-diagnostics-lab",
+      "assetRevision": "bdcaf4360388",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 576
+    },
+    {
+      "assetId": "mcneal-hall-design-studio",
+      "assetRevision": "30f4e36f8a49",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 576
+    },
+    {
+      "assetId": "letterpress-lab",
+      "assetRevision": "1a3f9132c257",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 576
+    },
+    {
+      "assetId": "apparel-design-classroom",
+      "assetRevision": "6e660f581966",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 576
+    },
+    {
+      "assetId": "cfans",
+      "assetRevision": "e4b8a0c01518",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 640
+    },
+    {
+      "assetId": "community-connections",
+      "assetRevision": "0c6a9ad4bd87",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 640
+    },
+    {
+      "assetId": "bell-museum-planetarium",
+      "assetRevision": "0b8423469fb7",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 640
+    },
+    {
+      "assetId": "recreation-and-wellness-center",
+      "assetRevision": "dd094e93622d",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 640
+    },
+    {
+      "assetId": "recwell-indoor-track",
+      "assetRevision": "144f00859cdf",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 704
+    },
+    {
+      "assetId": "recwell-lobby",
+      "assetRevision": "0587c6571b9e",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 704
+    },
+    {
+      "assetId": "golden-gopher-spirit-athletics",
+      "assetRevision": "f05d816d4cd5",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 704
+    },
+    {
+      "assetId": "huntington-bank-stadium",
+      "assetRevision": "e071e67d7240",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 704
+    },
+    {
+      "assetId": "stone-arch-bridge",
+      "assetRevision": "577f9334019b",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 768
+    },
+    {
+      "assetId": "the-commons-park",
+      "assetRevision": "420c64fd5404",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 768
+    },
+    {
+      "assetId": "residence-life-and-dining",
+      "assetRevision": "d3b25ed4e26e",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 768
+    },
+    {
+      "assetId": "superblock",
+      "assetRevision": "3b17cbc95b62",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 768
+    },
+    {
+      "assetId": "17th-ave-residence-hall",
+      "assetRevision": "ff4c8488f643",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 832
+    },
+    {
+      "assetId": "pioneer-hall-lobby",
+      "assetRevision": "2b70d0894a7d",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 832
+    },
+    {
+      "assetId": "superblock-outdoor-area",
+      "assetRevision": "5d280bdc58de",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 832
+    },
+    {
+      "assetId": "impact-and-value-of-a-umn-degree",
+      "assetRevision": "82e2969ae714",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 832
+    },
+    {
+      "assetId": "wall-of-discovery-scholars-walk",
+      "assetRevision": "8ebff6bb3d82",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 0,
+      "y": 896
+    },
+    {
+      "assetId": "northrop-auditorium",
+      "assetRevision": "e183b5df3440",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 384,
+      "y": 896
+    },
+    {
+      "assetId": "mcneal-hall",
+      "assetRevision": "907f4e256403",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 768,
+      "y": 896
+    },
+    {
+      "assetId": "st-paul-mall",
+      "assetRevision": "e9ae00a53cdb",
+      "representationId": "preview-64",
+      "faceSize": 64,
+      "id": "previews-64",
+      "x": 1152,
+      "y": 896
+    }
+  ],
+  "mediaPlan": {
+    "sharedSheet": "Retain one App-owned immutable release and one cell map. No duplicated sheets/child->aggregate cycle.",
+    "children": "Each authored child selects its own photo files once; existing root legacy URLs remain served for older apps.",
+    "legacyRetention": "Full 62582-file baseline must be sealed/transferred once after grant; no scan/copy performed now. New media artifacts require distinct immutable URLs.",
+    "publicArchiveURL": null,
+    "artifactSha256": null,
+    "fullInventorySha256": null,
+    "rights": "Photographs \u00a9 Regents of the University of Minnesota; preservation does not assert relicensing. Project code AGPL-3.0; OSM provenance/ODbL remain distinct."
+  },
+  "artifactIdentity": "umn-campus-legacy-prepared-media:4b89d4e2af09:61c25d55523be24e4d937e594169c3d5d385f816005bc20bf209201c794686ed"
+}

@@ -1,0 +1,375 @@
+{
+  "owner": "UMN-VR/app",
+  "method": "Exact authored working-byte transfer and retained Tour human ancestry, with separately recorded local migration source identities.",
+  "inheritedTourLineage": {
+    "owner": "UMN-VR/tour",
+    "sourceRepository": "UMN-VR/UMN-VR.github.io",
+    "originalSourceRevision": "306d0c301da351e0573854d99b1c284a772f4957",
+    "coordinatorCleanSourceRevision": "638077b90594164739116575510779cdaa55c20c",
+    "extractionBaseline": "a3c74cb1380522c3d3f24c9be717489216a5ccaa",
+    "method": "Git fast-export/import with source paths selected; human author and committer headers preserved",
+    "paths": [
+      "AGENTS.md",
+      "CLAUDE.md",
+      "README.md",
+      "package.json",
+      "package-lock.json",
+      ".gitignore",
+      "vite.config.ts",
+      "eslint.config.js",
+      "tsconfig.json",
+      "tsconfig.app.json",
+      "tsconfig.node.json",
+      "tsconfig.test.json",
+      "src",
+      "tour",
+      "tools/twin-cities",
+      "docs/roadmap.md",
+      "docs/content-delivery.md",
+      "docs/bug-reporting.md",
+      "docs/placements-prompt.md",
+      "docs/tour-media-prompt.md",
+      "docs/webgl-performance-review.md"
+    ],
+    "excluded": [
+      "club landing/branding",
+      "generated prepared media",
+      "private YouVisit backup",
+      "all local evidence"
+    ],
+    "acceptance": "Staging extraction; shared artifacts, checks, publication audit and remote admission pending"
+  },
+  "sourceHead": "a3c74cb1380522c3d3f24c9be717489216a5ccaa",
+  "transferReceiptSha256": "e394193ad8ff83ad205aa52d90ba8c3ffa5bb9c4ce42bcf5e826e06651546f78",
+  "files": [
+    {
+      "sourcePath": "src/vite-env.d.ts",
+      "destinationPath": "src/vite-env.d.ts",
+      "sha256": "0e200eca22e05d957837ed32061c281fa711e781b938f29edf22a0d41df36b0c"
+    },
+    {
+      "sourcePath": "src/tour/shell.test.ts",
+      "destinationPath": "src/tour/shell.test.ts",
+      "sha256": "06492d53b0375849a53d02d9bc4649a02838de123c2b9da84775ce2e81d1af23"
+    },
+    {
+      "sourcePath": "src/tour/twinCitiesScene.test.ts",
+      "destinationPath": "src/tour/twinCitiesScene.test.ts",
+      "sha256": "ab0ee42c5accf79e7c1f79f3e5a533bdcc1360896a457db0ff5ffe7e72abfd44"
+    },
+    {
+      "sourcePath": "src/tour/shell.tsx",
+      "destinationPath": "src/tour/shell.tsx",
+      "sha256": "392cd21aa1c692f56f37bc9b42c8b1448b11404468a57f566787c2d82ce7ccd6"
+    },
+    {
+      "sourcePath": "src/tour/tab-visibility.ts",
+      "destinationPath": "src/tour/tab-visibility.ts",
+      "sha256": "153d37f062df16bcdd80a4ddbc03f80dd6dbb78450ef37e9eeeb63c0948730cb"
+    },
+    {
+      "sourcePath": "src/tour/tab-visibility.test.ts",
+      "destinationPath": "src/tour/tab-visibility.test.ts",
+      "sha256": "cfdecbc95231ae427a3c4b580f906bd00723c5c9578957b16e6d011be22c1486"
+    },
+    {
+      "sourcePath": "src/tour/dev.ts",
+      "destinationPath": "src/tour/dev.ts",
+      "sha256": "fae95664c31d2e455ae2dd91a3e748919d21edf6b557394271b8233431454c7a"
+    },
+    {
+      "sourcePath": "src/tour/composition.ts",
+      "destinationPath": "src/tour/composition.ts",
+      "sha256": "2f285479be1fb17c80a9015499af63a0a5a738feec8a1987f4e54596d84b34ae"
+    },
+    {
+      "sourcePath": "src/tour/scenes.ts",
+      "destinationPath": "src/tour/scenes.ts",
+      "sha256": "f0b1e75773ac889025d318d9b6003d8712f01e9c64a20a49c6e3338cf4661d7c"
+    },
+    {
+      "sourcePath": "src/tour/composition.test.ts",
+      "destinationPath": "src/tour/composition.test.ts",
+      "sha256": "f5db6fe252bfd859233833627c0ebd55233df0c04f1cf258aa57a686cfe78efc"
+    },
+    {
+      "sourcePath": "src/tour/world.test.ts",
+      "destinationPath": "src/tour/world.test.ts",
+      "sha256": "17430464b26cfb01b467750f321d15cffa7f4071ea49d6d300a650acaba2313f"
+    },
+    {
+      "sourcePath": "src/tour/dev-session.test.ts",
+      "destinationPath": "src/tour/dev-session.test.ts",
+      "sha256": "c2f7a3ca2e3893f34efd76c6be2b46f06a3b7de8d32139cfdcf713047999d8b4"
+    },
+    {
+      "sourcePath": "src/tour/twinCities.ts",
+      "destinationPath": "src/tour/twinCities.ts",
+      "sha256": "cbdc7d7c7754753c9cf266873126cd74bce26f1c95a00aff502d6ee3bd187f50"
+    },
+    {
+      "sourcePath": "src/tour/dev.test.ts",
+      "destinationPath": "src/tour/dev.test.ts",
+      "sha256": "702ad8f9d101bff3330af2a15881d62cef9c44ddcecdd9bcd41af276e948992b"
+    },
+    {
+      "sourcePath": "src/tour/content-host.ts",
+      "destinationPath": "src/tour/content-host.ts",
+      "sha256": "0287d624b28e763d787c7932002e7b52c81fb27d39abe40bf64c35f9ac746bb9"
+    },
+    {
+      "sourcePath": "src/tour/dev-session.ts",
+      "destinationPath": "src/tour/dev-session.ts",
+      "sha256": "5505c7d371cbc799f69784955da6e82ab3b8aa34b8ae423cd8a8b48d87c3587d"
+    },
+    {
+      "sourcePath": "src/tour/dev-host.test.ts",
+      "destinationPath": "src/tour/dev-host.test.ts",
+      "sha256": "fd85e1252f65da687c993c8e276da631905b9267d088b73e1950f00495f61bf2"
+    },
+    {
+      "sourcePath": "src/tour/controller.ts",
+      "destinationPath": "src/tour/controller.ts",
+      "sha256": "976fc2fee98583d4a74c5a7c18ec6dfa05908932e5f94e0bc28402faabbb67a1"
+    },
+    {
+      "sourcePath": "src/tour/world.ts",
+      "destinationPath": "src/tour/world.ts",
+      "sha256": "7dbfc3de5ac920efed5f62ebb4f3aed99861b1fd363812bcbd009e9f2578380e"
+    },
+    {
+      "sourcePath": "src/tour/dev-host.ts",
+      "destinationPath": "src/tour/dev-host.ts",
+      "sha256": "6c2b596c500b9b8035aa06806be60f96739afe520f688167b20155901190fbf6"
+    },
+    {
+      "sourcePath": "tools/release/artifact.mjs",
+      "destinationPath": "tools/release/artifact.mjs",
+      "sha256": "5eec5cf3566ccf737005ff898175dc0b221cbe9477b720b078994aebdf10ee3b"
+    },
+    {
+      "sourcePath": "tools/release/delivery.test.mjs",
+      "destinationPath": "tools/release/delivery.test.mjs",
+      "sha256": "59e86f3d62758031f714113285584ccfa4a64b502ddddab50d5b4ed2157aebe4"
+    },
+    {
+      "sourcePath": "tools/release/artifact.test.mjs",
+      "destinationPath": "tools/release/artifact.test.mjs",
+      "sha256": "d40521d1630d06f1f02ea534a817118f4c549174c783fb90f4b28d010bc03713"
+    },
+    {
+      "sourcePath": "tools/release/content-inventory.test.mjs",
+      "destinationPath": "tools/release/content-inventory.test.mjs",
+      "sha256": "ef70c09377a75dce3401de2f58593b141ef0033f461e559109c5ca8f0d32de1e"
+    },
+    {
+      "sourcePath": "tools/release/content-inventory.mjs",
+      "destinationPath": "tools/release/content-inventory.mjs",
+      "sha256": "20e2e848efa44280c4543b471f3d0074c6664cdf1da14a11a14978c0e5d47db9"
+    },
+    {
+      "sourcePath": "tools/release/dry-run.mjs",
+      "destinationPath": "tools/release/dry-run.mjs",
+      "sha256": "d8e27c0fda5d80f2210d3a0d43e509aede53ea36bfb329bee9670541074a2620"
+    },
+    {
+      "sourcePath": "tools/release/artifact.d.mts",
+      "destinationPath": "tools/release/artifact.d.mts",
+      "sha256": "89789fc0744b76d72740a8717b14011f89ae6ecb7e6b47ef4fd6833eb7bc69b3"
+    },
+    {
+      "sourcePath": "tools/release/content-input.test.mjs",
+      "destinationPath": "tools/release/content-input.test.mjs",
+      "sha256": "13f33eca23f838cbf6fecf787e3f63b0ad0462f89e2e23639979165e24e21b08"
+    },
+    {
+      "sourcePath": "tools/release/package.mjs",
+      "destinationPath": "tools/release/package.mjs",
+      "sha256": "e6d056edef1d43866ba19e5fefd495dbecb0c3e29a447a0c9a3b6ae92a530acc"
+    },
+    {
+      "sourcePath": "tools/release/delivery.mjs",
+      "destinationPath": "tools/release/delivery.mjs",
+      "sha256": "30fb3b6c8456e7c7e55fa2f54639eb955c5b7f9d6aabd6281c5a683cdf8790a9"
+    },
+    {
+      "sourcePath": "tools/twin-cities/youvisit.mjs",
+      "destinationPath": "tools/twin-cities/youvisit.mjs",
+      "sha256": "70b7d42e86a237f0831b8c5a40624479f884c67a98b2b2da21e0e8195e17048c"
+    },
+    {
+      "sourcePath": "tools/twin-cities/placements.json",
+      "destinationPath": "tools/twin-cities/placements.json",
+      "sha256": "b915944639359c1cd01ad3f83117026f090cafd48479eff0b6fedf349db1a0e9"
+    },
+    {
+      "sourcePath": "tools/twin-cities/youvisit.test.mjs",
+      "destinationPath": "tools/twin-cities/youvisit.test.mjs",
+      "sha256": "9aaa1337c36b1587afa0e822062aa02118751ff0de03b79f723dcd4c4de0ef08"
+    },
+    {
+      "sourcePath": "tools/twin-cities/README.md",
+      "destinationPath": "tools/twin-cities/README.md",
+      "sha256": "2363a706e51156870474eb3febde9726a26c5d8c5c165a46bf8e7bf93d659f8d"
+    },
+    {
+      "sourcePath": "tools/twin-cities/content-root.mjs",
+      "destinationPath": "tools/twin-cities/content-root.mjs",
+      "sha256": "ee81e6cd5e6273b78e11c816de9d095bf4baf013f9c8b2cefe0ec070fd430af6"
+    },
+    {
+      "sourcePath": "tools/twin-cities/content-root.d.mts",
+      "destinationPath": "tools/twin-cities/content-root.d.mts",
+      "sha256": "e86291d572404195a7f8f81e444f59a1d0461330fcc4d64ca630c67668c5b5a6"
+    },
+    {
+      "sourcePath": "tools/twin-cities/build-scene.mjs",
+      "destinationPath": "tools/twin-cities/build-scene.mjs",
+      "sha256": "ec63a20d053454db11df827abb54d0760179cee3081d22d89130749c7b41372a"
+    },
+    {
+      "sourcePath": "tools/twin-cities/check-content.mjs",
+      "destinationPath": "tools/twin-cities/check-content.mjs",
+      "sha256": "9450ca6b3650374421a791552f5f5dd4506bd1d182472a3a398d509ae425c1c3"
+    },
+    {
+      "sourcePath": "docs/placements-prompt.md",
+      "destinationPath": "docs/placements-prompt.md",
+      "sha256": "d6a75ad16c5748a37ce08d67bcb9326316ae66c6692afa75835057203182ab9d"
+    },
+    {
+      "sourcePath": "docs/content-ownership.md",
+      "destinationPath": "docs/content-ownership.md",
+      "sha256": "3565258c8b422bffe566ba4c9f13f016674e69d2acaf8fbfa6208a3ff2b6ba34"
+    },
+    {
+      "sourcePath": "docs/webgl-performance-review.md",
+      "destinationPath": "docs/webgl-performance-review.md",
+      "sha256": "733ed17d460eade61c87b61855dc5307b519fff457425221eadd95cee10dea59"
+    },
+    {
+      "sourcePath": "docs/tab-compatibility.md",
+      "destinationPath": "docs/tab-compatibility.md",
+      "sha256": "f96aca50748994a724356d85f3f1f75e4ebb5b23a053f93a3121a45130971593"
+    },
+    {
+      "sourcePath": "docs/release-artifact.md",
+      "destinationPath": "docs/release-artifact.md",
+      "sha256": "559656791267e1e567583918ee9f8698dc1761136ef4e26d08ecc3a04de5e77b"
+    },
+    {
+      "sourcePath": "docs/split-contracts.md",
+      "destinationPath": "docs/split-contracts.md",
+      "sha256": "5abc557197221089c705cecc724fd1abba405267a6017a8bc56accc04b240c12"
+    },
+    {
+      "sourcePath": "docs/content-delivery.md",
+      "destinationPath": "docs/content-delivery.md",
+      "sha256": "71001f1e5dd07789777124897d15cc5ce0763bd99302bee25b8fa44453a602bc"
+    },
+    {
+      "sourcePath": "docs/dev-contribution.md",
+      "destinationPath": "docs/dev-contribution.md",
+      "sha256": "1718d3939e2f627e71c50ee13d1d056b457be728439e8291eba037f078ace5cb"
+    },
+    {
+      "sourcePath": "docs/roadmap.md",
+      "destinationPath": "docs/roadmap.md",
+      "sha256": "c1e2c6e4894da7794916ea6c66be506f41ba13c63a93b617bb3f000292ec8420"
+    },
+    {
+      "sourcePath": "docs/staging-status.md",
+      "destinationPath": "docs/staging-status.md",
+      "sha256": "b7786921ae953c5fb5490a90658aa209b5f4626ab42efec0eb8228081153a6b9"
+    },
+    {
+      "sourcePath": "docs/bug-reporting.md",
+      "destinationPath": "docs/bug-reporting.md",
+      "sha256": "97d3a46e440c5a6ef091891c2c3eb86c7e9aa50de644afbc5d3ee08838df8934"
+    },
+    {
+      "sourcePath": "docs/tour-media-prompt.md",
+      "destinationPath": "docs/tour-media-prompt.md",
+      "sha256": "f46076e11220d65b9b60d2c5627d871dd5286263ea03fb66c1a3767dd66365fc"
+    },
+    {
+      "sourcePath": "docs/workspace-release.md",
+      "destinationPath": "docs/workspace-release.md",
+      "sha256": "25d52bb044258145a1f828ddf619a0ec21b8e9ff221015ea710ae2a5e57a4fad"
+    },
+    {
+      "sourcePath": "tsconfig.json",
+      "destinationPath": "tsconfig.json",
+      "sha256": "770b4140bbb581e2dfd9ea9946ffc9c75a1d86ba7d2db5f77c83e37cbdf9d808"
+    },
+    {
+      "sourcePath": "tsconfig.app.json",
+      "destinationPath": "tsconfig.app.json",
+      "sha256": "a5fe8853ce7dfc8f34910b8c1be1b1fc28d5bda9e4bec5f6f912bd329a8b3c33"
+    },
+    {
+      "sourcePath": "tsconfig.node.json",
+      "destinationPath": "tsconfig.node.json",
+      "sha256": "c3dd0fb522feba3596713f51b95bd53d781d845d24aedbfa2ac093d8b39c5120"
+    },
+    {
+      "sourcePath": "tsconfig.test.json",
+      "destinationPath": "tsconfig.test.json",
+      "sha256": "b78cdc99de8037dd3ea213d10b917140fcc098227073bea7c578966b9673d9f5"
+    },
+    {
+      "sourcePath": "eslint.config.js",
+      "destinationPath": "eslint.config.js",
+      "sha256": "2e5a98f05bcb634376c8bd9cdce62c7f9c6ff607c676c72e07686e12d10c762d"
+    },
+    {
+      "sourcePath": "CODE_OF_CONDUCT.md",
+      "destinationPath": "CODE_OF_CONDUCT.md",
+      "sha256": "c3a907b9e659a0f5a4c701be1b34a7d416526c3a99f129bf4d3b9db09c7ffa9d"
+    },
+    {
+      "sourcePath": "CONTRIBUTING.md",
+      "destinationPath": "CONTRIBUTING.md",
+      "sha256": "7af15fbc054455685480004849ace4a0073c939002ac9ef1d3766f4bb2466a90"
+    },
+    {
+      "sourcePath": "LICENSE",
+      "destinationPath": "LICENSE",
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    {
+      "sourcePath": "SECURITY.md",
+      "destinationPath": "SECURITY.md",
+      "sha256": "6baf6d3c1755360f5d902275c893074fd17af2fc10c140fe932b8a90d77d9942"
+    },
+    {
+      "sourcePath": ".attribution.json",
+      "destinationPath": ".attribution.json",
+      "sha256": "f4be8310bb514e13808115779d13d130ac3bbed54e4fca9de6af00602da8d994"
+    },
+    {
+      "sourcePath": ".attribution-release.json",
+      "destinationPath": ".attribution-release.json",
+      "sha256": "d60ee5067185a768f0890da2ed87d82dbfa08f28282e4d05a35e823c70307122"
+    },
+    {
+      "sourcePath": ".github/workflows/attribution-check.yml",
+      "destinationPath": ".github/workflows/attribution-check.yml",
+      "sha256": "b9fdfbf4bd61ed727abaef4fd9990b92714a6d2c1388feec600dc16337436b2c"
+    },
+    {
+      "sourcePath": "SOURCE_PROVENANCE.json",
+      "destinationPath": "SOURCE_PROVENANCE.json",
+      "sha256": "54d34c1a033ce44358eebde2853ef73cfe90632f5d42af64552ce306a68cec7b"
+    }
+  ],
+  "acceptance": "Source-only extraction, human ancestry preserved in retained Tour and recovery; package/full-ref/remote gates pending",
+  "sourceHeadMeaning": "Historical extraction baseline; current owner package revision comes from actual local source identity and Git HEAD, not this extraction receipt.",
+  "filesMeaning": "Immutable historical transfer hashes. Later maintained migration source changes are sealed by separate source checkpoints and actual owner commits.",
+  "localMigrationIdentityPolicy": {
+    "humanParent": "a3c74cb1380522c3d3f24c9be717489216a5ccaa",
+    "sourceTree": "Owner allowlist staged from an empty alternate index, preserving actual audited Tour ancestry without inheriting the Tour product tree or imported refs.",
+    "sourceDistinction": "New migration adapters, producer and compiled tools are maintained successor source; retained parent ancestry does not claim they existed in that parent.",
+    "originalIndex": "Preserved; dirty state is reported honestly."
+  }
+}

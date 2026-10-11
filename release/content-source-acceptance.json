@@ -1,0 +1,29 @@
+{
+  "status": "PRIMARY_ACCEPTED_AUTHORED_SOURCE_METADATA_ONLY_NO_EXECUTED_SUITE_OR_COMPOSED_SCENE",
+  "children": [
+    {
+      "owner": "UMN-VR/minneapolis",
+      "sceneRecordsSha256": "4d6be0d7397a44161817e32f43ced58e94617532d35c398cbc4cf55991242ad1",
+      "entities": 48,
+      "links": 104
+    },
+    {
+      "owner": "UMN-VR/st-paul",
+      "sceneRecordsSha256": "59289674b7c4ecd378fecaaead312d8b9ff148621698255043835b2994ab9980",
+      "entities": 12,
+      "links": 30
+    }
+  ],
+  "aggregateSha256": "356c1c28e6a8d4a8972cdf4066685d50ac14381753610092c999f417d0197449",
+  "preserved": {
+    "entities": 60,
+    "links": 134,
+    "crossCampusDirections": 4,
+    "sameImageAliases": 19,
+    "unknownHeights": 60,
+    "alignedNorth": 0
+  },
+  "membership": "Public groups13-17 plus explicitly named retired Saint Paul placements; no coordinates/private source used.",
+  "sharedMediaDescriptor": "content/shared-legacy-media-release.json",
+  "genericProducer": "Earth Scenes checked composition requested; no generated v1 output authored locally."
+}
