@@ -6,5 +6,5 @@ export default defineConfig({
   publicDir: false,
   plugins: [react(), babylonShaderChunks()],
   resolve: { dedupe: ["@babylonjs/core", "@babylonjs/loaders", "react", "react-dom"] },
-  test: { exclude: [...configDefaults.exclude, ".local/**", "public/**", "tools/release/**/*.test.mjs"] },
+  test: { exclude: [...configDefaults.exclude, ".local/**", "public/**", "tools/release/**/*.test.mjs", "tools/verification/**/*.test.mjs"] },
 });
