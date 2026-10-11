@@ -507,7 +507,7 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
                 engineVersion: engineVersion ?? engineClass, engineClass,
                 deviceKind: "unknown", fallbackReason: renderer.fallbackReason ?? null },
               runtimeStatus: { ...live.status }, navigation: live.getNavigationState(), camera: live.getViewState(),
-              viewer: viewer!.status(), activeImage: viewer!.status().active ? viewer!.describeImage(viewer!.status().active!) : null,
+              viewer: viewer!.status(), activeImage: viewer!.status().active ? viewer!.describeImage?.(viewer!.status().active!) ?? null : null,
               imageCache: cache.stats(),
               activeSources: viewer!.status().active ? viewer!.currentSources(viewer!.status().active!) : null,
               published: published.state(), interfaceTheme: settings.get("interface.theme"),

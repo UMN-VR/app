@@ -13,7 +13,10 @@
       "types": "./dist/native-entry.d.ts",
       "import": "./src/native-entry.ts"
     },
-    "./vite": "./tools/build/vite.ts",
+    "./vite": {
+      "types": "./dist/vite/tools/build/vite.d.ts",
+      "import": "./dist/vite/tools/build/vite.js"
+    },
     "./release": {
       "types": "./tools/release/artifact.d.mts",
       "import": "./tools/release/artifact.mjs"
@@ -125,7 +128,7 @@
     "test": "vitest run --maxWorkers=50%",
     "test:release": "node --test --test-concurrency=1 tools/release/*.test.mjs",
     "lint": "eslint . --cache --cache-strategy content --cache-location node_modules/.cache/eslint/",
-    "build": "tsc -p tsconfig.public.json",
+    "build": "tsc -p tsconfig.public.json && tsc -p tsconfig.vite-public.json",
     "build:scene": "node tools/twin-cities/build-scene.mjs",
     "package:app": "node tools/release/package.mjs",
     "check:implementation": "npm run typecheck && npm run lint && npm run test:release && npm test && npm run build",
