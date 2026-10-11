@@ -36,11 +36,25 @@ test("retains 48/12 authored panoramas, every one of 134 links and the 24-group 
     const authored = JSON.parse(sources[child]);
     const actual = recipe.children[child].authoredDocument;
     assert.deepEqual(actual.assets, authored.assets);
-    assert.deepEqual(actual.entities.map(entity => ({ ...entity, links: entity.links.map(link => { const authoredLink = { ...link }; delete authoredLink.externalDestination; return authoredLink; }) })), authored.entities);
+    assert.deepEqual(actual.entities.map(entity => entity.links === undefined ? { ...entity } : ({ ...entity, links: entity.links.map(link => { const authoredLink = { ...link }; delete authoredLink.externalDestination; return authoredLink; }) })), authored.entities);
     assert.deepEqual(actual.groups, authored.groups);
     assert.deepEqual(actual.extensions, authored.originalExtensions);
     assert.deepEqual(actual.markerStyle, authored.markerStyle);
   }
+});
+
+test("preserves omitted links on both genuinely retired Saint Paul panoramas", () => {
+  const recipe = createCampusSceneInputs(input());
+  const authored = JSON.parse(sources["st-paul"]);
+  const retiredIds = ["mcneal-hall", "st-paul-mall"];
+  assert.deepEqual(authored.entities.filter(entity => !Object.hasOwn(entity, "links")).map(entity => entity.id), retiredIds);
+  for (const id of retiredIds) {
+    const actual = recipe.children["st-paul"].authoredDocument.entities.find(entity => entity.id === id);
+    assert.equal(Object.hasOwn(actual, "links"), false);
+    assert.deepEqual(actual, authored.entities.find(entity => entity.id === id));
+  }
+  assert.equal(Object.values(recipe.children).reduce((sum, child) => sum + child.authoredDocument.entities.reduce((count, entity) => count + (entity.links === undefined ? 0 : entity.links.length), 0), 0), 134);
+  assert.equal(recipe.aggregate.groupOrder.length, 24);
 });
 
 test("maps only the four authored crossing links to declared external identities with registered route IDs", () => {
@@ -50,7 +64,7 @@ test("maps only the four authored crossing links to declared external identities
   assert.deepEqual(recipe.children["st-paul"].authoredDocument.externalDestinations,
     [{ id: "minneapolis", sceneId: "umn-minneapolis", routeId: "minneapolis" }]);
   const external = Object.entries(recipe.children).flatMap(([child, record]) => record.authoredDocument.entities.flatMap(entity =>
-    entity.links.filter(link => link.externalDestination).map(link => [child, entity.id, link.id, link.target, link.externalDestination])));
+    (entity.links === undefined ? [] : entity.links).filter(link => link.externalDestination).map(link => [child, entity.id, link.id, link.target, link.externalDestination])));
   assert.deepEqual(external, [
     ["minneapolis", "regis-center-for-art-gallery", "next-stop", "saint-paul-campus", "st-paul"],
     ["minneapolis", "recreation-and-wellness-center", "previous-stop", "community-connections", "st-paul"],

@@ -1,13 +1,31 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, symlinkSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, symlinkSync, realpathSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { measureNamedPreparedMedia, namedPreparedMediaSources } from './prepared-media.mjs';
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+const fixtureBuildRoot = path.resolve(fileURLToPath(new URL('../../build/', import.meta.url)));
+const fixtureState = { runRoot: null };
+function fixtureRunRoot() {
+  if (fixtureState.runRoot) return fixtureState.runRoot;
+  mkdirSync(fixtureBuildRoot, { recursive: true });
+  assert.equal(realpathSync(fixtureBuildRoot), fixtureBuildRoot);
+  const explicit = process.env.UMN_VR_PREPARED_MEDIA_TEST_ROOT;
+  if (explicit) {
+    const requested = path.resolve(explicit);
+    assert.equal(path.dirname(requested), fixtureBuildRoot);
+    assert.equal(requested.split(path.sep).includes('.local'), false);
+    mkdirSync(requested); // One explicitly granted fresh run directory; never overwrite.
+    fixtureState.runRoot = realpathSync(requested);
+  } else {
+    fixtureState.runRoot = realpathSync(mkdtempSync(path.join(fixtureBuildRoot, 'prepared-media-tests-')));
+  }
+  return fixtureState.runRoot;
+}
 function fixture() {
-  const scratch=mkdtempSync(path.join(tmpdir(),'umn-named-media-'));const root=path.join(scratch,'public');mkdirSync(root);
+  const scratch=realpathSync(mkdtempSync(path.join(fixtureRunRoot(),'umn-named-media-')));const root=path.join(scratch,'public');mkdirSync(root);
   const values={'scene.json':Buffer.from('{"original":"scene"}\n'),'face.jpg':Buffer.from('original photograph bytes')};
   const files=Object.entries(values).map(([name,bytes])=>{writeFileSync(path.join(root,name),bytes);return {path:name,bytes:bytes.length,sha256:sha(bytes)}}).sort((a,b)=>a.path.localeCompare(b.path));
   const original=files.find(file=>file.path==='scene.json');
@@ -30,4 +48,6 @@ test('rejects symlink or traversal sources and credentialled transport identity'
   assert.throws(()=>namedPreparedMediaSources({...f.input,files:[{...f.input.files[0],path:'alias.jpg'}]}),/regular/);
   assert.throws(()=>namedPreparedMediaSources({...f.input,files:[{...f.input.files[0],path:'../face.jpg'}]}),/Unsafe/);
   assert.throws(()=>namedPreparedMediaSources({...f.input,mediaBaseUrl:'https://name:secret@example.invalid/media/'}),/public media/);
+  const privateRoot=path.join(f.scratch,'.local');mkdirSync(privateRoot);
+  assert.throws(()=>namedPreparedMediaSources({...f.input,sourceRoot:privateRoot}),/private\/local/);
 });

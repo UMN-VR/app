@@ -107,7 +107,7 @@ export function createCampusSceneInputs({ sources, publication: publications, me
       id: authored.sceneId, revision: `authored-${CAMPUS_SCENE_SOURCE_PINS[key].sha256.slice(0, 12)}`,
       title: authored.title, requiredExtensions: authored.requiredExtensions,
       extensions: authored.originalExtensions, assets: authored.assets,
-      entities: authored.entities.map(entity => ({
+      entities: authored.entities.map(entity => entity.links === undefined ? { ...entity } : ({
         ...entity,
         links: entity.links.map(link => {
           const direction = directions.find(row => row.from.id === entity.id && row.link.id === link.id);
@@ -200,7 +200,7 @@ export function createCampusSceneInputs({ sources, publication: publications, me
       minneapolisPanoramas: records.minneapolis.entities.length,
       stPaulPanoramas: records["st-paul"].entities.length,
       aggregatePanoramas: composition.entityOrder.length,
-      originalLinks: CHILDREN.reduce((sum, child) => sum + records[child].entities.reduce((n, entity) => n + entity.links.length, 0), 0),
+      originalLinks: CHILDREN.reduce((sum, child) => sum + records[child].entities.reduce((n, entity) => n + (entity.links === undefined ? 0 : entity.links.length), 0), 0),
       crossCampusDirections: navigation.length, aggregateGroups: composition.groupOrder.length,
     },
   };
