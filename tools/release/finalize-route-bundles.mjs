@@ -2,7 +2,7 @@
 /** One post-build public UI worker for the actual three-route bundle union. */
 import { appFilesWorker } from '@foss-earth/ui/vite';
 import { createHash } from 'node:crypto';
-import { readFileSync, readdirSync, realpathSync, lstatSync, mkdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, readdirSync, realpathSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const [inputFile, outputDirectory] = process.argv.slice(2);

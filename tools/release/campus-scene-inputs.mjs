@@ -58,7 +58,8 @@ function authoredNavigation(composition, records) {
   return composition.crossCampusNavigation.map(row => {
     const entity = records[row.sourceCampus].entities.find(item => item.id === row.sourceEntityId);
     const index = entity.links.findIndex(link => link.id === row.originalLink.id);
-    const { target, ...link } = row.originalLink;
+    const link = { ...row.originalLink };
+    delete link.target;
     return {
       from: { child: row.sourceCampus, id: row.sourceEntityId },
       to: { child: row.targetCampus, id: row.targetEntityId }, link,

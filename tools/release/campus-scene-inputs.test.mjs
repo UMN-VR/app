@@ -36,7 +36,7 @@ test("retains 48/12 authored panoramas, every one of 134 links and the 24-group 
     const authored = JSON.parse(sources[child]);
     const actual = recipe.children[child].authoredDocument;
     assert.deepEqual(actual.assets, authored.assets);
-    assert.deepEqual(actual.entities.map(entity => ({ ...entity, links: entity.links.map(({ externalDestination, ...link }) => link) })), authored.entities);
+    assert.deepEqual(actual.entities.map(entity => ({ ...entity, links: entity.links.map(link => { const authoredLink = { ...link }; delete authoredLink.externalDestination; return authoredLink; }) })), authored.entities);
     assert.deepEqual(actual.groups, authored.groups);
     assert.deepEqual(actual.extensions, authored.originalExtensions);
     assert.deepEqual(actual.markerStyle, authored.markerStyle);

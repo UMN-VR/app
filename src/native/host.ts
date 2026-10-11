@@ -229,7 +229,7 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
       const authorities = { runtimes: 0, viewers: 0, schedulers: 0, brokers: 0, uploaders: 0 };
       const broker = images.createImageSessionBroker(policy.session()); authorities.brokers += 1;
       let runtime: SettledGlobeRuntime | undefined;
-      let scheduler: ReturnType<typeof rendererApi.createRenderScheduler> | undefined;
+      const schedulerHolder: { current?: ReturnType<typeof rendererApi.createRenderScheduler> } = {};
       let lifecycle: ReturnType<typeof rendererNative.createBabylonRendererLifecycle> | undefined;
       let native: ReturnType<typeof rendererNative.createNativeImageResources> | undefined;
       let overview: ReturnType<typeof engineApi.createGlobeOverviewBinding> | undefined;
@@ -242,9 +242,9 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
         afterFrame: (now, rendered) => { runtime?.afterFrame(now, rendered); overview?.observeFrame(); for (const listener of [...frames]) listener(); },
         shouldKeepRendering: () => runtime?.shouldKeepRendering() === true,
         minFrameIntervalMs: () => runtime?.minFrameIntervalMs() ?? 0,
-        stopScheduler: () => scheduler?.stop(), onFrameError: onError,
+        stopScheduler: () => schedulerHolder.current?.stop(), onFrameError: onError,
         resourceWork: { prepare: () => native?.resourceWork.prepare() },
-        cleanup: [() => { retired = true; scheduler?.stop(); }, () => rendererApi.attemptNativeCleanup(cleanups.reverse(), "Campus native bindings cleanup failed.")],
+        cleanup: [() => { retired = true; schedulerHolder.current?.stop(); }, () => rendererApi.attemptNativeCleanup(cleanups.reverse(), "Campus native bindings cleanup failed.")],
         whenOwnersSettled: [async () => {
           // The scene/session owner has cancelled before the primary awaits this drain.
           const results = await Promise.allSettled(drains.map(settle => settle()));
@@ -266,7 +266,8 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
           settlementProven = true;
         }],
       });
-      scheduler = rendererApi.createRenderScheduler(closure.schedulerOptions({ requestFrame: callback => view.requestAnimationFrame(callback), cancelFrame: handle => view.cancelAnimationFrame(handle) }));
+      const scheduler = rendererApi.createRenderScheduler(closure.schedulerOptions({ requestFrame: callback => view.requestAnimationFrame(callback), cancelFrame: handle => view.cancelAnimationFrame(handle) }));
+      schedulerHolder.current = scheduler;
       authorities.schedulers += 1;
       const destroyDevice = (): void => {
         if (deviceDisposed) return;
@@ -357,11 +358,11 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
           uploadOutstandingBytes: policy.upload().outstandingBytes }));
         const estimate = (record: import("@foss-earth/images").ImageRepresentation) =>
           estimateCampusImage(record, representations, renderer.engine.getCaps().maxTextureSize, view.location.href);
-        let viewer: ReturnType<typeof viewerRuntime.createImageViewer> | undefined;
+        const viewerHolder: { current?: ReturnType<typeof viewerRuntime.createImageViewer> } = {};
         const choice = viewerApi.createViewerSelection({ representations, parameters: policy.selection,
           maxTextureSide: () => renderer.engine.getCaps().maxTextureSize,
           viewportHeightDevicePx: () => renderer.engine.getRenderHeight(),
-          current: input => viewer?.currentSources(input.id) ?? { preview: null, shown: null },
+          current: input => viewerHolder.current?.currentSources(input.id) ?? { preview: null, shown: null },
           admissible: (record, overlap) => { const cost = estimate(record); cache.evictUnused(cost.sourceGpu, overlap);
             return broker.pools.fits("sourceGpu", cost.sourceGpu, { overlap }) && broker.pools.fits("decoded", cost.decoded) ? null : "Current image resource budget"; },
           imageName: record => record.id });
@@ -391,7 +392,7 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
         const input = viewerInputApi.createGlobeViewerInput(live, canvas, navigation.engineLeaseFor, { nowMs: clock.nowMs,
           controlTakesKey: gamepad.controlTakesKey, abortReason: () => new view.DOMException("Campus navigation interrupted", "AbortError"), signal });
         cleanups.push(() => input.dispose());
-        viewer = viewerRuntime.createImageViewer({ renderer: panorama, resources, world: viewerGlobe.globeViewerMath, poses: viewerGlobe.globeViewerPoses,
+        const viewer = viewerRuntime.createImageViewer({ renderer: panorama, resources, world: viewerGlobe.globeViewerMath, poses: viewerGlobe.globeViewerPoses,
           navigation: navigation.navigation, input: input.input, settings: policy.viewer, now: clock.nowMs,
           devicePixelsPerCss: () => renderer.engine.getRenderHeight() / Math.max(1, canvas.clientHeight), createAbortController: () => new view.AbortController(),
           requestRender: () => live.requestRender(), holdRendering: () => { live.beginContinuous(); let held = true;
@@ -401,6 +402,7 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
             return hit !== null && hit.distanceMeters < distance;
           },
           signal, onRetirementError: onError, failure: (_input, _kind, error) => onError(error) });
+        viewerHolder.current = viewer;
         authorities.viewers += 1;
         cleanups.push(() => viewer?.dispose()); drains.push(() => viewer!.whenSettled());
         viewerFrame = viewerGlobe.createGlobeViewerFrameBinding({ viewer, isCurrent: () => !retired,

@@ -9,7 +9,7 @@ const route = { examples: [{ id: "st-paul", title: "Saint Paul", description: "C
 function harness() {
   const order: string[] = [];
   const host = { shellContainer: document.createElement("div"), bindings: { scene: {} }, whenSettled: vi.fn(async () => { order.push("native settled"); }), dispose: vi.fn(() => { order.push("native dispose"); }) } as unknown as CampusNativeHost;
-  const handle = { status: { sceneId: "umn-st-paul" }, enter: vi.fn(async (_id: string, _options: unknown): Promise<SceneActionResult> => ({ ok: true })) };
+  const handle = { status: { sceneId: "umn-st-paul" }, enter: vi.fn<(id: string, options: unknown) => Promise<SceneActionResult>>(async () => ({ ok: true })) };
   const composition = { dispose: vi.fn(() => { order.push("composition dispose"); }), whenSettled: vi.fn(async () => { order.push("composition settled"); }),
     initialScene: Promise.resolve(true), content: { controller: { handle: vi.fn(() => handle) } } };
   vi.mocked(createCampusComposition).mockResolvedValue(composition as unknown as Awaited<ReturnType<typeof createCampusComposition>>);
