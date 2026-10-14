@@ -1,7 +1,7 @@
 import type { SettingsRegistry, ParameterSpec } from "@foss-earth/ui/settings";
 import type { TerrainPreparationPolicy } from "@foss-earth/engine";
 import { DEFAULT_TERRAIN_LOADER_LIMITS } from "@foss-earth/engine";
-import type { ViewerSettings } from "@foss-earth/360/viewer";
+import type { ViewerSettings } from "@foss-earth/image-viewer/viewer";
 import type { ImageSessionLimits } from "@foss-earth/images";
 import type { ImageTransferLimits } from "@foss-earth/images/browser";
 import type { ImageUploadLimits } from "@foss-earth/renderer/babylon";

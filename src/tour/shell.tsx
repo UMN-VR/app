@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { AdoptedElement, WindowOverlay, type WindowOverlayProps } from "@foss-earth/ui/react";
 import type { WindowOverlayHandle, WindowTabDefinition } from "@foss-earth/ui/windowing";
 import { bindToolbarLauncher } from "@foss-earth/toolbar/browser";
-import type { ViewerTabs } from "@foss-earth/360/panels";
+import type { ViewerTabs } from "@foss-earth/image-viewer/panels";
 import type { DevTabRegistration } from "@foss-earth/dev";
 import type { createCampusTabVisibility } from "./tab-visibility";
 import "@foss-earth/ui/styles.css";

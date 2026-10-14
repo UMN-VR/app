@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
 import type { SurfaceHit } from "@foss-earth/engine";
-import type { ResolvedPanorama } from "@foss-earth/scenes";
+import type { ResolvedSphere } from "@foss-earth/scenes";
 import { createCampusWorld } from "./world";
 
-function panorama(): ResolvedPanorama {
+function panorama(): ResolvedSphere {
   return {
     id: "northrop", type: "panorama", assetId: "photo", title: "Northrop Mall",
     capture: { longitudeDeg: -93.235, latitudeDeg: 44.976, height: null },

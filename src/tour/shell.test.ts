@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { act } from "react";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
-import type { ViewerTabsSnapshot } from "@foss-earth/360/panels";
+import type { ViewerTabsSnapshot } from "@foss-earth/image-viewer/panels";
 import { CAMPUS_TAB_IDS, createCampusShell, type CampusShellBindings, type CampusTabId } from "./shell";
 import { createCampusTabVisibility } from "./tab-visibility";
 

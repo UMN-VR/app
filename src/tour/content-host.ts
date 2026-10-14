@@ -1,4 +1,4 @@
-import { createViewerTabs, type ViewerPanelPorts } from "@foss-earth/360/panels";
+import { createViewerTabs, type ViewerPanelPorts } from "@foss-earth/image-viewer/panels";
 import { createSceneHotspots, createScenesPanel, type ScenesPanelContribution, type ScenesPanelUi } from "@foss-earth/scenes/panel";
 import { createCampusAboutPanel } from "@umn-vr/about/panel";
 import "@foss-earth/about/panel.css";
@@ -54,7 +54,7 @@ export function createCampusContentHost(bindings: CampusContentBindings) {
     let disposed = false;
     return {
       controller, viewerTabs,
-      panels: { scenes: scenePanel.element, about: about.element, panorama: viewerTabs.panorama, "panorama-settings": viewerTabs.settings },
+      panels: { scenes: scenePanel.element, about: about.element, panorama: viewerTabs.sphere, "panorama-settings": viewerTabs.settings },
       loadInitialScene: (id: string) => id ? controller.load(id, { exampleId: true }) : Promise.resolve(false),
       dispose(): void {
         if (disposed) return;

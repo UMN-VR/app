@@ -1,6 +1,6 @@
 import { captureRelativeMarker, ecefToEnuMatrix, enuFrame, groundQueryPoint, groundRelativeMarker, type SurfaceQuery } from "@foss-earth/engine";
 import { imagePoseMatrix, mulMat3Mat3, transpose3 } from "@foss-earth/images";
-import type { ResolvedPanorama } from "@foss-earth/scenes";
+import type { ResolvedSphere } from "@foss-earth/scenes";
 import type { ScenePlacement, SceneWorldPorts } from "@foss-earth/scenes/browser";
 
 export interface CampusWorldBindings {
@@ -14,7 +14,7 @@ export interface CampusWorldBindings {
 
 /** Campus-authored placements bind public geographic math to the displayed map. */
 export function createCampusWorld(bindings: CampusWorldBindings): SceneWorldPorts {
-  const resolvePlacement = (entity: ResolvedPanorama, { radiusMeters }: { radiusMeters: number }): ScenePlacement => {
+  const resolvePlacement = (entity: ResolvedSphere, { radiusMeters }: { radiusMeters: number }): ScenePlacement => {
     const { capture, marker, imagePose, markerStyle } = entity;
     const content = mulMat3Mat3(transpose3(imagePoseMatrix(imagePose)), ecefToEnuMatrix(enuFrame(capture.longitudeDeg, capture.latitudeDeg)));
     const placement: ScenePlacement["placement"] = {

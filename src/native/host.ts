@@ -40,13 +40,13 @@ export function createCampusExternalNavigation(target: CampusExternalBrowserPort
       && input.destination.sceneId === entry.sceneId
       && (input.destination.routeId === undefined || input.destination.routeId === entry.id));
     if (!route || !CAMPUS_EXTERNAL_ROUTES.some(entry => entry.sceneId === input.source.sceneId)
-      || input.source.sceneId === route.sceneId || !input.panoramaId
-      || input.link.target !== input.panoramaId || input.link.externalDestination !== input.destination.id)
+      || input.source.sceneId === route.sceneId || !input.sphereId
+      || input.link.target !== input.sphereId || input.link.externalDestination !== input.destination.id)
       return { ok: false, reason: "unavailable", message: "The external Campus destination is not a registered scene and panorama selection." };
     const beforeState: unknown = target.history.state, beforeUrl = target.location.href;
     try {
       target.history.pushState({ [CAMPUS_EXTERNAL_ARRIVAL_HISTORY_KEY]: {
-        version: 1, routeId: route.id, sceneId: route.sceneId, panoramaId: input.panoramaId,
+        version: 1, routeId: route.id, sceneId: route.sceneId, panoramaId: input.sphereId,
         view: input.link.arrivalView ? { ...input.link.arrivalView } : null, source: { ...input.source },
       } }, "", route.path);
       target.location.reload();
@@ -109,8 +109,8 @@ function browser(container: HTMLElement) {
 async function settingsFor(view: Window & typeof globalThis, storage: SettingsStorage | null, search: string) {
   const [ui, browserUi, engine, renderer, viewer, images, tiled, sheets, sky, toolbar, scenes] = await Promise.all([
     import("@foss-earth/ui/settings"), import("@foss-earth/ui/browser"), import("@foss-earth/engine/settings"),
-    import("@foss-earth/renderer/settings"), import("@foss-earth/360/settings"), import("@foss-earth/images/settings"),
-    import("@foss-earth/tiled-cubemap/settings"), import("@foss-earth/preview-sheets/settings"),
+    import("@foss-earth/renderer/settings"), import("@foss-earth/image-viewer/settings"), import("@foss-earth/images/settings"),
+    import("@foss-earth/sphere-tiled-cubemap/settings"), import("@foss-earth/preview-sheets/settings"),
     import("@foss-earth/sky/settings"), import("@foss-earth/toolbar"), import("@foss-earth/scenes"),
   ]);
   const settings = ui.createSettingsRegistry({ storage, searchParams: new view.URLSearchParams(search),
@@ -189,8 +189,8 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
         engineGamepad, enginePanels, sceneBrowser] = await Promise.all([
         import("@foss-earth/renderer"), import("@foss-earth/renderer/babylon"), import("@foss-earth/engine"),
         import("@foss-earth/engine/babylon"), import("@foss-earth/engine/browser"), import("@foss-earth/engine/browser-globe"), import("@foss-earth/engine/settings"),
-        import("@foss-earth/360"), import("@foss-earth/360/babylon"), import("@foss-earth/360/viewer"),
-        import("@foss-earth/360/resources"), import("@foss-earth/360/globe"), import("@foss-earth/360/globe-browser"),
+        import("@foss-earth/image-viewer"), import("@foss-earth/image-viewer/babylon"), import("@foss-earth/image-viewer/viewer"),
+        import("@foss-earth/image-viewer/resources"), import("@foss-earth/image-viewer/globe"), import("@foss-earth/image-viewer/globe-browser"),
         import("@foss-earth/images"), import("@foss-earth/images/browser"), import("@foss-earth/preview-sheets/browser"),
         import("@foss-earth/sky"), import("@foss-earth/sky/babylon"), import("@foss-earth/toolbar/browser"),
         import("@foss-earth/ui/browser"), import("@foss-earth/ui/diagnostics"), import("./panels"),
@@ -340,7 +340,7 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
         const store = imageBrowser.createMediaStore({ open: () => imageBrowser.openIndexedDbBackend(view.indexedDB), now: view.Date.now,
           maxBytes: policy.n("savedMiB") * 1024 * 1024 });
         drains.push(() => store.settled());
-        const cache = images.createImageSourceCache<import("@foss-earth/360/resources").ComposedImageSource>({ broker,
+        const cache = images.createImageSourceCache<import("@foss-earth/image-viewer/resources").ComposedImageSource>({ broker,
           keptGpuBytes: policy.n("keptGpuMiB") * 1024 * 1024, gpuBytes: source => source.gpuBytes });
         cleanups.push(() => cache.dispose());
         const files = (group?: import("@foss-earth/images").MediaGroup) => imageBrowser.createImageFileService({ broker,
@@ -382,7 +382,7 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
             outlines: () => settings.get("scene.panorama.tileOutlines") === true },
           devicePixelsPerCss: () => renderer.engine.getRenderHeight() / Math.max(1, canvas.clientHeight), requestRender: () => live.requestRender() });
         cleanups.push(() => resources.retire()); drains.push(() => resources.whenSettled());
-        const panorama = viewerNative.createPanoramaRenderer(scene, { getCamera: () => scene.activeCamera,
+        const panorama = viewerNative.createSphereRenderer(scene, { getCamera: () => scene.activeCamera,
           viewportHeightCssPx: () => canvas.clientHeight, presentationLayerMask: engineNative.NAVIGATION_PRESENTATION_LAYER,
           appearance: policy.viewer().appearance, getPresentationView: () => live.getPresentationView(), requestRender: () => live.requestRender(), onError });
         cleanups.push(() => panorama.dispose());
@@ -471,11 +471,11 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
         const status = toolbar.createStatusHud(launchers.location, settings, { document });
         cleanups.push(() => status.destroy(), framePort.subscribe(() => { const value = live.getViewState(); if (value) status.update(value); }));
         const controllerInput = gamepad.createBrowserInputSource({ target: view });
-        const panoramaProfile = viewerApi.createPanoramaProfileContribution(gamepadCore.DEFAULT_BINDING_TRANSFORM);
+        const panoramaProfile = viewerApi.createSphereProfileContribution(gamepadCore.DEFAULT_BINDING_TRANSFORM);
         const standardProfile = () => engineGamepad.createStandardGlobeProfile(controllerInput.getSelectedDevice()?.slot ?? 0,
           settings.get<number>("input.gamepad.deadzone"), panoramaProfile);
         const controller = new gamepadCore.BindingRuntime({ profile: standardProfile(),
-          adapter: engineGamepad.createGlobeGamepadAdapter(live, { featureActions: viewerApi.PANORAMA_GAMEPAD_ACTIONS,
+          adapter: engineGamepad.createGlobeGamepadAdapter(live, { featureActions: viewerApi.SPHERE_GAMEPAD_ACTIONS,
             getContext: () => live.getNavigationState()?.inputContext ?? "globe", onResetNorth: () => live.setViewState({ headingDeg: 0 }) }) });
         const controllerEditor = gamepadUi.mountBindingEditor({ root: controllerRoot, runtime: controller, source: controllerInput,
           store: gamepadCore.createProfileStore(), builtInProfiles: [{ id: "standard", label: engineGamepad.STANDARD_GLOBE_PROFILE_NAME, create: standardProfile }] });

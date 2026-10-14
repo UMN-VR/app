@@ -1,4 +1,4 @@
-import { validateViewerAsset, type PublishedImageViewer, type ViewerRepresentation } from "@foss-earth/360";
+import { validateViewerAsset, type PublishedImageViewer, type ViewerRepresentation } from "@foss-earth/image-viewer";
 import { createPreviewSheetsExtensionHook } from "@foss-earth/preview-sheets/scene-extension";
 import { createBrowserSceneHistory, createSceneController, loadScene, type LoadSceneOptions, type SceneExample } from "@foss-earth/scenes/browser";
 

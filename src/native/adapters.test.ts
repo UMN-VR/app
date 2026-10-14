@@ -1,5 +1,5 @@
 import { expect, it, vi } from "vitest";
-import { createBuiltInRepresentations } from "@foss-earth/360";
+import { createBuiltInRepresentations } from "@foss-earth/image-viewer";
 import type { SettingsRegistry } from "@foss-earth/ui/settings";
 import type { ImageRepresentation } from "@foss-earth/images";
 import { copyCampusCodecInput, estimateCampusImage, subscribeCampusResourceSettings } from "./adapters";

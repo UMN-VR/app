@@ -12,7 +12,7 @@
  *     one panorama to another and where they point, and each stop's start view;
  *   - tools/twin-cities/placements.json, edited by hand: which image each
  *     panorama is, its id and title, where it was taken and which way is north;
- *   - the public split FOSS Earth packages: @foss-earth/360/prepare-cli
+ *   - the public split FOSS Earth packages: @foss-earth/image-viewer/prepare-cli
  *     turns each image into preview cubes, whole images and tiled cubes, its
  *     @foss-earth/preview-sheets/preparation puts every panorama's smallest preview cube into one
  *     image, and @foss-earth/scenes/check-cli checks the result the way the viewer will read it.
@@ -83,7 +83,7 @@ const out = path.resolve(options.out);
 const placementsFile = path.resolve(options.placements);
 const legacyScene = options["legacy-scene"] === "1";
 assertAuthoringOutput(out);
-const prepareCli = fileURLToPath(import.meta.resolve("@foss-earth/360/prepare-cli"));
+const prepareCli = fileURLToPath(import.meta.resolve("@foss-earth/image-viewer/prepare-cli"));
 const checkCli = fileURLToPath(import.meta.resolve("@foss-earth/scenes/check-cli"));
 const previewSizes = (options["preview-face-sizes"] ?? "64,128,256").split(",").map(Number);
 const sheetSize = options["preview-sheet"] === "" ? null : Number(options["preview-sheet"] ?? Math.min(...previewSizes));

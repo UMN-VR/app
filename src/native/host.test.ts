@@ -28,8 +28,8 @@ function routeBrowser(start = "https://campus.example/tour/minneapolis/?map=reta
   return { target, writes, reloads: () => reloads, failReload: (error: Error) => { reloadError = error; } };
 }
 const externalInput = (): Parameters<SceneExternalNavigationPorts["navigate"]>[0] => ({
-  destination: { id: "st-paul", sceneId: "umn-st-paul", routeId: "st-paul" }, panoramaId: "community-connections",
-  source: { sceneId: "umn-minneapolis", revision: "fixture-source", panoramaId: "regis" },
+  destination: { id: "st-paul", sceneId: "umn-st-paul", routeId: "st-paul" }, sphereId: "community-connections",
+  source: { sceneId: "umn-minneapolis", revision: "fixture-source", sphereId: "regis" },
   link: { id: "next-stop", target: "community-connections", externalDestination: "st-paul", label: "Next stop",
     arrivalView: { headingDeg: 17, pitchDeg: -4, verticalFovDeg: 60 } }, signal: new AbortController().signal,
 });

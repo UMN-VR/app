@@ -24,7 +24,7 @@ Everything under `public/tour/twin-cities/` is generated. Edit
 [`placements.json`](placements.json) or the build, then rebuild.
 
 Only what this tour needs lives here. FOSS Earth owns the scene format, the viewer and the tools
-that prepare and check any scene. This build runs those tools from the installed split `@foss-earth/360`, `@foss-earth/scenes` and
+that prepare and check any scene. This build runs those tools from the installed split `@foss-earth/image-viewer`, `@foss-earth/scenes` and
 `@foss-earth/preview-sheets` packages. [AGENTS.md](../../AGENTS.md) sets out the split.
 
 ## Rebuilding
@@ -43,7 +43,7 @@ It needs:
 
 What the build does:
 
-1. **Prepares each photograph** with the public `@foss-earth/360/prepare-cli` entry. The outputs,
+1. **Prepares each photograph** with the public `@foss-earth/image-viewer/prepare-cli` entry. The outputs,
    all JPEG at quality 80:
    - preview cubes of 64, 128 and 256 px faces, for the orbs;
    - tiled cubes for looking around, the tour's default: an equi-angular cube (`eac-tiles/`)

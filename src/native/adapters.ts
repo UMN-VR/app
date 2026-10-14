@@ -1,6 +1,6 @@
 import type { SettingsRegistry } from "@foss-earth/ui/settings";
 import type { ImageRepresentation } from "@foss-earth/images";
-import type { BuiltInRepresentation, ViewerRepresentation } from "@foss-earth/360";
+import type { BuiltInRepresentation, ViewerRepresentation } from "@foss-earth/image-viewer";
 
 /** Own a contiguous ArrayBuffer before passing a possibly shared/subarray view to Blob. */
 export function copyCampusCodecInput(bytes: Uint8Array): ArrayBuffer {
