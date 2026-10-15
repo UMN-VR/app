@@ -300,7 +300,13 @@ export function createCampusDeviceMarker(runtime: GlobeRuntime, device: CanvasTe
     manager = null;
     accuracy = null;
     dot = null;
+    clearDepthForMarker(false);
     if (owned) disposeSpriteManagers([owned]);
+  }
+
+  function clearDepthForMarker(enabled: boolean): void {
+    try { runtime.scene.setRenderingAutoClearDepthStencil(3, enabled, true, false); }
+    catch { /* The scene can already be gone. */ }
   }
 
   function ensure(): void {
@@ -314,7 +320,8 @@ export function createCampusDeviceMarker(runtime: GlobeRuntime, device: CanvasTe
       texture.hasAlpha = true;
       device.updateTexture(texture, false);
       manager = createPointSpriteManager({
-        scene: runtime.scene, name: "device-location", capacity: 2, minCapacity: 2, texture, cellSize: CELL, isPickable: false,
+        scene: runtime.scene, name: "device-location", capacity: 2, minCapacity: 2, texture, cellSize: CELL,
+        renderingGroupId: 3, isPickable: false,
       });
       manager.disableDepthWrite = true;
       manager.fogEnabled = false;
@@ -385,10 +392,13 @@ export function createCampusDeviceMarker(runtime: GlobeRuntime, device: CanvasTe
     if (!next) {
       if (accuracy) accuracy.isVisible = false;
       if (dot) dot.isVisible = false;
+      // Only wipe depth while the circles are showing, so a hidden marker leaves the world depth alone.
+      clearDepthForMarker(false);
       if (had) runtime.requestRender();
       return;
     }
     ensure();
+    clearDepthForMarker(true);
     place();
     runtime.requestRender();
   }
