@@ -10,7 +10,7 @@ function committed(): SceneStatus {
   return {
     sceneId: "twin-cities", revision: "loaded-revision", title: "Twin Cities", generation: 3,
     phase: "immersive", active: "a", target: "b", hovered: null, view: null,
-    entries: [entry("a"), entry("b")], groups: [], credits: [], overview: "applied",
+    entries: [entry("a"), entry("b")], groups: [], layers: [], credits: [], overview: "applied",
     warnings: [{ path: "$.entities.a", message: "North alignment remains unknown" }],
     renderingAvailable: true, unavailableReason: null, lastError: null,
   };
