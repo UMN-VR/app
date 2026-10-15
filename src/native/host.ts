@@ -452,8 +452,9 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
         const launchers = Object.fromEntries(["location", "controls", "interface", "settings", "map", "renderer", "sky", "time", "scenes", "about", "bug-report", "panorama", "panorama-settings"].map(id => [id, hud.getElement<HTMLButtonElement>(`campus-${id}`)!]));
         for (const [id, launcher] of Object.entries(launchers)) launcher.dataset.campusTab = id;
         const controllerRoot = document.createElement("div");
+        if (!native) throw new Error("Campus image resources were not created.");
         const panels = panelsApi.createCampusPanels({ root, canvas, inputAnchor: launchers.controls, toggleControls: () => launchers.controls.click(), controller: controllerRoot,
-          settings, storage, runtime: live, cache: mapCache, frames: framePort, nowMs: clock.nowMs, diagnostics: { ...diagnostics,
+          settings, storage, runtime: live, canvasDevice: native.canvasDevice, cache: mapCache, frames: framePort, nowMs: clock.nowMs, diagnostics: { ...diagnostics,
             copy: ui.createBrowserClipboard(document, view.navigator), reportSecrets: () => settings.list().filter(spec => spec.sensitive).map(spec => settings.get(spec.id)).filter((value): value is string => typeof value === "string") }, appFiles, published });
         cleanups.push(() => panels.destroy());
         const saved = sceneBrowser.createSavedImagesSection({ document, source: store, refresh: panels.refresh,

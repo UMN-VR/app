@@ -5,6 +5,8 @@ import { createLocationDraftStore, LOCATION_PLACE_DRAFT_KEY, RASTER_BASE_MAP_SOU
 import { createControlsPanel, createInputModeHud, createMapSourcePanel } from "@foss-earth/engine/panels";
 import { createMapCachePresentationPolicy, createMapDetailController, connectMapDetailRuntime, setMapSourcePreference, setTerrainSourcePreference } from "@foss-earth/engine/settings";
 import type { GlobeRuntime } from "@foss-earth/engine/babylon";
+import type { CanvasTextureDevicePorts } from "@foss-earth/renderer/babylon";
+import { createCampusDeviceMarker, mountCampusDeviceGps, type CampusDeviceFix, type CampusDeviceMarker } from "./deviceGps";
 import type { MapCacheAccess } from "@foss-earth/engine/panels";
 import { createRendererPanel } from "@foss-earth/renderer/panel";
 import { applyRendererChoice } from "@foss-earth/renderer/babylon";
@@ -29,6 +31,8 @@ export interface CampusPanelsOptions {
   settings: SettingsRegistry;
   storage: SettingsStorage | null;
   runtime: GlobeRuntime;
+  /** Canvas uploads for the device-position sprites. */
+  canvasDevice: CanvasTextureDevicePorts;
   cache: MapCacheAccess;
   frames: { subscribe(listener: () => void): () => void };
   nowMs(): number;
@@ -69,11 +73,23 @@ export function createCampusPanels(options: CampusPanelsOptions) {
     if (errors.length) throw new AggregateError(errors, "Campus panels cleanup failed.");
   };
   try {
-    const location = document.createElement("div"), locationRoot = createRoot(location);
+    const location = document.createElement("div"), panelHost = document.createElement("div"), locationRoot = createRoot(panelHost);
     const current = () => {
       const value = runtime.getViewState();
       return value ? { latDeg: value.latDeg, lonDeg: value.lonDeg, zoomMeters: value.zoomMeters } : null;
     };
+    let deviceMarker: CampusDeviceMarker | null = null;
+    const showDeviceLocation = (fix: CampusDeviceFix | null): void => {
+      if (!fix) { deviceMarker?.show(null); return; }
+      deviceMarker ??= createCampusDeviceMarker(runtime, options.canvasDevice);
+      deviceMarker.show(fix);
+    };
+    const gps = mountCampusDeviceGps({
+      document, geolocation: view.navigator.geolocation ?? null,
+      currentZoom: () => runtime.getViewState()?.zoomMeters,
+      onMove: value => runtime.setViewState(value), onFix: showDeviceLocation,
+    });
+    location.append(gps.element, panelHost);
     locationRoot.render(createElement(LocationPanel, {
       initialLocation: current() ?? { latDeg: 44.975, lonDeg: -93.234, zoomMeters: 1500 },
       getCurrentLocation: current, observeLocation: options.frames.subscribe,
@@ -84,6 +100,8 @@ export function createCampusPanels(options: CampusPanelsOptions) {
       draft: createLocationDraftStore({ storage, key: LOCATION_PLACE_DRAFT_KEY }),
     }));
     stops.push(() => locationRoot.unmount());
+    stops.push(() => gps.destroy());
+    stops.push(() => { deviceMarker?.destroy(); deviceMarker = null; });
     const input = keep(createInputModeHud(options.canvas, options.inputAnchor, { document, settings,
       deviceHints: { platform: view.navigator.platform, maxTouchPoints: view.navigator.maxTouchPoints,
         coarsePointer: view.matchMedia("(pointer: coarse)").matches, finePointer: view.matchMedia("(pointer: fine)").matches },
@@ -159,6 +177,7 @@ export function createCampusPanels(options: CampusPanelsOptions) {
     throw error;
   }
 }
+import "@foss-earth/engine/location.css";
 import "@foss-earth/engine/input-mode.css";
 import "@foss-earth/engine/map.css";
 import "@foss-earth/engine/map-cache.css";
