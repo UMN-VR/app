@@ -1,4 +1,4 @@
-import { Vector3, type Sprite, type SpriteManager, type TransformNode } from "@babylonjs/core";
+import { Matrix, Vector3, type Sprite, type SpriteManager, type TransformNode } from "@babylonjs/core";
 import { smoothSurfaceEcef, type EcefCoord } from "@foss-earth/engine";
 import { createPointSprite, createPointSpriteManager, disposeSpriteManagers, DEFAULT_DOT_TEXTURE_SIZE } from "@foss-earth/engine/sprites";
 import type { GlobeRuntime } from "@foss-earth/engine/babylon";
@@ -12,7 +12,11 @@ import type { CanvasTextureDevicePorts } from "@foss-earth/renderer/babylon";
 const BLUE = "rgb(66, 133, 244)";
 const CLOSE_ZOOM_METERS = 8_000;
 const ARRIVAL_ZOOM_METERS = 1_500;
-const DOT_PX = 18;
+const DOT_PX = 36;
+const SOLID_CELL = 1;
+const OCCLUDED_CELL = 2;
+/** Short of the point, as the navigation anchors do, so the surface under the dot is not itself a hit. */
+const OCCLUSION_REACH = 0.995;
 const ACCURACY_OPACITY = 0.25;
 const ACCURACY_LIFT_M = 2;
 const DOT_LIFT_M = 6;
@@ -251,7 +255,30 @@ function toScene(ecef: EcefCoord, root: TransformNode | null): Vector3 {
   return root ? Vector3.TransformCoordinates(point, root.computeWorldMatrix(true)) : point;
 }
 
-function drawCell(ctx: CanvasRenderingContext2D, origin: number, inset: number, fill: string, stroke: string | null, strokeWidth: number): void {
+function sceneToEcef(point: Vector3, root: TransformNode | null): EcefCoord {
+  const ecef = root ? Vector3.TransformCoordinates(point, Matrix.Invert(root.computeWorldMatrix(true))) : point;
+  return { x: ecef.x, y: ecef.y, z: ecef.z };
+}
+
+/** The anchors' X, tiled over the blue fill. `sizePx` is the dot's size on screen. */
+function paintObscuredX(ctx: CanvasRenderingContext2D, cellSize: number, sizePx: number): void {
+  const step = Math.max(3, cellSize * 4 / sizePx);
+  ctx.strokeStyle = "rgba(15, 23, 42, 0.9)";
+  ctx.lineWidth = Math.max(1.5, cellSize * 1.15 / sizePx);
+  ctx.lineCap = "round";
+  ctx.beginPath();
+  for (let y = -step; y < cellSize + step; y += step) {
+    for (let x = -step; x < cellSize + step; x += step) {
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + step, y + step);
+      ctx.moveTo(x + step, y);
+      ctx.lineTo(x, y + step);
+    }
+  }
+  ctx.stroke();
+}
+
+function drawCell(ctx: CanvasRenderingContext2D, origin: number, inset: number, fill: string, stroke: string | null, strokeWidth: number, obscured = false): void {
   const radius = CELL / 2;
   ctx.save();
   ctx.translate(origin, 0);
@@ -264,6 +291,14 @@ function drawCell(ctx: CanvasRenderingContext2D, origin: number, inset: number, 
     ctx.lineWidth = strokeWidth;
     ctx.strokeStyle = stroke;
     ctx.stroke();
+  }
+  if (obscured) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(radius, radius, Math.max(1, radius - inset - strokeWidth / 2), 0, Math.PI * 2);
+    ctx.clip();
+    paintObscuredX(ctx, CELL, DOT_PX);
+    ctx.restore();
   }
   ctx.restore();
 }
@@ -282,7 +317,7 @@ function screenSize(distance: number, fov: number, height: number): number {
 export function createCampusDeviceMarker(runtime: GlobeRuntime, device: CanvasTextureDevicePorts): CampusDeviceMarker {
   let disposed = false;
   let fix: CampusDeviceFix | null = null;
-  let cache: { key: string; accuracy: EcefCoord; dot: EcefCoord } | null = null;
+  let cache: { key: string; accuracy: EcefCoord; dot: EcefCoord; ground: EcefCoord } | null = null;
   let manager: SpriteManager | null = null;
   let accuracy: Sprite | null = null;
   let dot: Sprite | null = null;
@@ -311,12 +346,13 @@ export function createCampusDeviceMarker(runtime: GlobeRuntime, device: CanvasTe
 
   function ensure(): void {
     if (manager || disposed) return;
-    const texture = device.createTexture({ name: "device-location", width: CELL * 2, height: CELL, mipmaps: false });
+    const texture = device.createTexture({ name: "device-location", width: CELL * 3, height: CELL, mipmaps: false });
     try {
       const ctx = texture.getContext() as CanvasRenderingContext2D;
-      ctx.clearRect(0, 0, CELL * 2, CELL);
+      ctx.clearRect(0, 0, CELL * 3, CELL);
       drawCell(ctx, 0, 1, BLUE, null, 0);
       drawCell(ctx, CELL, 5, BLUE, "white", 7);
+      drawCell(ctx, CELL * 2, 5, BLUE, "white", 7, true);
       texture.hasAlpha = true;
       device.updateTexture(texture, false);
       manager = createPointSpriteManager({
@@ -330,7 +366,7 @@ export function createCampusDeviceMarker(runtime: GlobeRuntime, device: CanvasTe
         cellIndex: 0, opacity: ACCURACY_OPACITY, isPickable: false,
       });
       dot = createPointSprite({
-        manager, name: "device-location", position: Vector3.Zero(), size: 1, cellIndex: 1, isPickable: false,
+        manager, name: "device-location", position: Vector3.Zero(), size: 1, cellIndex: SOLID_CELL, isPickable: false,
       });
       accuracy.isVisible = false;
       dot.isVisible = false;
@@ -344,7 +380,7 @@ export function createCampusDeviceMarker(runtime: GlobeRuntime, device: CanvasTe
     }
   }
 
-  function placement(): { accuracy: EcefCoord; dot: EcefCoord } | null {
+  function placement(): { accuracy: EcefCoord; dot: EcefCoord; ground: EcefCoord } | null {
     if (!fix) return null;
     const revision = runtime.surface.revision?.() ?? 0;
     const key = `${fix.latDeg}:${fix.lonDeg}:${fix.accuracyMeters}:${revision}`;
@@ -356,7 +392,7 @@ export function createCampusDeviceMarker(runtime: GlobeRuntime, device: CanvasTe
     } catch { hit = null; }
     const point = hit?.point ?? smoothSurfaceEcef(fix.latDeg, fix.lonDeg, 0);
     const normal = hit?.normal ?? point;
-    const next = { key, accuracy: lift(point, normal, ACCURACY_LIFT_M), dot: lift(point, normal, DOT_LIFT_M) };
+    const next = { key, accuracy: lift(point, normal, ACCURACY_LIFT_M), dot: lift(point, normal, DOT_LIFT_M), ground: point };
     cache = next;
     return next;
   }
@@ -381,7 +417,22 @@ export function createCampusDeviceMarker(runtime: GlobeRuntime, device: CanvasTe
     const fov = camera && "fov" in camera && typeof camera.fov === "number" ? camera.fov : 0;
     const sized = screenSize(distance, fov, runtime.scene.getEngine().getRenderHeight());
     if (sized > 0) dot.size = sized;
+    dot.cellIndex = groundHides(at.ground, root, camera) ? OCCLUDED_CELL : SOLID_CELL;
     dot.isVisible = true;
+  }
+
+  function groundHides(ground: EcefCoord, root: TransformNode | null, camera: GlobeRuntime["scene"]["activeCamera"]): boolean {
+    const eye = camera ? sceneToEcef(camera.globalPosition, root) : null;
+    if (!eye || !camera) return false;
+    const dx = ground.x - eye.x, dy = ground.y - eye.y, dz = ground.z - eye.z;
+    const distance = Math.hypot(dx, dy, dz);
+    const reach = distance * OCCLUSION_REACH - 1;
+    if (!(reach > 0) || !(distance > 0)) return false;
+    try {
+      return runtime.surface.raycast(eye, { x: dx / distance, y: dy / distance, z: dz / distance }, reach) != null;
+    } catch {
+      return false;
+    }
   }
 
   function show(next: CampusDeviceFix | null): void {
