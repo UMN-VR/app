@@ -76,7 +76,7 @@
     "typescript-eslint": "^8.59.3",
     "vite": "8.3.4",
     "vitest": "^4.1.6",
-    "@foss-earth/about": "file:deps/foss-earth-about-75277f70092cd8d18679f87a94361f83c779c6ad.tgz",
+    "@foss-earth/about": "file:deps/foss-earth-about-ab9470d33b1c9913d6ee8e7c50baa4f85c583b5f.tgz",
     "@foss-earth/dev": "file:deps/foss-earth-dev-99c7259c87f20855e2da89557be3ad379c104e84.tgz",
     "@foss-earth/engine": "file:deps/foss-earth-engine-3e2c223f96e241b67c04d47273219fac244d7363.tgz",
     "@foss-earth/image-viewer": "file:deps/foss-earth-image-viewer-f5664b6a446eda52095fa716778932ca7da71d4b.tgz",
