@@ -112,6 +112,17 @@ it("uses the real panorama title/readiness and leaves through the existing viewe
   expect(h.visibility.isVisible("map")).toBe(true);
 });
 
+it("keeps the flat map openable inside a panorama and hides the basemap settings", async () => {
+  const h = harness();
+  await h.mount();
+  await act(() => { h.setViewer({ title: "360: Northrop Mall", onScreen: true }); });
+  await act(() => { h.shell().openOrSelectTab("map"); });
+  expect(h.visibility.isVisible("map")).toBe(false);
+  await act(() => { h.shell().openOrSelectTab("overview"); });
+  expect(h.visibility.isVisible("overview")).toBe(true);
+  expect(h.panels.overview.isConnected).toBe(true);
+});
+
 it("refreshes About and Bug report only from actual tab visibility", async () => {
   const h = harness();
   const aboutShown = vi.fn();
@@ -131,6 +142,8 @@ it("refreshes About and Bug report only from actual tab visibility", async () =>
 it("connects shared native toolbar launchers to the same workspace and detaches them on teardown", async () => {
   const h = harness();
   await h.mount();
+  expect(h.mapLauncher.textContent).toBe("Basemap");
+  expect(h.mapLauncher.getAttribute("aria-label")).toBe("Open Basemap");
   expect(h.mapLauncher.getAttribute("aria-pressed")).toBe("false");
   await act(() => { h.mapLauncher.click(); });
   expect(h.visibility.isVisible("map")).toBe(true);

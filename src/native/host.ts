@@ -6,6 +6,7 @@ import type { GlobeRuntime, SettledGlobeRuntime } from "@foss-earth/engine/babyl
 import type { SceneExternalNavigationPorts, isSceneHistoryEntry } from "@foss-earth/scenes/browser";
 import { CAMPUS_NATIVE_PARAMETERS, CAMPUS_DEPLOYMENT_PARAMETERS, createCampusResourcePolicy,
   createCampusTerrainPreparationPolicy, type CampusOverviewPreparationPolicy } from "./policy";
+import { CAMPUS_OVERVIEW_PARAMETERS } from "./overviewMap";
 
 export interface CampusNativeHostOptions {
   about: { release: ReleaseManifest; builtFrom: BuiltFrom | null; identity: AppIdentity };
@@ -125,7 +126,7 @@ async function settingsFor(view: Window & typeof globalThis, storage: SettingsSt
     ...viewer.VIEWER_PARAMETERS, ...images.createImageResourceParameters({ keptGpuDefault: tiled.keptGpuDefault }),
     ...tiled.TILED_CUBEMAP_PARAMETERS, ...sheets.PREVIEW_SHEETS_PARAMETERS, ...sky.SKY_PARAMETERS,
     ...toolbar.POSITION_PARAMETERS, ...toolbar.MAP_SOURCE_HUD_LAYOUT_PARAMETERS,
-    ...scenes.SCENE_DOCUMENT_PARAMETERS, ...CAMPUS_NATIVE_PARAMETERS, ...CAMPUS_DEPLOYMENT_PARAMETERS]);
+    ...scenes.SCENE_DOCUMENT_PARAMETERS, ...CAMPUS_NATIVE_PARAMETERS, ...CAMPUS_DEPLOYMENT_PARAMETERS, ...CAMPUS_OVERVIEW_PARAMETERS]);
   for (const [tab, section, title] of [...viewer.VIEWER_SECTION_TITLES, ...images.IMAGE_RESOURCE_SECTION_TITLES, ...sky.SKY_SECTION_TITLES, ...scenes.SCENE_SECTION_TITLES])
     settings.setSectionTitle(tab, section, title);
   settings.migrateLegacy([...engine.createEngineMigrations(storage), ui.THEME_LEGACY_MIGRATION]);
@@ -446,10 +447,11 @@ export function createCampusNativeHostFactory(options: CampusNativeHostOptions):
             state: [published.describe(), `Campus map: ${live.status.mode}; image resources: ${JSON.stringify(cache.stats())}`] }), page: view, console: view.console });
         cleanups.push(() => diagnostics.destroy()); diagnostics.attachRuntime({ describe: () => `Campus ${live.status.mode}; ${renderer.mode}`,
           onDeviceLost: listener => lifecycle!.onDeviceLost(listener), onDeviceRestored: listener => lifecycle!.onDeviceRestored(listener) });
-        const hud = toolbar.createHudBar(hudContainer, { document, items: ["location", "controls", "interface", "settings", "map", "renderer", "sky", "time", "scenes", "about", "bug-report", "panorama", "panorama-settings"].map(id => ({
+        const campusTabs = ["location", "controls", "interface", "settings", "overview", "map", "renderer", "sky", "time", "scenes", "about", "bug-report", "panorama", "panorama-settings"] as const;
+        const hud = toolbar.createHudBar(hudContainer, { document, items: campusTabs.map(id => ({
           kind: "button" as const, id: `campus-${id}`, title: id, ariaLabel: `Open ${id}`, appearance: "chip" as const, text: id })) });
         cleanups.push(() => hud.destroy());
-        const launchers = Object.fromEntries(["location", "controls", "interface", "settings", "map", "renderer", "sky", "time", "scenes", "about", "bug-report", "panorama", "panorama-settings"].map(id => [id, hud.getElement<HTMLButtonElement>(`campus-${id}`)!]));
+        const launchers = Object.fromEntries(campusTabs.map(id => [id, hud.getElement<HTMLButtonElement>(`campus-${id}`)!]));
         for (const [id, launcher] of Object.entries(launchers)) launcher.dataset.campusTab = id;
         const controllerRoot = document.createElement("div");
         if (!native) throw new Error("Campus image resources were not created.");

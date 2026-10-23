@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { LocationPanel } from "@foss-earth/engine/react";
 import { createLocationDraftStore, LOCATION_PLACE_DRAFT_KEY, RASTER_BASE_MAP_SOURCES, TERRAIN_SOURCES, resolveRasterBaseMapSource, resolveTerrainSource } from "@foss-earth/engine";
 import { createControlsPanel, createInputModeHud, createMapSourcePanel } from "@foss-earth/engine/panels";
+import { createOverviewMap } from "./overviewMap";
 import { createMapCachePresentationPolicy, createMapDetailController, connectMapDetailRuntime, setMapSourcePreference, setTerrainSourcePreference } from "@foss-earth/engine/settings";
 import type { GlobeRuntime } from "@foss-earth/engine/babylon";
 import type { CanvasTextureDevicePorts } from "@foss-earth/renderer/babylon";
@@ -148,6 +149,14 @@ export function createCampusPanels(options: CampusPanelsOptions) {
       settings.watch("map.source.elevation", value => runtime.setTerrainSource(resolveTerrainSource(String(value)))),
       runtime.subscribeStatus(value => map.update(value)));
     map.update(runtime.status);
+    const overview = keep(createOverviewMap({
+      document, sources: RASTER_BASE_MAP_SOURCES, settings,
+      basemap: () => ({ mode: runtime.status.mode, source: runtime.status.mode === "raster-basemap" ? runtime.status.rasterBaseMap : null }),
+      subscribeBasemap: listener => runtime.subscribeStatus(() => listener()),
+      view: () => runtime.getViewState(),
+      moveTo: partial => runtime.setViewState(partial),
+      frames: options.frames,
+    }));
     const renderer = keep(createRendererPanel({ renderer: runtime.renderer, settings,
       onChange: choice => applyRendererChoice(choice, settings, view.location, {
         getItem: key => storage?.getItem(key) ?? null, setItem: (key, value) => storage?.setItem(key, value),
@@ -164,7 +173,7 @@ export function createCampusPanels(options: CampusPanelsOptions) {
     const time = keep(createDateTimePanel({ document, ui: publicUi, settings, refresh, panelStorage: storage, getPlace: place, now: view.Date.now }));
     const bug = keep(createBugReportPanel(options.diagnostics, { document, now: () => new view.Date(), downloads: browserReportDownloads(view.URL) }));
     const basePanels: CampusCompositionBindings["basePanels"] = { location, controls: controls.element, interface: interfacePanel.element,
-      settings: settingsPanel.element, map: map.element, renderer: renderer.element, sky: sky.element, time: time.element, "bug-report": bug.element };
+      settings: settingsPanel.element, overview: overview.element, map: map.element, renderer: renderer.element, sky: sky.element, time: time.element, "bug-report": bug.element };
     const sceneContributions = (["appearance", "motion", "loading", "tiles", "saved"] as const).filter(section => section !== "saved")
       .map(section => ({ section, title: settings.getSectionTitle("scenes", section), ...parameterSection({ tab: "scenes", section }) }));
     return { basePanels, refresh, parameterSection, sections, sceneContributions,

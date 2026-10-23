@@ -11,7 +11,7 @@ import "@foss-earth/ui/windowing.css";
 import "@foss-earth/toolbar/styles.css";
 
 export const CAMPUS_TAB_IDS = [
-  "location", "controls", "interface", "settings", "map", "renderer", "sky", "time",
+  "location", "controls", "interface", "settings", "overview", "map", "renderer", "sky", "time",
   "scenes", "about", "bug-report", "panorama", "panorama-settings",
 ] as const;
 export type CampusTabId = typeof CAMPUS_TAB_IDS[number];
@@ -19,7 +19,7 @@ export type CampusShellTabId = CampusTabId | "dev";
 
 const labels: Record<CampusTabId, string> = {
   location: "Location", controls: "Controls", interface: "Interface", settings: "Settings",
-  map: "Map", renderer: "Renderer", sky: "Sky", time: "Date and time", scenes: "Scenes",
+  overview: "Map", map: "Basemap", renderer: "Renderer", sky: "Sky", time: "Date and time", scenes: "Scenes",
   about: "About", "bug-report": "Bug report", panorama: "360", "panorama-settings": "360 image settings",
 };
 const baseOnlyTabs = new Set<CampusShellTabId>(["location", "map", "sky", "time"]);
